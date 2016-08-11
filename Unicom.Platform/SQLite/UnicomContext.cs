@@ -19,6 +19,18 @@ namespace Unicom.Platform.SQLite
         public List<EmsDevice> Devices 
             => GetDbSet<EmsDevice>();
 
+        public List<EmsProject> Projects
+            => GetDbSet<EmsProject>();
+
+        public List<EmsPrjCategory> PrjCategories
+            => GetDbSet<EmsPrjCategory>();
+
+        public List<EmsPrjType> PrjTypes
+            => GetDbSet<EmsPrjType>();
+
+        public List<EmsPrjPeriod> PrjPeriods
+            => GetDbSet<EmsPrjPeriod>();
+
 
         private List<T> GetDbSet<T>() where T : class, new()
         {

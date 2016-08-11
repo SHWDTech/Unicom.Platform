@@ -12,7 +12,7 @@ namespace Unicom.Platform.Service
 
             var device = new EmsDevice()
             {
-                Code = "11aaaaa",
+                UnicomCode = "11aaaaa",
                 Id = 7,
                 OnTransfer = true
             };

@@ -8,3449 +8,3911 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Unicom.Platform.Model.UnicomPlatform {
-    
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://resource.ems.ks/", ConfigurationName="UnicomPlatform.PushResourceService")]
-    public interface PushResourceService {
-        
+using System;
+using System.CodeDom.Compiler;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.ServiceModel;
+using System.Threading.Tasks;
+using System.Xml.Schema;
+using System.Xml.Serialization;
+
+// ReSharper disable InconsistentNaming
+
+namespace Unicom.Platform.Model.Service_References.UnicomPlatform
+{
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [ServiceContract(Namespace = "http://resource.ems.ks/", ConfigurationName = "UnicomPlatform.PushResourceService")]
+    public interface IPushResourceService
+    {
         // CODEGEN: Parameter 'pullProjectCategoryFlag' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullDistrict))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendorResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectsResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjects))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullRegion))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevicesResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectPeriod))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="pullProjectCategoryFlag")]
-        Unicom.Platform.Model.UnicomPlatform.pullProjectCategoryResponse pullProjectCategory(Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectCategoryResponse> pullProjectCategoryAsync(Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1 request);
-        
+        [OperationContract(Action = "", ReplyAction = "*")]
+        [XmlSerializerFormat(SupportFaults = true)]
+        [ServiceKnownType(typeof(pullDistrict))]
+        [ServiceKnownType(typeof(registerVendorResponse))]
+        [ServiceKnownType(typeof(registerVendor))]
+        [ServiceKnownType(typeof(pushProjectStatusResponse))]
+        [ServiceKnownType(typeof(pushProjectStatus))]
+        [ServiceKnownType(typeof(pushProjectsResponse))]
+        [ServiceKnownType(typeof(pushProjects))]
+        [ServiceKnownType(typeof(pullRegion))]
+        [ServiceKnownType(typeof(pushDeviceStatusResponse))]
+        [ServiceKnownType(typeof(pushDeviceStatus))]
+        [ServiceKnownType(typeof(pushRealTimeDataResponse))]
+        [ServiceKnownType(typeof(pushRealTimeData))]
+        [ServiceKnownType(typeof(pushDailyDataResponse))]
+        [ServiceKnownType(typeof(pushDailyData))]
+        [ServiceKnownType(typeof(pushHourlyDataResponse))]
+        [ServiceKnownType(typeof(pushHourlyData))]
+        [ServiceKnownType(typeof(pushDevicesResponse))]
+        [ServiceKnownType(typeof(pushDevices))]
+        [ServiceKnownType(typeof(pullProjectPeriod))]
+        [ServiceKnownType(typeof(pullProjectType))]
+        [ServiceKnownType(typeof(pullProjectCategory))]
+        [return: MessageParameter(Name = "pullProjectCategoryFlag")]
+        pullProjectCategoryResponse pullProjectCategory(pullProjectCategory1 request);
+
+        [OperationContract(Action = "", ReplyAction = "*")]
+        Task<pullProjectCategoryResponse> pullProjectCategoryAsync(pullProjectCategory1 request);
+
         // CODEGEN: Parameter 'pullProjectTypeFlag' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullDistrict))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendorResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectsResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjects))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullRegion))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevicesResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectPeriod))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="pullProjectTypeFlag")]
-        Unicom.Platform.Model.UnicomPlatform.pullProjectTypeResponse pullProjectType(Unicom.Platform.Model.UnicomPlatform.pullProjectType1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectTypeResponse> pullProjectTypeAsync(Unicom.Platform.Model.UnicomPlatform.pullProjectType1 request);
-        
+        [OperationContract(Action = "", ReplyAction = "*")]
+        [XmlSerializerFormat(SupportFaults = true)]
+        [ServiceKnownType(typeof(pullDistrict))]
+        [ServiceKnownType(typeof(registerVendorResponse))]
+        [ServiceKnownType(typeof(registerVendor))]
+        [ServiceKnownType(typeof(pushProjectStatusResponse))]
+        [ServiceKnownType(typeof(pushProjectStatus))]
+        [ServiceKnownType(typeof(pushProjectsResponse))]
+        [ServiceKnownType(typeof(pushProjects))]
+        [ServiceKnownType(typeof(pullRegion))]
+        [ServiceKnownType(typeof(pushDeviceStatusResponse))]
+        [ServiceKnownType(typeof(pushDeviceStatus))]
+        [ServiceKnownType(typeof(pushRealTimeDataResponse))]
+        [ServiceKnownType(typeof(pushRealTimeData))]
+        [ServiceKnownType(typeof(pushDailyDataResponse))]
+        [ServiceKnownType(typeof(pushDailyData))]
+        [ServiceKnownType(typeof(pushHourlyDataResponse))]
+        [ServiceKnownType(typeof(pushHourlyData))]
+        [ServiceKnownType(typeof(pushDevicesResponse))]
+        [ServiceKnownType(typeof(pushDevices))]
+        [ServiceKnownType(typeof(pullProjectPeriod))]
+        [ServiceKnownType(typeof(pullProjectType))]
+        [ServiceKnownType(typeof(pullProjectCategory))]
+        [return: MessageParameter(Name = "pullProjectTypeFlag")]
+        pullProjectTypeResponse pullProjectType(pullProjectType1 request);
+
+        [OperationContract(Action = "", ReplyAction = "*")]
+        Task<pullProjectTypeResponse> pullProjectTypeAsync(pullProjectType1 request);
+
         // CODEGEN: Parameter 'pullProjectPeriodFlag' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullDistrict))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendorResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectsResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjects))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullRegion))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevicesResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectPeriod))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="pullProjectPeriodFlag")]
-        Unicom.Platform.Model.UnicomPlatform.pullProjectPeriodResponse pullProjectPeriod(Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectPeriodResponse> pullProjectPeriodAsync(Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1 request);
-        
+        [OperationContract(Action = "", ReplyAction = "*")]
+        [XmlSerializerFormat(SupportFaults = true)]
+        [ServiceKnownType(typeof(pullDistrict))]
+        [ServiceKnownType(typeof(registerVendorResponse))]
+        [ServiceKnownType(typeof(registerVendor))]
+        [ServiceKnownType(typeof(pushProjectStatusResponse))]
+        [ServiceKnownType(typeof(pushProjectStatus))]
+        [ServiceKnownType(typeof(pushProjectsResponse))]
+        [ServiceKnownType(typeof(pushProjects))]
+        [ServiceKnownType(typeof(pullRegion))]
+        [ServiceKnownType(typeof(pushDeviceStatusResponse))]
+        [ServiceKnownType(typeof(pushDeviceStatus))]
+        [ServiceKnownType(typeof(pushRealTimeDataResponse))]
+        [ServiceKnownType(typeof(pushRealTimeData))]
+        [ServiceKnownType(typeof(pushDailyDataResponse))]
+        [ServiceKnownType(typeof(pushDailyData))]
+        [ServiceKnownType(typeof(pushHourlyDataResponse))]
+        [ServiceKnownType(typeof(pushHourlyData))]
+        [ServiceKnownType(typeof(pushDevicesResponse))]
+        [ServiceKnownType(typeof(pushDevices))]
+        [ServiceKnownType(typeof(pullProjectPeriod))]
+        [ServiceKnownType(typeof(pullProjectType))]
+        [ServiceKnownType(typeof(pullProjectCategory))]
+        [return: MessageParameter(Name = "pullProjectPeriodFlag")]
+        pullProjectPeriodResponse pullProjectPeriod(pullProjectPeriod1 request);
+
+        [OperationContract(Action = "", ReplyAction = "*")]
+        Task<pullProjectPeriodResponse> pullProjectPeriodAsync(pullProjectPeriod1 request);
+
         // CODEGEN: Parameter 'deviceCodes' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullDistrict))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendorResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectsResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjects))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullRegion))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevicesResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectPeriod))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="deviceCodes")]
-        Unicom.Platform.Model.UnicomPlatform.pushDevicesResponse1 pushDevices(Unicom.Platform.Model.UnicomPlatform.pushDevices1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDevicesResponse1> pushDevicesAsync(Unicom.Platform.Model.UnicomPlatform.pushDevices1 request);
-        
+        [OperationContract(Action = "", ReplyAction = "*")]
+        [XmlSerializerFormat(SupportFaults = true)]
+        [ServiceKnownType(typeof(pullDistrict))]
+        [ServiceKnownType(typeof(registerVendorResponse))]
+        [ServiceKnownType(typeof(registerVendor))]
+        [ServiceKnownType(typeof(pushProjectStatusResponse))]
+        [ServiceKnownType(typeof(pushProjectStatus))]
+        [ServiceKnownType(typeof(pushProjectsResponse))]
+        [ServiceKnownType(typeof(pushProjects))]
+        [ServiceKnownType(typeof(pullRegion))]
+        [ServiceKnownType(typeof(pushDeviceStatusResponse))]
+        [ServiceKnownType(typeof(pushDeviceStatus))]
+        [ServiceKnownType(typeof(pushRealTimeDataResponse))]
+        [ServiceKnownType(typeof(pushRealTimeData))]
+        [ServiceKnownType(typeof(pushDailyDataResponse))]
+        [ServiceKnownType(typeof(pushDailyData))]
+        [ServiceKnownType(typeof(pushHourlyDataResponse))]
+        [ServiceKnownType(typeof(pushHourlyData))]
+        [ServiceKnownType(typeof(pushDevicesResponse))]
+        [ServiceKnownType(typeof(pushDevices))]
+        [ServiceKnownType(typeof(pullProjectPeriod))]
+        [ServiceKnownType(typeof(pullProjectType))]
+        [ServiceKnownType(typeof(pullProjectCategory))]
+        [return: MessageParameter(Name = "deviceCodes")]
+        pushDevicesResponse1 pushDevices(pushDevices1 request);
+
+        [OperationContract(Action = "", ReplyAction = "*")]
+        Task<pushDevicesResponse1> pushDevicesAsync(pushDevices1 request);
+
         // CODEGEN: Parameter 'pushHourlyDataFlag' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullDistrict))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendorResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectsResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjects))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullRegion))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevicesResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectPeriod))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="pushHourlyDataFlag")]
-        Unicom.Platform.Model.UnicomPlatform.pushHourlyDataResponse1 pushHourlyData(Unicom.Platform.Model.UnicomPlatform.pushHourlyData1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushHourlyDataResponse1> pushHourlyDataAsync(Unicom.Platform.Model.UnicomPlatform.pushHourlyData1 request);
-        
+        [OperationContract(Action = "", ReplyAction = "*")]
+        [XmlSerializerFormat(SupportFaults = true)]
+        [ServiceKnownType(typeof(pullDistrict))]
+        [ServiceKnownType(typeof(registerVendorResponse))]
+        [ServiceKnownType(typeof(registerVendor))]
+        [ServiceKnownType(typeof(pushProjectStatusResponse))]
+        [ServiceKnownType(typeof(pushProjectStatus))]
+        [ServiceKnownType(typeof(pushProjectsResponse))]
+        [ServiceKnownType(typeof(pushProjects))]
+        [ServiceKnownType(typeof(pullRegion))]
+        [ServiceKnownType(typeof(pushDeviceStatusResponse))]
+        [ServiceKnownType(typeof(pushDeviceStatus))]
+        [ServiceKnownType(typeof(pushRealTimeDataResponse))]
+        [ServiceKnownType(typeof(pushRealTimeData))]
+        [ServiceKnownType(typeof(pushDailyDataResponse))]
+        [ServiceKnownType(typeof(pushDailyData))]
+        [ServiceKnownType(typeof(pushHourlyDataResponse))]
+        [ServiceKnownType(typeof(pushHourlyData))]
+        [ServiceKnownType(typeof(pushDevicesResponse))]
+        [ServiceKnownType(typeof(pushDevices))]
+        [ServiceKnownType(typeof(pullProjectPeriod))]
+        [ServiceKnownType(typeof(pullProjectType))]
+        [ServiceKnownType(typeof(pullProjectCategory))]
+        [return: MessageParameter(Name = "pushHourlyDataFlag")]
+        pushHourlyDataResponse1 pushHourlyData(pushHourlyData1 request);
+
+        [OperationContract(Action = "", ReplyAction = "*")]
+        Task<pushHourlyDataResponse1> pushHourlyDataAsync(pushHourlyData1 request);
+
         // CODEGEN: Parameter 'pushDailyDataFlag' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullDistrict))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendorResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectsResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjects))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullRegion))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevicesResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectPeriod))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="pushDailyDataFlag")]
-        Unicom.Platform.Model.UnicomPlatform.pushDailyDataResponse1 pushDailyData(Unicom.Platform.Model.UnicomPlatform.pushDailyData1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDailyDataResponse1> pushDailyDataAsync(Unicom.Platform.Model.UnicomPlatform.pushDailyData1 request);
-        
+        [OperationContract(Action = "", ReplyAction = "*")]
+        [XmlSerializerFormat(SupportFaults = true)]
+        [ServiceKnownType(typeof(pullDistrict))]
+        [ServiceKnownType(typeof(registerVendorResponse))]
+        [ServiceKnownType(typeof(registerVendor))]
+        [ServiceKnownType(typeof(pushProjectStatusResponse))]
+        [ServiceKnownType(typeof(pushProjectStatus))]
+        [ServiceKnownType(typeof(pushProjectsResponse))]
+        [ServiceKnownType(typeof(pushProjects))]
+        [ServiceKnownType(typeof(pullRegion))]
+        [ServiceKnownType(typeof(pushDeviceStatusResponse))]
+        [ServiceKnownType(typeof(pushDeviceStatus))]
+        [ServiceKnownType(typeof(pushRealTimeDataResponse))]
+        [ServiceKnownType(typeof(pushRealTimeData))]
+        [ServiceKnownType(typeof(pushDailyDataResponse))]
+        [ServiceKnownType(typeof(pushDailyData))]
+        [ServiceKnownType(typeof(pushHourlyDataResponse))]
+        [ServiceKnownType(typeof(pushHourlyData))]
+        [ServiceKnownType(typeof(pushDevicesResponse))]
+        [ServiceKnownType(typeof(pushDevices))]
+        [ServiceKnownType(typeof(pullProjectPeriod))]
+        [ServiceKnownType(typeof(pullProjectType))]
+        [ServiceKnownType(typeof(pullProjectCategory))]
+        [return: MessageParameter(Name = "pushDailyDataFlag")]
+        pushDailyDataResponse1 pushDailyData(pushDailyData1 request);
+
+        [OperationContract(Action = "", ReplyAction = "*")]
+        Task<pushDailyDataResponse1> pushDailyDataAsync(pushDailyData1 request);
+
         // CODEGEN: Parameter 'pushRealTimeDataFlag' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullDistrict))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendorResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectsResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjects))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullRegion))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevicesResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectPeriod))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="pushRealTimeDataFlag")]
-        Unicom.Platform.Model.UnicomPlatform.pushRealTimeDataResponse1 pushRealTimeData(Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushRealTimeDataResponse1> pushRealTimeDataAsync(Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1 request);
-        
+        [OperationContract(Action = "", ReplyAction = "*")]
+        [XmlSerializerFormat(SupportFaults = true)]
+        [ServiceKnownType(typeof(pullDistrict))]
+        [ServiceKnownType(typeof(registerVendorResponse))]
+        [ServiceKnownType(typeof(registerVendor))]
+        [ServiceKnownType(typeof(pushProjectStatusResponse))]
+        [ServiceKnownType(typeof(pushProjectStatus))]
+        [ServiceKnownType(typeof(pushProjectsResponse))]
+        [ServiceKnownType(typeof(pushProjects))]
+        [ServiceKnownType(typeof(pullRegion))]
+        [ServiceKnownType(typeof(pushDeviceStatusResponse))]
+        [ServiceKnownType(typeof(pushDeviceStatus))]
+        [ServiceKnownType(typeof(pushRealTimeDataResponse))]
+        [ServiceKnownType(typeof(pushRealTimeData))]
+        [ServiceKnownType(typeof(pushDailyDataResponse))]
+        [ServiceKnownType(typeof(pushDailyData))]
+        [ServiceKnownType(typeof(pushHourlyDataResponse))]
+        [ServiceKnownType(typeof(pushHourlyData))]
+        [ServiceKnownType(typeof(pushDevicesResponse))]
+        [ServiceKnownType(typeof(pushDevices))]
+        [ServiceKnownType(typeof(pullProjectPeriod))]
+        [ServiceKnownType(typeof(pullProjectType))]
+        [ServiceKnownType(typeof(pullProjectCategory))]
+        [return: MessageParameter(Name = "pushRealTimeDataFlag")]
+        pushRealTimeDataResponse1 pushRealTimeData(pushRealTimeData1 request);
+
+        [OperationContract(Action = "", ReplyAction = "*")]
+        Task<pushRealTimeDataResponse1> pushRealTimeDataAsync(pushRealTimeData1 request);
+
         // CODEGEN: Parameter 'deviceStatusCodes' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullDistrict))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendorResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectsResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjects))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullRegion))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevicesResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectPeriod))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="deviceStatusCodes")]
-        Unicom.Platform.Model.UnicomPlatform.pushDeviceStatusResponse1 pushDeviceStatus(Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDeviceStatusResponse1> pushDeviceStatusAsync(Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1 request);
-        
+        [OperationContract(Action = "", ReplyAction = "*")]
+        [XmlSerializerFormat(SupportFaults = true)]
+        [ServiceKnownType(typeof(pullDistrict))]
+        [ServiceKnownType(typeof(registerVendorResponse))]
+        [ServiceKnownType(typeof(registerVendor))]
+        [ServiceKnownType(typeof(pushProjectStatusResponse))]
+        [ServiceKnownType(typeof(pushProjectStatus))]
+        [ServiceKnownType(typeof(pushProjectsResponse))]
+        [ServiceKnownType(typeof(pushProjects))]
+        [ServiceKnownType(typeof(pullRegion))]
+        [ServiceKnownType(typeof(pushDeviceStatusResponse))]
+        [ServiceKnownType(typeof(pushDeviceStatus))]
+        [ServiceKnownType(typeof(pushRealTimeDataResponse))]
+        [ServiceKnownType(typeof(pushRealTimeData))]
+        [ServiceKnownType(typeof(pushDailyDataResponse))]
+        [ServiceKnownType(typeof(pushDailyData))]
+        [ServiceKnownType(typeof(pushHourlyDataResponse))]
+        [ServiceKnownType(typeof(pushHourlyData))]
+        [ServiceKnownType(typeof(pushDevicesResponse))]
+        [ServiceKnownType(typeof(pushDevices))]
+        [ServiceKnownType(typeof(pullProjectPeriod))]
+        [ServiceKnownType(typeof(pullProjectType))]
+        [ServiceKnownType(typeof(pullProjectCategory))]
+        [return: MessageParameter(Name = "deviceStatusCodes")]
+        pushDeviceStatusResponse1 pushDeviceStatus(pushDeviceStatus1 request);
+
+        [OperationContract(Action = "", ReplyAction = "*")]
+        Task<pushDeviceStatusResponse1> pushDeviceStatusAsync(pushDeviceStatus1 request);
+
         // CODEGEN: Parameter 'pullRegionFlag' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullDistrict))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendorResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectsResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjects))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullRegion))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevicesResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectPeriod))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="pullRegionFlag")]
-        Unicom.Platform.Model.UnicomPlatform.pullRegionResponse pullRegion(Unicom.Platform.Model.UnicomPlatform.pullRegion1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullRegionResponse> pullRegionAsync(Unicom.Platform.Model.UnicomPlatform.pullRegion1 request);
-        
+        [OperationContract(Action = "", ReplyAction = "*")]
+        [XmlSerializerFormat(SupportFaults = true)]
+        [ServiceKnownType(typeof(pullDistrict))]
+        [ServiceKnownType(typeof(registerVendorResponse))]
+        [ServiceKnownType(typeof(registerVendor))]
+        [ServiceKnownType(typeof(pushProjectStatusResponse))]
+        [ServiceKnownType(typeof(pushProjectStatus))]
+        [ServiceKnownType(typeof(pushProjectsResponse))]
+        [ServiceKnownType(typeof(pushProjects))]
+        [ServiceKnownType(typeof(pullRegion))]
+        [ServiceKnownType(typeof(pushDeviceStatusResponse))]
+        [ServiceKnownType(typeof(pushDeviceStatus))]
+        [ServiceKnownType(typeof(pushRealTimeDataResponse))]
+        [ServiceKnownType(typeof(pushRealTimeData))]
+        [ServiceKnownType(typeof(pushDailyDataResponse))]
+        [ServiceKnownType(typeof(pushDailyData))]
+        [ServiceKnownType(typeof(pushHourlyDataResponse))]
+        [ServiceKnownType(typeof(pushHourlyData))]
+        [ServiceKnownType(typeof(pushDevicesResponse))]
+        [ServiceKnownType(typeof(pushDevices))]
+        [ServiceKnownType(typeof(pullProjectPeriod))]
+        [ServiceKnownType(typeof(pullProjectType))]
+        [ServiceKnownType(typeof(pullProjectCategory))]
+        [return: MessageParameter(Name = "pullRegionFlag")]
+        pullRegionResponse pullRegion(pullRegion1 request);
+
+        [OperationContract(Action = "", ReplyAction = "*")]
+        Task<pullRegionResponse> pullRegionAsync(pullRegion1 request);
+
         // CODEGEN: Parameter 'projectCodes' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullDistrict))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendorResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectsResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjects))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullRegion))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevicesResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectPeriod))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="projectCodes")]
-        Unicom.Platform.Model.UnicomPlatform.pushProjectsResponse1 pushProjects(Unicom.Platform.Model.UnicomPlatform.pushProjects1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushProjectsResponse1> pushProjectsAsync(Unicom.Platform.Model.UnicomPlatform.pushProjects1 request);
-        
+        [OperationContract(Action = "", ReplyAction = "*")]
+        [XmlSerializerFormat(SupportFaults = true)]
+        [ServiceKnownType(typeof(pullDistrict))]
+        [ServiceKnownType(typeof(registerVendorResponse))]
+        [ServiceKnownType(typeof(registerVendor))]
+        [ServiceKnownType(typeof(pushProjectStatusResponse))]
+        [ServiceKnownType(typeof(pushProjectStatus))]
+        [ServiceKnownType(typeof(pushProjectsResponse))]
+        [ServiceKnownType(typeof(pushProjects))]
+        [ServiceKnownType(typeof(pullRegion))]
+        [ServiceKnownType(typeof(pushDeviceStatusResponse))]
+        [ServiceKnownType(typeof(pushDeviceStatus))]
+        [ServiceKnownType(typeof(pushRealTimeDataResponse))]
+        [ServiceKnownType(typeof(pushRealTimeData))]
+        [ServiceKnownType(typeof(pushDailyDataResponse))]
+        [ServiceKnownType(typeof(pushDailyData))]
+        [ServiceKnownType(typeof(pushHourlyDataResponse))]
+        [ServiceKnownType(typeof(pushHourlyData))]
+        [ServiceKnownType(typeof(pushDevicesResponse))]
+        [ServiceKnownType(typeof(pushDevices))]
+        [ServiceKnownType(typeof(pullProjectPeriod))]
+        [ServiceKnownType(typeof(pullProjectType))]
+        [ServiceKnownType(typeof(pullProjectCategory))]
+        [return: MessageParameter(Name = "projectCodes")]
+        pushProjectsResponse1 pushProjects(pushProjects1 request);
+
+        [OperationContract(Action = "", ReplyAction = "*")]
+        Task<pushProjectsResponse1> pushProjectsAsync(pushProjects1 request);
+
         // CODEGEN: Parameter 'projectStatusCodes' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullDistrict))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendorResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectsResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjects))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullRegion))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevicesResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectPeriod))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="projectStatusCodes")]
-        Unicom.Platform.Model.UnicomPlatform.pushProjectStatusResponse1 pushProjectStatus(Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushProjectStatusResponse1> pushProjectStatusAsync(Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1 request);
-        
+        [OperationContract(Action = "", ReplyAction = "*")]
+        [XmlSerializerFormat(SupportFaults = true)]
+        [ServiceKnownType(typeof(pullDistrict))]
+        [ServiceKnownType(typeof(registerVendorResponse))]
+        [ServiceKnownType(typeof(registerVendor))]
+        [ServiceKnownType(typeof(pushProjectStatusResponse))]
+        [ServiceKnownType(typeof(pushProjectStatus))]
+        [ServiceKnownType(typeof(pushProjectsResponse))]
+        [ServiceKnownType(typeof(pushProjects))]
+        [ServiceKnownType(typeof(pullRegion))]
+        [ServiceKnownType(typeof(pushDeviceStatusResponse))]
+        [ServiceKnownType(typeof(pushDeviceStatus))]
+        [ServiceKnownType(typeof(pushRealTimeDataResponse))]
+        [ServiceKnownType(typeof(pushRealTimeData))]
+        [ServiceKnownType(typeof(pushDailyDataResponse))]
+        [ServiceKnownType(typeof(pushDailyData))]
+        [ServiceKnownType(typeof(pushHourlyDataResponse))]
+        [ServiceKnownType(typeof(pushHourlyData))]
+        [ServiceKnownType(typeof(pushDevicesResponse))]
+        [ServiceKnownType(typeof(pushDevices))]
+        [ServiceKnownType(typeof(pullProjectPeriod))]
+        [ServiceKnownType(typeof(pullProjectType))]
+        [ServiceKnownType(typeof(pullProjectCategory))]
+        [return: MessageParameter(Name = "projectStatusCodes")]
+        pushProjectStatusResponse1 pushProjectStatus(pushProjectStatus1 request);
+
+        [OperationContract(Action = "", ReplyAction = "*")]
+        Task<pushProjectStatusResponse1> pushProjectStatusAsync(pushProjectStatus1 request);
+
         // CODEGEN: Parameter 'vendorCode' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullDistrict))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendorResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectsResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjects))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullRegion))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevicesResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectPeriod))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="vendorCode")]
-        Unicom.Platform.Model.UnicomPlatform.registerVendorResponse1 registerVendor(Unicom.Platform.Model.UnicomPlatform.registerVendor1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.registerVendorResponse1> registerVendorAsync(Unicom.Platform.Model.UnicomPlatform.registerVendor1 request);
-        
+        [OperationContract(Action = "", ReplyAction = "*")]
+        [XmlSerializerFormat(SupportFaults = true)]
+        [ServiceKnownType(typeof(pullDistrict))]
+        [ServiceKnownType(typeof(registerVendorResponse))]
+        [ServiceKnownType(typeof(registerVendor))]
+        [ServiceKnownType(typeof(pushProjectStatusResponse))]
+        [ServiceKnownType(typeof(pushProjectStatus))]
+        [ServiceKnownType(typeof(pushProjectsResponse))]
+        [ServiceKnownType(typeof(pushProjects))]
+        [ServiceKnownType(typeof(pullRegion))]
+        [ServiceKnownType(typeof(pushDeviceStatusResponse))]
+        [ServiceKnownType(typeof(pushDeviceStatus))]
+        [ServiceKnownType(typeof(pushRealTimeDataResponse))]
+        [ServiceKnownType(typeof(pushRealTimeData))]
+        [ServiceKnownType(typeof(pushDailyDataResponse))]
+        [ServiceKnownType(typeof(pushDailyData))]
+        [ServiceKnownType(typeof(pushHourlyDataResponse))]
+        [ServiceKnownType(typeof(pushHourlyData))]
+        [ServiceKnownType(typeof(pushDevicesResponse))]
+        [ServiceKnownType(typeof(pushDevices))]
+        [ServiceKnownType(typeof(pullProjectPeriod))]
+        [ServiceKnownType(typeof(pullProjectType))]
+        [ServiceKnownType(typeof(pullProjectCategory))]
+        [return: MessageParameter(Name = "vendorCode")]
+        registerVendorResponse1 registerVendor(registerVendor1 request);
+
+        [OperationContract(Action = "", ReplyAction = "*")]
+        Task<registerVendorResponse1> registerVendorAsync(registerVendor1 request);
+
         // CODEGEN: Parameter 'districts' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullDistrict))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendorResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(registerVendor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjectsResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushProjects))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullRegion))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatusResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDeviceStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushRealTimeData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDailyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyDataResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushHourlyData))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevicesResponse))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pushDevices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectPeriod))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="districts")]
-        Unicom.Platform.Model.UnicomPlatform.pullDistrictResponse pullDistrict(Unicom.Platform.Model.UnicomPlatform.pullDistrict1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullDistrictResponse> pullDistrictAsync(Unicom.Platform.Model.UnicomPlatform.pullDistrict1 request);
+        [OperationContract(Action = "", ReplyAction = "*")]
+        [XmlSerializerFormat(SupportFaults = true)]
+        [ServiceKnownType(typeof(pullDistrict))]
+        [ServiceKnownType(typeof(registerVendorResponse))]
+        [ServiceKnownType(typeof(registerVendor))]
+        [ServiceKnownType(typeof(pushProjectStatusResponse))]
+        [ServiceKnownType(typeof(pushProjectStatus))]
+        [ServiceKnownType(typeof(pushProjectsResponse))]
+        [ServiceKnownType(typeof(pushProjects))]
+        [ServiceKnownType(typeof(pullRegion))]
+        [ServiceKnownType(typeof(pushDeviceStatusResponse))]
+        [ServiceKnownType(typeof(pushDeviceStatus))]
+        [ServiceKnownType(typeof(pushRealTimeDataResponse))]
+        [ServiceKnownType(typeof(pushRealTimeData))]
+        [ServiceKnownType(typeof(pushDailyDataResponse))]
+        [ServiceKnownType(typeof(pushDailyData))]
+        [ServiceKnownType(typeof(pushHourlyDataResponse))]
+        [ServiceKnownType(typeof(pushHourlyData))]
+        [ServiceKnownType(typeof(pushDevicesResponse))]
+        [ServiceKnownType(typeof(pushDevices))]
+        [ServiceKnownType(typeof(pullProjectPeriod))]
+        [ServiceKnownType(typeof(pullProjectType))]
+        [ServiceKnownType(typeof(pullProjectCategory))]
+        [return: MessageParameter(Name = "districts")]
+        pullDistrictResponse pullDistrict(pullDistrict1 request);
+
+        [OperationContract(Action = "", ReplyAction = "*")]
+        Task<pullDistrictResponse> pullDistrictAsync(pullDistrict1 request);
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class emsPrjCategory : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class emsPrjCategory : object, INotifyPropertyChanged
+    {
         private int codeField;
-        
+
         private bool codeFieldSpecified;
-        
+
         private string nameField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public int code {
-            get {
-                return this.codeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public int code
+        {
+            get
+            {
+                return codeField;
             }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("code");
+            set
+            {
+                codeField = value;
+                RaisePropertyChanged("code");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool codeSpecified {
-            get {
-                return this.codeFieldSpecified;
+        [XmlIgnore]
+        public bool codeSpecified
+        {
+            get
+            {
+                return codeFieldSpecified;
             }
-            set {
-                this.codeFieldSpecified = value;
-                this.RaisePropertyChanged("codeSpecified");
+            set
+            {
+                codeFieldSpecified = value;
+                RaisePropertyChanged("codeSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string name {
-            get {
-                return this.nameField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public string name
+        {
+            get
+            {
+                return nameField;
             }
-            set {
-                this.nameField = value;
-                this.RaisePropertyChanged("name");
+            set
+            {
+                nameField = value;
+                RaisePropertyChanged("name");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class emsDistrict : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class emsDistrict : object, INotifyPropertyChanged
+    {
         private string codeField;
-        
+
         private string nameField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string code {
-            get {
-                return this.codeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string code
+        {
+            get
+            {
+                return codeField;
             }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("code");
+            set
+            {
+                codeField = value;
+                RaisePropertyChanged("code");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string name {
-            get {
-                return this.nameField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public string name
+        {
+            get
+            {
+                return nameField;
             }
-            set {
-                this.nameField = value;
-                this.RaisePropertyChanged("name");
+            set
+            {
+                nameField = value;
+                RaisePropertyChanged("name");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pullDistrict : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pullDistrict : object, INotifyPropertyChanged
+    {
         private string vendorCodeField;
-        
+
         private string parentDistrictField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string vendorCode {
-            get {
-                return this.vendorCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string vendorCode
+        {
+            get
+            {
+                return vendorCodeField;
             }
-            set {
-                this.vendorCodeField = value;
-                this.RaisePropertyChanged("vendorCode");
+            set
+            {
+                vendorCodeField = value;
+                RaisePropertyChanged("vendorCode");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string parentDistrict {
-            get {
-                return this.parentDistrictField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public string parentDistrict
+        {
+            get
+            {
+                return parentDistrictField;
             }
-            set {
-                this.parentDistrictField = value;
-                this.RaisePropertyChanged("parentDistrict");
+            set
+            {
+                parentDistrictField = value;
+                RaisePropertyChanged("parentDistrict");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class registerVendorResponse : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class registerVendorResponse : object, INotifyPropertyChanged
+    {
         private string vendorCodeField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string vendorCode {
-            get {
-                return this.vendorCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string vendorCode
+        {
+            get
+            {
+                return vendorCodeField;
             }
-            set {
-                this.vendorCodeField = value;
-                this.RaisePropertyChanged("vendorCode");
+            set
+            {
+                vendorCodeField = value;
+                RaisePropertyChanged("vendorCode");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class registerVendor : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class registerVendor : object, INotifyPropertyChanged
+    {
         private string vendorNameField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string vendorName {
-            get {
-                return this.vendorNameField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string vendorName
+        {
+            get
+            {
+                return vendorNameField;
             }
-            set {
-                this.vendorNameField = value;
-                this.RaisePropertyChanged("vendorName");
+            set
+            {
+                vendorNameField = value;
+                RaisePropertyChanged("vendorName");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pushProjectStatusResponse : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pushProjectStatusResponse : object, INotifyPropertyChanged
+    {
         private resultData projectStatusCodesField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public resultData projectStatusCodes {
-            get {
-                return this.projectStatusCodesField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public resultData projectStatusCodes
+        {
+            get
+            {
+                return projectStatusCodesField;
             }
-            set {
-                this.projectStatusCodesField = value;
-                this.RaisePropertyChanged("projectStatusCodes");
+            set
+            {
+                projectStatusCodesField = value;
+                RaisePropertyChanged("projectStatusCodes");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class resultData : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class resultData : object, INotifyPropertyChanged
+    {
         private resultDataEntry[] resultField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("entry", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
-        public resultDataEntry[] result {
-            get {
-                return this.resultField;
+        [XmlArray(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        [XmlArrayItem("entry", Form = XmlSchemaForm.Unqualified, IsNullable = false)]
+        public resultDataEntry[] result
+        {
+            get
+            {
+                return resultField;
             }
-            set {
-                this.resultField = value;
-                this.RaisePropertyChanged("result");
+            set
+            {
+                resultField = value;
+                RaisePropertyChanged("result");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://resource.ems.ks/")]
-    public partial class resultDataEntry : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(AnonymousType = true, Namespace = "http://resource.ems.ks/")]
+    public class resultDataEntry : object, INotifyPropertyChanged
+    {
         private object keyField;
-        
+
         private object valueField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public object key {
-            get {
-                return this.keyField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public object key
+        {
+            get
+            {
+                return keyField;
             }
-            set {
-                this.keyField = value;
-                this.RaisePropertyChanged("key");
+            set
+            {
+                keyField = value;
+                RaisePropertyChanged("key");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public object value {
-            get {
-                return this.valueField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public object value
+        {
+            get
+            {
+                return valueField;
             }
-            set {
-                this.valueField = value;
-                this.RaisePropertyChanged("value");
+            set
+            {
+                valueField = value;
+                RaisePropertyChanged("value");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pushProjectStatus : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pushProjectStatus : object, INotifyPropertyChanged
+    {
         private string vendorCodeField;
-        
+
         private emsProject[] emsProjectListField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string vendorCode {
-            get {
-                return this.vendorCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string vendorCode
+        {
+            get
+            {
+                return vendorCodeField;
             }
-            set {
-                this.vendorCodeField = value;
-                this.RaisePropertyChanged("vendorCode");
+            set
+            {
+                vendorCodeField = value;
+                RaisePropertyChanged("vendorCode");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("emsProjectList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public emsProject[] emsProjectList {
-            get {
-                return this.emsProjectListField;
+        [XmlElement("emsProjectList", Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public emsProject[] emsProjectList
+        {
+            get
+            {
+                return emsProjectListField;
             }
-            set {
-                this.emsProjectListField = value;
-                this.RaisePropertyChanged("emsProjectList");
+            set
+            {
+                emsProjectListField = value;
+                RaisePropertyChanged("emsProjectList");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class emsProject : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class emsProject : object, INotifyPropertyChanged
+    {
         private string codeField;
-        
+
         private string nameField;
-        
+
         private string districtField;
-        
+
         private int prjTypeField;
-        
+
         private bool prjTypeFieldSpecified;
-        
+
         private int prjCategoryField;
-        
+
         private bool prjCategoryFieldSpecified;
-        
+
         private int prjPeriodField;
-        
+
         private bool prjPeriodFieldSpecified;
-        
+
         private int regionField;
-        
+
         private bool regionFieldSpecified;
-        
+
         private string streetField;
-        
+
         private string longitudeField;
-        
+
         private string latitudeField;
-        
+
         private string contractorsField;
-        
+
         private string superintendentField;
-        
+
         private string telephoneField;
-        
+
         private string addressField;
-        
+
         private float siteAreaField;
-        
+
         private bool siteAreaFieldSpecified;
-        
+
         private float buildingAreaField;
-        
+
         private bool buildingAreaFieldSpecified;
-        
-        private System.DateTime startDateField;
-        
+
+        private DateTime startDateField;
+
         private bool startDateFieldSpecified;
-        
-        private System.DateTime endDateField;
-        
+
+        private DateTime endDateField;
+
         private bool endDateFieldSpecified;
-        
+
         private string stageField;
-        
+
         private bool isCompletedField;
-        
+
         private bool isCompletedFieldSpecified;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string code {
-            get {
-                return this.codeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string code
+        {
+            get
+            {
+                return codeField;
             }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("code");
+            set
+            {
+                codeField = value;
+                RaisePropertyChanged("code");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string name {
-            get {
-                return this.nameField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public string name
+        {
+            get
+            {
+                return nameField;
             }
-            set {
-                this.nameField = value;
-                this.RaisePropertyChanged("name");
+            set
+            {
+                nameField = value;
+                RaisePropertyChanged("name");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public string district {
-            get {
-                return this.districtField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 2)]
+        public string district
+        {
+            get
+            {
+                return districtField;
             }
-            set {
-                this.districtField = value;
-                this.RaisePropertyChanged("district");
+            set
+            {
+                districtField = value;
+                RaisePropertyChanged("district");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public int prjType {
-            get {
-                return this.prjTypeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 3)]
+        public int prjType
+        {
+            get
+            {
+                return prjTypeField;
             }
-            set {
-                this.prjTypeField = value;
-                this.RaisePropertyChanged("prjType");
+            set
+            {
+                prjTypeField = value;
+                RaisePropertyChanged("prjType");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool prjTypeSpecified {
-            get {
-                return this.prjTypeFieldSpecified;
+        [XmlIgnore]
+        public bool prjTypeSpecified
+        {
+            get
+            {
+                return prjTypeFieldSpecified;
             }
-            set {
-                this.prjTypeFieldSpecified = value;
-                this.RaisePropertyChanged("prjTypeSpecified");
+            set
+            {
+                prjTypeFieldSpecified = value;
+                RaisePropertyChanged("prjTypeSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public int prjCategory {
-            get {
-                return this.prjCategoryField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 4)]
+        public int prjCategory
+        {
+            get
+            {
+                return prjCategoryField;
             }
-            set {
-                this.prjCategoryField = value;
-                this.RaisePropertyChanged("prjCategory");
+            set
+            {
+                prjCategoryField = value;
+                RaisePropertyChanged("prjCategory");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool prjCategorySpecified {
-            get {
-                return this.prjCategoryFieldSpecified;
+        [XmlIgnore]
+        public bool prjCategorySpecified
+        {
+            get
+            {
+                return prjCategoryFieldSpecified;
             }
-            set {
-                this.prjCategoryFieldSpecified = value;
-                this.RaisePropertyChanged("prjCategorySpecified");
+            set
+            {
+                prjCategoryFieldSpecified = value;
+                RaisePropertyChanged("prjCategorySpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public int prjPeriod {
-            get {
-                return this.prjPeriodField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 5)]
+        public int prjPeriod
+        {
+            get
+            {
+                return prjPeriodField;
             }
-            set {
-                this.prjPeriodField = value;
-                this.RaisePropertyChanged("prjPeriod");
+            set
+            {
+                prjPeriodField = value;
+                RaisePropertyChanged("prjPeriod");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool prjPeriodSpecified {
-            get {
-                return this.prjPeriodFieldSpecified;
+        [XmlIgnore]
+        public bool prjPeriodSpecified
+        {
+            get
+            {
+                return prjPeriodFieldSpecified;
             }
-            set {
-                this.prjPeriodFieldSpecified = value;
-                this.RaisePropertyChanged("prjPeriodSpecified");
+            set
+            {
+                prjPeriodFieldSpecified = value;
+                RaisePropertyChanged("prjPeriodSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
-        public int region {
-            get {
-                return this.regionField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 6)]
+        public int region
+        {
+            get
+            {
+                return regionField;
             }
-            set {
-                this.regionField = value;
-                this.RaisePropertyChanged("region");
+            set
+            {
+                regionField = value;
+                RaisePropertyChanged("region");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool regionSpecified {
-            get {
-                return this.regionFieldSpecified;
+        [XmlIgnore]
+        public bool regionSpecified
+        {
+            get
+            {
+                return regionFieldSpecified;
             }
-            set {
-                this.regionFieldSpecified = value;
-                this.RaisePropertyChanged("regionSpecified");
+            set
+            {
+                regionFieldSpecified = value;
+                RaisePropertyChanged("regionSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
-        public string street {
-            get {
-                return this.streetField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 7)]
+        public string street
+        {
+            get
+            {
+                return streetField;
             }
-            set {
-                this.streetField = value;
-                this.RaisePropertyChanged("street");
+            set
+            {
+                streetField = value;
+                RaisePropertyChanged("street");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
-        public string longitude {
-            get {
-                return this.longitudeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 8)]
+        public string longitude
+        {
+            get
+            {
+                return longitudeField;
             }
-            set {
-                this.longitudeField = value;
-                this.RaisePropertyChanged("longitude");
+            set
+            {
+                longitudeField = value;
+                RaisePropertyChanged("longitude");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
-        public string latitude {
-            get {
-                return this.latitudeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 9)]
+        public string latitude
+        {
+            get
+            {
+                return latitudeField;
             }
-            set {
-                this.latitudeField = value;
-                this.RaisePropertyChanged("latitude");
+            set
+            {
+                latitudeField = value;
+                RaisePropertyChanged("latitude");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
-        public string contractors {
-            get {
-                return this.contractorsField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 10)]
+        public string contractors
+        {
+            get
+            {
+                return contractorsField;
             }
-            set {
-                this.contractorsField = value;
-                this.RaisePropertyChanged("contractors");
+            set
+            {
+                contractorsField = value;
+                RaisePropertyChanged("contractors");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=11)]
-        public string superintendent {
-            get {
-                return this.superintendentField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 11)]
+        public string superintendent
+        {
+            get
+            {
+                return superintendentField;
             }
-            set {
-                this.superintendentField = value;
-                this.RaisePropertyChanged("superintendent");
+            set
+            {
+                superintendentField = value;
+                RaisePropertyChanged("superintendent");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
-        public string telephone {
-            get {
-                return this.telephoneField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 12)]
+        public string telephone
+        {
+            get
+            {
+                return telephoneField;
             }
-            set {
-                this.telephoneField = value;
-                this.RaisePropertyChanged("telephone");
+            set
+            {
+                telephoneField = value;
+                RaisePropertyChanged("telephone");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=13)]
-        public string address {
-            get {
-                return this.addressField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 13)]
+        public string address
+        {
+            get
+            {
+                return addressField;
             }
-            set {
-                this.addressField = value;
-                this.RaisePropertyChanged("address");
+            set
+            {
+                addressField = value;
+                RaisePropertyChanged("address");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=14)]
-        public float siteArea {
-            get {
-                return this.siteAreaField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 14)]
+        public float siteArea
+        {
+            get
+            {
+                return siteAreaField;
             }
-            set {
-                this.siteAreaField = value;
-                this.RaisePropertyChanged("siteArea");
+            set
+            {
+                siteAreaField = value;
+                RaisePropertyChanged("siteArea");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool siteAreaSpecified {
-            get {
-                return this.siteAreaFieldSpecified;
+        [XmlIgnore]
+        public bool siteAreaSpecified
+        {
+            get
+            {
+                return siteAreaFieldSpecified;
             }
-            set {
-                this.siteAreaFieldSpecified = value;
-                this.RaisePropertyChanged("siteAreaSpecified");
+            set
+            {
+                siteAreaFieldSpecified = value;
+                RaisePropertyChanged("siteAreaSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=15)]
-        public float buildingArea {
-            get {
-                return this.buildingAreaField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 15)]
+        public float buildingArea
+        {
+            get
+            {
+                return buildingAreaField;
             }
-            set {
-                this.buildingAreaField = value;
-                this.RaisePropertyChanged("buildingArea");
+            set
+            {
+                buildingAreaField = value;
+                RaisePropertyChanged("buildingArea");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool buildingAreaSpecified {
-            get {
-                return this.buildingAreaFieldSpecified;
+        [XmlIgnore]
+        public bool buildingAreaSpecified
+        {
+            get
+            {
+                return buildingAreaFieldSpecified;
             }
-            set {
-                this.buildingAreaFieldSpecified = value;
-                this.RaisePropertyChanged("buildingAreaSpecified");
+            set
+            {
+                buildingAreaFieldSpecified = value;
+                RaisePropertyChanged("buildingAreaSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=16)]
-        public System.DateTime startDate {
-            get {
-                return this.startDateField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 16)]
+        public DateTime startDate
+        {
+            get
+            {
+                return startDateField;
             }
-            set {
-                this.startDateField = value;
-                this.RaisePropertyChanged("startDate");
+            set
+            {
+                startDateField = value;
+                RaisePropertyChanged("startDate");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool startDateSpecified {
-            get {
-                return this.startDateFieldSpecified;
+        [XmlIgnore]
+        public bool startDateSpecified
+        {
+            get
+            {
+                return startDateFieldSpecified;
             }
-            set {
-                this.startDateFieldSpecified = value;
-                this.RaisePropertyChanged("startDateSpecified");
+            set
+            {
+                startDateFieldSpecified = value;
+                RaisePropertyChanged("startDateSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=17)]
-        public System.DateTime endDate {
-            get {
-                return this.endDateField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 17)]
+        public DateTime endDate
+        {
+            get
+            {
+                return endDateField;
             }
-            set {
-                this.endDateField = value;
-                this.RaisePropertyChanged("endDate");
+            set
+            {
+                endDateField = value;
+                RaisePropertyChanged("endDate");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool endDateSpecified {
-            get {
-                return this.endDateFieldSpecified;
+        [XmlIgnore]
+        public bool endDateSpecified
+        {
+            get
+            {
+                return endDateFieldSpecified;
             }
-            set {
-                this.endDateFieldSpecified = value;
-                this.RaisePropertyChanged("endDateSpecified");
+            set
+            {
+                endDateFieldSpecified = value;
+                RaisePropertyChanged("endDateSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=18)]
-        public string stage {
-            get {
-                return this.stageField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 18)]
+        public string stage
+        {
+            get
+            {
+                return stageField;
             }
-            set {
-                this.stageField = value;
-                this.RaisePropertyChanged("stage");
+            set
+            {
+                stageField = value;
+                RaisePropertyChanged("stage");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=19)]
-        public bool isCompleted {
-            get {
-                return this.isCompletedField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 19)]
+        public bool isCompleted
+        {
+            get
+            {
+                return isCompletedField;
             }
-            set {
-                this.isCompletedField = value;
-                this.RaisePropertyChanged("isCompleted");
+            set
+            {
+                isCompletedField = value;
+                RaisePropertyChanged("isCompleted");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool isCompletedSpecified {
-            get {
-                return this.isCompletedFieldSpecified;
+        [XmlIgnore]
+        public bool isCompletedSpecified
+        {
+            get
+            {
+                return isCompletedFieldSpecified;
             }
-            set {
-                this.isCompletedFieldSpecified = value;
-                this.RaisePropertyChanged("isCompletedSpecified");
+            set
+            {
+                isCompletedFieldSpecified = value;
+                RaisePropertyChanged("isCompletedSpecified");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pushProjectsResponse : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pushProjectsResponse : object, INotifyPropertyChanged
+    {
         private resultData projectCodesField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public resultData projectCodes {
-            get {
-                return this.projectCodesField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public resultData projectCodes
+        {
+            get
+            {
+                return projectCodesField;
             }
-            set {
-                this.projectCodesField = value;
-                this.RaisePropertyChanged("projectCodes");
+            set
+            {
+                projectCodesField = value;
+                RaisePropertyChanged("projectCodes");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pushProjects : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pushProjects : object, INotifyPropertyChanged
+    {
         private string vendorCodeField;
-        
+
         private emsProject[] emsProjectListField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string vendorCode {
-            get {
-                return this.vendorCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string vendorCode
+        {
+            get
+            {
+                return vendorCodeField;
             }
-            set {
-                this.vendorCodeField = value;
-                this.RaisePropertyChanged("vendorCode");
+            set
+            {
+                vendorCodeField = value;
+                RaisePropertyChanged("vendorCode");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("emsProjectList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public emsProject[] emsProjectList {
-            get {
-                return this.emsProjectListField;
+        [XmlElement("emsProjectList", Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public emsProject[] emsProjectList
+        {
+            get
+            {
+                return emsProjectListField;
             }
-            set {
-                this.emsProjectListField = value;
-                this.RaisePropertyChanged("emsProjectList");
+            set
+            {
+                emsProjectListField = value;
+                RaisePropertyChanged("emsProjectList");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class emsRegion : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class emsRegion : object, INotifyPropertyChanged
+    {
         private int codeField;
-        
+
         private bool codeFieldSpecified;
-        
+
         private string nameField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public int code {
-            get {
-                return this.codeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public int code
+        {
+            get
+            {
+                return codeField;
             }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("code");
+            set
+            {
+                codeField = value;
+                RaisePropertyChanged("code");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool codeSpecified {
-            get {
-                return this.codeFieldSpecified;
+        [XmlIgnore]
+        public bool codeSpecified
+        {
+            get
+            {
+                return codeFieldSpecified;
             }
-            set {
-                this.codeFieldSpecified = value;
-                this.RaisePropertyChanged("codeSpecified");
+            set
+            {
+                codeFieldSpecified = value;
+                RaisePropertyChanged("codeSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string name {
-            get {
-                return this.nameField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public string name
+        {
+            get
+            {
+                return nameField;
             }
-            set {
-                this.nameField = value;
-                this.RaisePropertyChanged("name");
+            set
+            {
+                nameField = value;
+                RaisePropertyChanged("name");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pullRegion : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pullRegion : object, INotifyPropertyChanged
+    {
         private string vendorCodeField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string vendorCode {
-            get {
-                return this.vendorCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string vendorCode
+        {
+            get
+            {
+                return vendorCodeField;
             }
-            set {
-                this.vendorCodeField = value;
-                this.RaisePropertyChanged("vendorCode");
+            set
+            {
+                vendorCodeField = value;
+                RaisePropertyChanged("vendorCode");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pushDeviceStatusResponse : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pushDeviceStatusResponse : object, INotifyPropertyChanged
+    {
         private resultData deviceStatusCodesField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public resultData deviceStatusCodes {
-            get {
-                return this.deviceStatusCodesField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public resultData deviceStatusCodes
+        {
+            get
+            {
+                return deviceStatusCodesField;
             }
-            set {
-                this.deviceStatusCodesField = value;
-                this.RaisePropertyChanged("deviceStatusCodes");
+            set
+            {
+                deviceStatusCodesField = value;
+                RaisePropertyChanged("deviceStatusCodes");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pushDeviceStatus : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pushDeviceStatus : object, INotifyPropertyChanged
+    {
         private string vendorCodeField;
-        
+
         private emsDevice[] emsDeviceListField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string vendorCode {
-            get {
-                return this.vendorCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string vendorCode
+        {
+            get
+            {
+                return vendorCodeField;
             }
-            set {
-                this.vendorCodeField = value;
-                this.RaisePropertyChanged("vendorCode");
+            set
+            {
+                vendorCodeField = value;
+                RaisePropertyChanged("vendorCode");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("emsDeviceList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public emsDevice[] emsDeviceList {
-            get {
-                return this.emsDeviceListField;
+        [XmlElement("emsDeviceList", Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public emsDevice[] emsDeviceList
+        {
+            get
+            {
+                return emsDeviceListField;
             }
-            set {
-                this.emsDeviceListField = value;
-                this.RaisePropertyChanged("emsDeviceList");
+            set
+            {
+                emsDeviceListField = value;
+                RaisePropertyChanged("emsDeviceList");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class emsDevice : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class emsDevice : object, INotifyPropertyChanged
+    {
         private string codeField;
-        
+
         private string nameField;
-        
+
         private string ipAddrField;
-        
+
         private string macAddrField;
-        
+
         private string portField;
-        
+
         private string versionField;
-        
+
         private string projectCodeField;
-        
+
         private string longitudeField;
-        
+
         private string latitudeField;
-        
-        private System.DateTime startDateField;
-        
+
+        private DateTime startDateField;
+
         private bool startDateFieldSpecified;
-        
-        private System.DateTime endDateField;
-        
+
+        private DateTime endDateField;
+
         private bool endDateFieldSpecified;
-        
-        private System.DateTime installDateField;
-        
+
+        private DateTime installDateField;
+
         private bool installDateFieldSpecified;
-        
+
         private bool onlineStatusField;
-        
+
         private bool onlineStatusFieldSpecified;
-        
+
         private string videoUrlField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string code {
-            get {
-                return this.codeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string code
+        {
+            get
+            {
+                return codeField;
             }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("code");
+            set
+            {
+                codeField = value;
+                RaisePropertyChanged("code");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string name {
-            get {
-                return this.nameField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public string name
+        {
+            get
+            {
+                return nameField;
             }
-            set {
-                this.nameField = value;
-                this.RaisePropertyChanged("name");
+            set
+            {
+                nameField = value;
+                RaisePropertyChanged("name");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public string ipAddr {
-            get {
-                return this.ipAddrField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 2)]
+        public string ipAddr
+        {
+            get
+            {
+                return ipAddrField;
             }
-            set {
-                this.ipAddrField = value;
-                this.RaisePropertyChanged("ipAddr");
+            set
+            {
+                ipAddrField = value;
+                RaisePropertyChanged("ipAddr");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public string macAddr {
-            get {
-                return this.macAddrField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 3)]
+        public string macAddr
+        {
+            get
+            {
+                return macAddrField;
             }
-            set {
-                this.macAddrField = value;
-                this.RaisePropertyChanged("macAddr");
+            set
+            {
+                macAddrField = value;
+                RaisePropertyChanged("macAddr");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public string port {
-            get {
-                return this.portField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 4)]
+        public string port
+        {
+            get
+            {
+                return portField;
             }
-            set {
-                this.portField = value;
-                this.RaisePropertyChanged("port");
+            set
+            {
+                portField = value;
+                RaisePropertyChanged("port");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public string version {
-            get {
-                return this.versionField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 5)]
+        public string version
+        {
+            get
+            {
+                return versionField;
             }
-            set {
-                this.versionField = value;
-                this.RaisePropertyChanged("version");
+            set
+            {
+                versionField = value;
+                RaisePropertyChanged("version");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
-        public string projectCode {
-            get {
-                return this.projectCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 6)]
+        public string projectCode
+        {
+            get
+            {
+                return projectCodeField;
             }
-            set {
-                this.projectCodeField = value;
-                this.RaisePropertyChanged("projectCode");
+            set
+            {
+                projectCodeField = value;
+                RaisePropertyChanged("projectCode");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
-        public string longitude {
-            get {
-                return this.longitudeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 7)]
+        public string longitude
+        {
+            get
+            {
+                return longitudeField;
             }
-            set {
-                this.longitudeField = value;
-                this.RaisePropertyChanged("longitude");
+            set
+            {
+                longitudeField = value;
+                RaisePropertyChanged("longitude");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
-        public string latitude {
-            get {
-                return this.latitudeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 8)]
+        public string latitude
+        {
+            get
+            {
+                return latitudeField;
             }
-            set {
-                this.latitudeField = value;
-                this.RaisePropertyChanged("latitude");
+            set
+            {
+                latitudeField = value;
+                RaisePropertyChanged("latitude");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
-        public System.DateTime startDate {
-            get {
-                return this.startDateField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 9)]
+        public DateTime startDate
+        {
+            get
+            {
+                return startDateField;
             }
-            set {
-                this.startDateField = value;
-                this.RaisePropertyChanged("startDate");
+            set
+            {
+                startDateField = value;
+                RaisePropertyChanged("startDate");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool startDateSpecified {
-            get {
-                return this.startDateFieldSpecified;
+        [XmlIgnore]
+        public bool startDateSpecified
+        {
+            get
+            {
+                return startDateFieldSpecified;
             }
-            set {
-                this.startDateFieldSpecified = value;
-                this.RaisePropertyChanged("startDateSpecified");
+            set
+            {
+                startDateFieldSpecified = value;
+                RaisePropertyChanged("startDateSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
-        public System.DateTime endDate {
-            get {
-                return this.endDateField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 10)]
+        public DateTime endDate
+        {
+            get
+            {
+                return endDateField;
             }
-            set {
-                this.endDateField = value;
-                this.RaisePropertyChanged("endDate");
+            set
+            {
+                endDateField = value;
+                RaisePropertyChanged("endDate");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool endDateSpecified {
-            get {
-                return this.endDateFieldSpecified;
+        [XmlIgnore]
+        public bool endDateSpecified
+        {
+            get
+            {
+                return endDateFieldSpecified;
             }
-            set {
-                this.endDateFieldSpecified = value;
-                this.RaisePropertyChanged("endDateSpecified");
+            set
+            {
+                endDateFieldSpecified = value;
+                RaisePropertyChanged("endDateSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=11)]
-        public System.DateTime installDate {
-            get {
-                return this.installDateField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 11)]
+        public DateTime installDate
+        {
+            get
+            {
+                return installDateField;
             }
-            set {
-                this.installDateField = value;
-                this.RaisePropertyChanged("installDate");
+            set
+            {
+                installDateField = value;
+                RaisePropertyChanged("installDate");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool installDateSpecified {
-            get {
-                return this.installDateFieldSpecified;
+        [XmlIgnore]
+        public bool installDateSpecified
+        {
+            get
+            {
+                return installDateFieldSpecified;
             }
-            set {
-                this.installDateFieldSpecified = value;
-                this.RaisePropertyChanged("installDateSpecified");
+            set
+            {
+                installDateFieldSpecified = value;
+                RaisePropertyChanged("installDateSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
-        public bool onlineStatus {
-            get {
-                return this.onlineStatusField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 12)]
+        public bool onlineStatus
+        {
+            get
+            {
+                return onlineStatusField;
             }
-            set {
-                this.onlineStatusField = value;
-                this.RaisePropertyChanged("onlineStatus");
+            set
+            {
+                onlineStatusField = value;
+                RaisePropertyChanged("onlineStatus");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool onlineStatusSpecified {
-            get {
-                return this.onlineStatusFieldSpecified;
+        [XmlIgnore]
+        public bool onlineStatusSpecified
+        {
+            get
+            {
+                return onlineStatusFieldSpecified;
             }
-            set {
-                this.onlineStatusFieldSpecified = value;
-                this.RaisePropertyChanged("onlineStatusSpecified");
+            set
+            {
+                onlineStatusFieldSpecified = value;
+                RaisePropertyChanged("onlineStatusSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=13)]
-        public string videoUrl {
-            get {
-                return this.videoUrlField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 13)]
+        public string videoUrl
+        {
+            get
+            {
+                return videoUrlField;
             }
-            set {
-                this.videoUrlField = value;
-                this.RaisePropertyChanged("videoUrl");
+            set
+            {
+                videoUrlField = value;
+                RaisePropertyChanged("videoUrl");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pushRealTimeDataResponse : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pushRealTimeDataResponse : object, INotifyPropertyChanged
+    {
         private resultData pushRealTimeDataFlagField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public resultData pushRealTimeDataFlag {
-            get {
-                return this.pushRealTimeDataFlagField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public resultData pushRealTimeDataFlag
+        {
+            get
+            {
+                return pushRealTimeDataFlagField;
             }
-            set {
-                this.pushRealTimeDataFlagField = value;
-                this.RaisePropertyChanged("pushRealTimeDataFlag");
+            set
+            {
+                pushRealTimeDataFlagField = value;
+                RaisePropertyChanged("pushRealTimeDataFlag");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pushRealTimeData : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pushRealTimeData : object, INotifyPropertyChanged
+    {
         private string vendorCodeField;
-        
+
         private emsData[] emsDataListField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string vendorCode {
-            get {
-                return this.vendorCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string vendorCode
+        {
+            get
+            {
+                return vendorCodeField;
             }
-            set {
-                this.vendorCodeField = value;
-                this.RaisePropertyChanged("vendorCode");
+            set
+            {
+                vendorCodeField = value;
+                RaisePropertyChanged("vendorCode");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("emsDataList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public emsData[] emsDataList {
-            get {
-                return this.emsDataListField;
+        [XmlElement("emsDataList", Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public emsData[] emsDataList
+        {
+            get
+            {
+                return emsDataListField;
             }
-            set {
-                this.emsDataListField = value;
-                this.RaisePropertyChanged("emsDataList");
+            set
+            {
+                emsDataListField = value;
+                RaisePropertyChanged("emsDataList");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class emsData : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class emsData : object, INotifyPropertyChanged
+    {
         private string devCodeField;
-        
+
         private string prjCodeField;
-        
+
         private int prjTypeField;
-        
+
         private float dustField;
-        
+
         private float maxDustField;
-        
+
         private float minDustField;
-        
+
         private float temperatureField;
-        
+
         private float maxTemperatureField;
-        
+
         private float minTemperatureField;
-        
+
         private float humidityField;
-        
+
         private float maxHumidityField;
-        
+
         private float minHumidityField;
-        
+
         private int noiseField;
-        
+
         private int maxNoiseField;
-        
+
         private int minNoiseField;
-        
+
         private float pressureField;
-        
+
         private float maxPressureField;
-        
+
         private float minPressureField;
-        
+
         private float rainfallField;
-        
+
         private float maxRainfallField;
-        
+
         private float minRainfallField;
-        
+
         private float windSpeedField;
-        
+
         private int windDirectionField;
-        
+
         private long dateTimeField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string devCode {
-            get {
-                return this.devCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string devCode
+        {
+            get
+            {
+                return devCodeField;
             }
-            set {
-                this.devCodeField = value;
-                this.RaisePropertyChanged("devCode");
+            set
+            {
+                devCodeField = value;
+                RaisePropertyChanged("devCode");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string prjCode {
-            get {
-                return this.prjCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public string prjCode
+        {
+            get
+            {
+                return prjCodeField;
             }
-            set {
-                this.prjCodeField = value;
-                this.RaisePropertyChanged("prjCode");
+            set
+            {
+                prjCodeField = value;
+                RaisePropertyChanged("prjCode");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public int prjType {
-            get {
-                return this.prjTypeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 2)]
+        public int prjType
+        {
+            get
+            {
+                return prjTypeField;
             }
-            set {
-                this.prjTypeField = value;
-                this.RaisePropertyChanged("prjType");
+            set
+            {
+                prjTypeField = value;
+                RaisePropertyChanged("prjType");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public float dust {
-            get {
-                return this.dustField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 3)]
+        public float dust
+        {
+            get
+            {
+                return dustField;
             }
-            set {
-                this.dustField = value;
-                this.RaisePropertyChanged("dust");
+            set
+            {
+                dustField = value;
+                RaisePropertyChanged("dust");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public float maxDust {
-            get {
-                return this.maxDustField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 4)]
+        public float maxDust
+        {
+            get
+            {
+                return maxDustField;
             }
-            set {
-                this.maxDustField = value;
-                this.RaisePropertyChanged("maxDust");
+            set
+            {
+                maxDustField = value;
+                RaisePropertyChanged("maxDust");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public float minDust {
-            get {
-                return this.minDustField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 5)]
+        public float minDust
+        {
+            get
+            {
+                return minDustField;
             }
-            set {
-                this.minDustField = value;
-                this.RaisePropertyChanged("minDust");
+            set
+            {
+                minDustField = value;
+                RaisePropertyChanged("minDust");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
-        public float temperature {
-            get {
-                return this.temperatureField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 6)]
+        public float temperature
+        {
+            get
+            {
+                return temperatureField;
             }
-            set {
-                this.temperatureField = value;
-                this.RaisePropertyChanged("temperature");
+            set
+            {
+                temperatureField = value;
+                RaisePropertyChanged("temperature");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
-        public float maxTemperature {
-            get {
-                return this.maxTemperatureField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 7)]
+        public float maxTemperature
+        {
+            get
+            {
+                return maxTemperatureField;
             }
-            set {
-                this.maxTemperatureField = value;
-                this.RaisePropertyChanged("maxTemperature");
+            set
+            {
+                maxTemperatureField = value;
+                RaisePropertyChanged("maxTemperature");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
-        public float minTemperature {
-            get {
-                return this.minTemperatureField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 8)]
+        public float minTemperature
+        {
+            get
+            {
+                return minTemperatureField;
             }
-            set {
-                this.minTemperatureField = value;
-                this.RaisePropertyChanged("minTemperature");
+            set
+            {
+                minTemperatureField = value;
+                RaisePropertyChanged("minTemperature");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
-        public float humidity {
-            get {
-                return this.humidityField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 9)]
+        public float humidity
+        {
+            get
+            {
+                return humidityField;
             }
-            set {
-                this.humidityField = value;
-                this.RaisePropertyChanged("humidity");
+            set
+            {
+                humidityField = value;
+                RaisePropertyChanged("humidity");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
-        public float maxHumidity {
-            get {
-                return this.maxHumidityField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 10)]
+        public float maxHumidity
+        {
+            get
+            {
+                return maxHumidityField;
             }
-            set {
-                this.maxHumidityField = value;
-                this.RaisePropertyChanged("maxHumidity");
+            set
+            {
+                maxHumidityField = value;
+                RaisePropertyChanged("maxHumidity");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=11)]
-        public float minHumidity {
-            get {
-                return this.minHumidityField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 11)]
+        public float minHumidity
+        {
+            get
+            {
+                return minHumidityField;
             }
-            set {
-                this.minHumidityField = value;
-                this.RaisePropertyChanged("minHumidity");
+            set
+            {
+                minHumidityField = value;
+                RaisePropertyChanged("minHumidity");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
-        public int noise {
-            get {
-                return this.noiseField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 12)]
+        public int noise
+        {
+            get
+            {
+                return noiseField;
             }
-            set {
-                this.noiseField = value;
-                this.RaisePropertyChanged("noise");
+            set
+            {
+                noiseField = value;
+                RaisePropertyChanged("noise");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=13)]
-        public int maxNoise {
-            get {
-                return this.maxNoiseField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 13)]
+        public int maxNoise
+        {
+            get
+            {
+                return maxNoiseField;
             }
-            set {
-                this.maxNoiseField = value;
-                this.RaisePropertyChanged("maxNoise");
+            set
+            {
+                maxNoiseField = value;
+                RaisePropertyChanged("maxNoise");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=14)]
-        public int minNoise {
-            get {
-                return this.minNoiseField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 14)]
+        public int minNoise
+        {
+            get
+            {
+                return minNoiseField;
             }
-            set {
-                this.minNoiseField = value;
-                this.RaisePropertyChanged("minNoise");
+            set
+            {
+                minNoiseField = value;
+                RaisePropertyChanged("minNoise");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=15)]
-        public float pressure {
-            get {
-                return this.pressureField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 15)]
+        public float pressure
+        {
+            get
+            {
+                return pressureField;
             }
-            set {
-                this.pressureField = value;
-                this.RaisePropertyChanged("pressure");
+            set
+            {
+                pressureField = value;
+                RaisePropertyChanged("pressure");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=16)]
-        public float maxPressure {
-            get {
-                return this.maxPressureField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 16)]
+        public float maxPressure
+        {
+            get
+            {
+                return maxPressureField;
             }
-            set {
-                this.maxPressureField = value;
-                this.RaisePropertyChanged("maxPressure");
+            set
+            {
+                maxPressureField = value;
+                RaisePropertyChanged("maxPressure");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=17)]
-        public float minPressure {
-            get {
-                return this.minPressureField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 17)]
+        public float minPressure
+        {
+            get
+            {
+                return minPressureField;
             }
-            set {
-                this.minPressureField = value;
-                this.RaisePropertyChanged("minPressure");
+            set
+            {
+                minPressureField = value;
+                RaisePropertyChanged("minPressure");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=18)]
-        public float rainfall {
-            get {
-                return this.rainfallField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 18)]
+        public float rainfall
+        {
+            get
+            {
+                return rainfallField;
             }
-            set {
-                this.rainfallField = value;
-                this.RaisePropertyChanged("rainfall");
+            set
+            {
+                rainfallField = value;
+                RaisePropertyChanged("rainfall");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=19)]
-        public float maxRainfall {
-            get {
-                return this.maxRainfallField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 19)]
+        public float maxRainfall
+        {
+            get
+            {
+                return maxRainfallField;
             }
-            set {
-                this.maxRainfallField = value;
-                this.RaisePropertyChanged("maxRainfall");
+            set
+            {
+                maxRainfallField = value;
+                RaisePropertyChanged("maxRainfall");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=20)]
-        public float minRainfall {
-            get {
-                return this.minRainfallField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 20)]
+        public float minRainfall
+        {
+            get
+            {
+                return minRainfallField;
             }
-            set {
-                this.minRainfallField = value;
-                this.RaisePropertyChanged("minRainfall");
+            set
+            {
+                minRainfallField = value;
+                RaisePropertyChanged("minRainfall");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=21)]
-        public float windSpeed {
-            get {
-                return this.windSpeedField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 21)]
+        public float windSpeed
+        {
+            get
+            {
+                return windSpeedField;
             }
-            set {
-                this.windSpeedField = value;
-                this.RaisePropertyChanged("windSpeed");
+            set
+            {
+                windSpeedField = value;
+                RaisePropertyChanged("windSpeed");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=22)]
-        public int windDirection {
-            get {
-                return this.windDirectionField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 22)]
+        public int windDirection
+        {
+            get
+            {
+                return windDirectionField;
             }
-            set {
-                this.windDirectionField = value;
-                this.RaisePropertyChanged("windDirection");
+            set
+            {
+                windDirectionField = value;
+                RaisePropertyChanged("windDirection");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=23)]
-        public long dateTime {
-            get {
-                return this.dateTimeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 23)]
+        public long dateTime
+        {
+            get
+            {
+                return dateTimeField;
             }
-            set {
-                this.dateTimeField = value;
-                this.RaisePropertyChanged("dateTime");
+            set
+            {
+                dateTimeField = value;
+                RaisePropertyChanged("dateTime");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pushDailyDataResponse : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pushDailyDataResponse : object, INotifyPropertyChanged
+    {
         private resultData pushDailyDataFlagField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public resultData pushDailyDataFlag {
-            get {
-                return this.pushDailyDataFlagField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public resultData pushDailyDataFlag
+        {
+            get
+            {
+                return pushDailyDataFlagField;
             }
-            set {
-                this.pushDailyDataFlagField = value;
-                this.RaisePropertyChanged("pushDailyDataFlag");
+            set
+            {
+                pushDailyDataFlagField = value;
+                RaisePropertyChanged("pushDailyDataFlag");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pushDailyData : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pushDailyData : object, INotifyPropertyChanged
+    {
         private string vendorCodeField;
-        
+
         private emsData[] emsDataListField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string vendorCode {
-            get {
-                return this.vendorCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string vendorCode
+        {
+            get
+            {
+                return vendorCodeField;
             }
-            set {
-                this.vendorCodeField = value;
-                this.RaisePropertyChanged("vendorCode");
+            set
+            {
+                vendorCodeField = value;
+                RaisePropertyChanged("vendorCode");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("emsDataList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public emsData[] emsDataList {
-            get {
-                return this.emsDataListField;
+        [XmlElement("emsDataList", Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public emsData[] emsDataList
+        {
+            get
+            {
+                return emsDataListField;
             }
-            set {
-                this.emsDataListField = value;
-                this.RaisePropertyChanged("emsDataList");
+            set
+            {
+                emsDataListField = value;
+                RaisePropertyChanged("emsDataList");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pushHourlyDataResponse : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pushHourlyDataResponse : object, INotifyPropertyChanged
+    {
         private resultData pushHourlyDataFlagField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public resultData pushHourlyDataFlag {
-            get {
-                return this.pushHourlyDataFlagField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public resultData pushHourlyDataFlag
+        {
+            get
+            {
+                return pushHourlyDataFlagField;
             }
-            set {
-                this.pushHourlyDataFlagField = value;
-                this.RaisePropertyChanged("pushHourlyDataFlag");
+            set
+            {
+                pushHourlyDataFlagField = value;
+                RaisePropertyChanged("pushHourlyDataFlag");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pushHourlyData : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pushHourlyData : object, INotifyPropertyChanged
+    {
         private string vendorCodeField;
-        
+
         private emsData[] emsDataListField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string vendorCode {
-            get {
-                return this.vendorCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string vendorCode
+        {
+            get
+            {
+                return vendorCodeField;
             }
-            set {
-                this.vendorCodeField = value;
-                this.RaisePropertyChanged("vendorCode");
+            set
+            {
+                vendorCodeField = value;
+                RaisePropertyChanged("vendorCode");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("emsDataList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public emsData[] emsDataList {
-            get {
-                return this.emsDataListField;
+        [XmlElement("emsDataList", Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public emsData[] emsDataList
+        {
+            get
+            {
+                return emsDataListField;
             }
-            set {
-                this.emsDataListField = value;
-                this.RaisePropertyChanged("emsDataList");
+            set
+            {
+                emsDataListField = value;
+                RaisePropertyChanged("emsDataList");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pushDevicesResponse : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pushDevicesResponse : object, INotifyPropertyChanged
+    {
         private resultData deviceCodesField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public resultData deviceCodes {
-            get {
-                return this.deviceCodesField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public resultData deviceCodes
+        {
+            get
+            {
+                return deviceCodesField;
             }
-            set {
-                this.deviceCodesField = value;
-                this.RaisePropertyChanged("deviceCodes");
+            set
+            {
+                deviceCodesField = value;
+                RaisePropertyChanged("deviceCodes");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pushDevices : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pushDevices : object, INotifyPropertyChanged
+    {
         private string vendorCodeField;
-        
+
         private emsDevice[] emsDeviceListField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string vendorCode {
-            get {
-                return this.vendorCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string vendorCode
+        {
+            get
+            {
+                return vendorCodeField;
             }
-            set {
-                this.vendorCodeField = value;
-                this.RaisePropertyChanged("vendorCode");
+            set
+            {
+                vendorCodeField = value;
+                RaisePropertyChanged("vendorCode");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("emsDeviceList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public emsDevice[] emsDeviceList {
-            get {
-                return this.emsDeviceListField;
+        [XmlElement("emsDeviceList", Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public emsDevice[] emsDeviceList
+        {
+            get
+            {
+                return emsDeviceListField;
             }
-            set {
-                this.emsDeviceListField = value;
-                this.RaisePropertyChanged("emsDeviceList");
+            set
+            {
+                emsDeviceListField = value;
+                RaisePropertyChanged("emsDeviceList");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pullProjectPeriod : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pullProjectPeriod : object, INotifyPropertyChanged
+    {
         private string vendorCodeField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string vendorCode {
-            get {
-                return this.vendorCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string vendorCode
+        {
+            get
+            {
+                return vendorCodeField;
             }
-            set {
-                this.vendorCodeField = value;
-                this.RaisePropertyChanged("vendorCode");
+            set
+            {
+                vendorCodeField = value;
+                RaisePropertyChanged("vendorCode");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pullProjectType : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pullProjectType : object, INotifyPropertyChanged
+    {
         private string vendorCodeField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string vendorCode {
-            get {
-                return this.vendorCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string vendorCode
+        {
+            get
+            {
+                return vendorCodeField;
             }
-            set {
-                this.vendorCodeField = value;
-                this.RaisePropertyChanged("vendorCode");
+            set
+            {
+                vendorCodeField = value;
+                RaisePropertyChanged("vendorCode");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class pullProjectCategory : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class pullProjectCategory : object, INotifyPropertyChanged
+    {
         private string vendorCodeField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string vendorCode {
-            get {
-                return this.vendorCodeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public string vendorCode
+        {
+            get
+            {
+                return vendorCodeField;
             }
-            set {
-                this.vendorCodeField = value;
-                this.RaisePropertyChanged("vendorCode");
+            set
+            {
+                vendorCodeField = value;
+                RaisePropertyChanged("vendorCode");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class emsPrjPeriod : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class emsPrjPeriod : object, INotifyPropertyChanged
+    {
         private int codeField;
-        
+
         private bool codeFieldSpecified;
-        
+
         private string nameField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public int code {
-            get {
-                return this.codeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public int code
+        {
+            get
+            {
+                return codeField;
             }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("code");
+            set
+            {
+                codeField = value;
+                RaisePropertyChanged("code");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool codeSpecified {
-            get {
-                return this.codeFieldSpecified;
+        [XmlIgnore]
+        public bool codeSpecified
+        {
+            get
+            {
+                return codeFieldSpecified;
             }
-            set {
-                this.codeFieldSpecified = value;
-                this.RaisePropertyChanged("codeSpecified");
+            set
+            {
+                codeFieldSpecified = value;
+                RaisePropertyChanged("codeSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string name {
-            get {
-                return this.nameField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public string name
+        {
+            get
+            {
+                return nameField;
             }
-            set {
-                this.nameField = value;
-                this.RaisePropertyChanged("name");
+            set
+            {
+                nameField = value;
+                RaisePropertyChanged("name");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://resource.ems.ks/")]
-    public partial class emsPrjType : object, System.ComponentModel.INotifyPropertyChanged {
-        
+    [GeneratedCode("System.Xml", "4.6.1586.0")]
+    [Serializable]
+    [DebuggerStepThrough]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://resource.ems.ks/")]
+    public class emsPrjType : object, INotifyPropertyChanged
+    {
         private int codeField;
-        
+
         private bool codeFieldSpecified;
-        
+
         private string nameField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public int code {
-            get {
-                return this.codeField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 0)]
+        public int code
+        {
+            get
+            {
+                return codeField;
             }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("code");
+            set
+            {
+                codeField = value;
+                RaisePropertyChanged("code");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool codeSpecified {
-            get {
-                return this.codeFieldSpecified;
+        [XmlIgnore]
+        public bool codeSpecified
+        {
+            get
+            {
+                return codeFieldSpecified;
             }
-            set {
-                this.codeFieldSpecified = value;
-                this.RaisePropertyChanged("codeSpecified");
+            set
+            {
+                codeFieldSpecified = value;
+                RaisePropertyChanged("codeSpecified");
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string name {
-            get {
-                return this.nameField;
+        [XmlElement(Form = XmlSchemaForm.Unqualified, Order = 1)]
+        public string name
+        {
+            get
+            {
+                return nameField;
             }
-            set {
-                this.nameField = value;
-                this.RaisePropertyChanged("name");
+            set
+            {
+                nameField = value;
+                RaisePropertyChanged("name");
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pullProjectCategory", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pullProjectCategory1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pullProjectCategory", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pullProjectCategory1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string vendorCode;
-        
-        public pullProjectCategory1() {
+
+        public pullProjectCategory1()
+        {
         }
-        
-        public pullProjectCategory1(string vendorCode) {
+
+        public pullProjectCategory1(string vendorCode)
+        {
             this.vendorCode = vendorCode;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pullProjectCategoryResponse", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pullProjectCategoryResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("pullProjectCategoryFlag", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.emsPrjCategory[] pullProjectCategoryFlag;
-        
-        public pullProjectCategoryResponse() {
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pullProjectCategoryResponse", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pullProjectCategoryResponse
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement("pullProjectCategoryFlag", Form = XmlSchemaForm.Unqualified)]
+        public emsPrjCategory[] pullProjectCategoryFlag;
+
+        public pullProjectCategoryResponse()
+        {
         }
-        
-        public pullProjectCategoryResponse(Unicom.Platform.Model.UnicomPlatform.emsPrjCategory[] pullProjectCategoryFlag) {
+
+        public pullProjectCategoryResponse(emsPrjCategory[] pullProjectCategoryFlag)
+        {
             this.pullProjectCategoryFlag = pullProjectCategoryFlag;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pullProjectType", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pullProjectType1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pullProjectType", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pullProjectType1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string vendorCode;
-        
-        public pullProjectType1() {
+
+        public pullProjectType1()
+        {
         }
-        
-        public pullProjectType1(string vendorCode) {
+
+        public pullProjectType1(string vendorCode)
+        {
             this.vendorCode = vendorCode;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pullProjectTypeResponse", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pullProjectTypeResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("pullProjectTypeFlag", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.emsPrjType[] pullProjectTypeFlag;
-        
-        public pullProjectTypeResponse() {
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pullProjectTypeResponse", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pullProjectTypeResponse
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement("pullProjectTypeFlag", Form = XmlSchemaForm.Unqualified)]
+        public emsPrjType[] pullProjectTypeFlag;
+
+        public pullProjectTypeResponse()
+        {
         }
-        
-        public pullProjectTypeResponse(Unicom.Platform.Model.UnicomPlatform.emsPrjType[] pullProjectTypeFlag) {
+
+        public pullProjectTypeResponse(emsPrjType[] pullProjectTypeFlag)
+        {
             this.pullProjectTypeFlag = pullProjectTypeFlag;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pullProjectPeriod", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pullProjectPeriod1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pullProjectPeriod", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pullProjectPeriod1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string vendorCode;
-        
-        public pullProjectPeriod1() {
+
+        public pullProjectPeriod1()
+        {
         }
-        
-        public pullProjectPeriod1(string vendorCode) {
+
+        public pullProjectPeriod1(string vendorCode)
+        {
             this.vendorCode = vendorCode;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pullProjectPeriodResponse", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pullProjectPeriodResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("pullProjectPeriodFlag", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.emsPrjPeriod[] pullProjectPeriodFlag;
-        
-        public pullProjectPeriodResponse() {
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pullProjectPeriodResponse", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pullProjectPeriodResponse
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement("pullProjectPeriodFlag", Form = XmlSchemaForm.Unqualified)]
+        public emsPrjPeriod[] pullProjectPeriodFlag;
+
+        public pullProjectPeriodResponse()
+        {
         }
-        
-        public pullProjectPeriodResponse(Unicom.Platform.Model.UnicomPlatform.emsPrjPeriod[] pullProjectPeriodFlag) {
+
+        public pullProjectPeriodResponse(emsPrjPeriod[] pullProjectPeriodFlag)
+        {
             this.pullProjectPeriodFlag = pullProjectPeriodFlag;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pushDevices", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pushDevices1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pushDevices", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pushDevices1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string vendorCode;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute("emsDeviceList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList;
-        
-        public pushDevices1() {
+
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 1)]
+        [XmlElement("emsDeviceList", Form = XmlSchemaForm.Unqualified)]
+        public emsDevice[] emsDeviceList;
+
+        public pushDevices1()
+        {
         }
-        
-        public pushDevices1(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList) {
+
+        public pushDevices1(string vendorCode, emsDevice[] emsDeviceList)
+        {
             this.vendorCode = vendorCode;
             this.emsDeviceList = emsDeviceList;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pushDevicesResponse", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pushDevicesResponse1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.resultData deviceCodes;
-        
-        public pushDevicesResponse1() {
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pushDevicesResponse", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pushDevicesResponse1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
+        public resultData deviceCodes;
+
+        public pushDevicesResponse1()
+        {
         }
-        
-        public pushDevicesResponse1(Unicom.Platform.Model.UnicomPlatform.resultData deviceCodes) {
+
+        public pushDevicesResponse1(resultData deviceCodes)
+        {
             this.deviceCodes = deviceCodes;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pushHourlyData", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pushHourlyData1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pushHourlyData", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pushHourlyData1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string vendorCode;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute("emsDataList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList;
-        
-        public pushHourlyData1() {
+
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 1)]
+        [XmlElement("emsDataList", Form = XmlSchemaForm.Unqualified)]
+        public emsData[] emsDataList;
+
+        public pushHourlyData1()
+        {
         }
-        
-        public pushHourlyData1(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
+
+        public pushHourlyData1(string vendorCode, emsData[] emsDataList)
+        {
             this.vendorCode = vendorCode;
             this.emsDataList = emsDataList;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pushHourlyDataResponse", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pushHourlyDataResponse1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.resultData pushHourlyDataFlag;
-        
-        public pushHourlyDataResponse1() {
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pushHourlyDataResponse", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pushHourlyDataResponse1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
+        public resultData pushHourlyDataFlag;
+
+        public pushHourlyDataResponse1()
+        {
         }
-        
-        public pushHourlyDataResponse1(Unicom.Platform.Model.UnicomPlatform.resultData pushHourlyDataFlag) {
+
+        public pushHourlyDataResponse1(resultData pushHourlyDataFlag)
+        {
             this.pushHourlyDataFlag = pushHourlyDataFlag;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pushDailyData", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pushDailyData1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pushDailyData", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pushDailyData1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string vendorCode;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute("emsDataList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList;
-        
-        public pushDailyData1() {
+
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 1)]
+        [XmlElement("emsDataList", Form = XmlSchemaForm.Unqualified)]
+        public emsData[] emsDataList;
+
+        public pushDailyData1()
+        {
         }
-        
-        public pushDailyData1(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
+
+        public pushDailyData1(string vendorCode, emsData[] emsDataList)
+        {
             this.vendorCode = vendorCode;
             this.emsDataList = emsDataList;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pushDailyDataResponse", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pushDailyDataResponse1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.resultData pushDailyDataFlag;
-        
-        public pushDailyDataResponse1() {
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pushDailyDataResponse", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pushDailyDataResponse1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
+        public resultData pushDailyDataFlag;
+
+        public pushDailyDataResponse1()
+        {
         }
-        
-        public pushDailyDataResponse1(Unicom.Platform.Model.UnicomPlatform.resultData pushDailyDataFlag) {
+
+        public pushDailyDataResponse1(resultData pushDailyDataFlag)
+        {
             this.pushDailyDataFlag = pushDailyDataFlag;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pushRealTimeData", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pushRealTimeData1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pushRealTimeData", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pushRealTimeData1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string vendorCode;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute("emsDataList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList;
-        
-        public pushRealTimeData1() {
+
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 1)]
+        [XmlElement("emsDataList", Form = XmlSchemaForm.Unqualified)]
+        public emsData[] emsDataList;
+
+        public pushRealTimeData1()
+        {
         }
-        
-        public pushRealTimeData1(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
+
+        public pushRealTimeData1(string vendorCode, emsData[] emsDataList)
+        {
             this.vendorCode = vendorCode;
             this.emsDataList = emsDataList;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pushRealTimeDataResponse", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pushRealTimeDataResponse1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.resultData pushRealTimeDataFlag;
-        
-        public pushRealTimeDataResponse1() {
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pushRealTimeDataResponse", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pushRealTimeDataResponse1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
+        public resultData pushRealTimeDataFlag;
+
+        public pushRealTimeDataResponse1()
+        {
         }
-        
-        public pushRealTimeDataResponse1(Unicom.Platform.Model.UnicomPlatform.resultData pushRealTimeDataFlag) {
+
+        public pushRealTimeDataResponse1(resultData pushRealTimeDataFlag)
+        {
             this.pushRealTimeDataFlag = pushRealTimeDataFlag;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pushDeviceStatus", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pushDeviceStatus1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pushDeviceStatus", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pushDeviceStatus1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string vendorCode;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute("emsDeviceList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList;
-        
-        public pushDeviceStatus1() {
+
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 1)]
+        [XmlElement("emsDeviceList", Form = XmlSchemaForm.Unqualified)]
+        public emsDevice[] emsDeviceList;
+
+        public pushDeviceStatus1()
+        {
         }
-        
-        public pushDeviceStatus1(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList) {
+
+        public pushDeviceStatus1(string vendorCode, emsDevice[] emsDeviceList)
+        {
             this.vendorCode = vendorCode;
             this.emsDeviceList = emsDeviceList;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pushDeviceStatusResponse", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pushDeviceStatusResponse1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.resultData deviceStatusCodes;
-        
-        public pushDeviceStatusResponse1() {
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pushDeviceStatusResponse", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pushDeviceStatusResponse1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
+        public resultData deviceStatusCodes;
+
+        public pushDeviceStatusResponse1()
+        {
         }
-        
-        public pushDeviceStatusResponse1(Unicom.Platform.Model.UnicomPlatform.resultData deviceStatusCodes) {
+
+        public pushDeviceStatusResponse1(resultData deviceStatusCodes)
+        {
             this.deviceStatusCodes = deviceStatusCodes;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pullRegion", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pullRegion1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pullRegion", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pullRegion1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string vendorCode;
-        
-        public pullRegion1() {
+
+        public pullRegion1()
+        {
         }
-        
-        public pullRegion1(string vendorCode) {
+
+        public pullRegion1(string vendorCode)
+        {
             this.vendorCode = vendorCode;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pullRegionResponse", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pullRegionResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("pullRegionFlag", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.emsRegion[] pullRegionFlag;
-        
-        public pullRegionResponse() {
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pullRegionResponse", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pullRegionResponse
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement("pullRegionFlag", Form = XmlSchemaForm.Unqualified)]
+        public emsRegion[] pullRegionFlag;
+
+        public pullRegionResponse()
+        {
         }
-        
-        public pullRegionResponse(Unicom.Platform.Model.UnicomPlatform.emsRegion[] pullRegionFlag) {
+
+        public pullRegionResponse(emsRegion[] pullRegionFlag)
+        {
             this.pullRegionFlag = pullRegionFlag;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pushProjects", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pushProjects1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pushProjects", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pushProjects1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string vendorCode;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute("emsProjectList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList;
-        
-        public pushProjects1() {
+
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 1)]
+        [XmlElement("emsProjectList", Form = XmlSchemaForm.Unqualified)]
+        public emsProject[] emsProjectList;
+
+        public pushProjects1()
+        {
         }
-        
-        public pushProjects1(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList) {
+
+        public pushProjects1(string vendorCode, emsProject[] emsProjectList)
+        {
             this.vendorCode = vendorCode;
             this.emsProjectList = emsProjectList;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pushProjectsResponse", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pushProjectsResponse1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.resultData projectCodes;
-        
-        public pushProjectsResponse1() {
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pushProjectsResponse", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pushProjectsResponse1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
+        public resultData projectCodes;
+
+        public pushProjectsResponse1()
+        {
         }
-        
-        public pushProjectsResponse1(Unicom.Platform.Model.UnicomPlatform.resultData projectCodes) {
+
+        public pushProjectsResponse1(resultData projectCodes)
+        {
             this.projectCodes = projectCodes;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pushProjectStatus", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pushProjectStatus1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pushProjectStatus", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pushProjectStatus1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string vendorCode;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute("emsProjectList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList;
-        
-        public pushProjectStatus1() {
+
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 1)]
+        [XmlElement("emsProjectList", Form = XmlSchemaForm.Unqualified)]
+        public emsProject[] emsProjectList;
+
+        public pushProjectStatus1()
+        {
         }
-        
-        public pushProjectStatus1(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList) {
+
+        public pushProjectStatus1(string vendorCode, emsProject[] emsProjectList)
+        {
             this.vendorCode = vendorCode;
             this.emsProjectList = emsProjectList;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pushProjectStatusResponse", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pushProjectStatusResponse1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.resultData projectStatusCodes;
-        
-        public pushProjectStatusResponse1() {
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pushProjectStatusResponse", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pushProjectStatusResponse1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
+        public resultData projectStatusCodes;
+
+        public pushProjectStatusResponse1()
+        {
         }
-        
-        public pushProjectStatusResponse1(Unicom.Platform.Model.UnicomPlatform.resultData projectStatusCodes) {
+
+        public pushProjectStatusResponse1(resultData projectStatusCodes)
+        {
             this.projectStatusCodes = projectStatusCodes;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="registerVendor", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class registerVendor1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "registerVendor", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class registerVendor1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string vendorName;
-        
-        public registerVendor1() {
+
+        public registerVendor1()
+        {
         }
-        
-        public registerVendor1(string vendorName) {
+
+        public registerVendor1(string vendorName)
+        {
             this.vendorName = vendorName;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="registerVendorResponse", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class registerVendorResponse1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "registerVendorResponse", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class registerVendorResponse1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string vendorCode;
-        
-        public registerVendorResponse1() {
+
+        public registerVendorResponse1()
+        {
         }
-        
-        public registerVendorResponse1(string vendorCode) {
+
+        public registerVendorResponse1(string vendorCode)
+        {
             this.vendorCode = vendorCode;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pullDistrict", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pullDistrict1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pullDistrict", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pullDistrict1
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string vendorCode;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 1)]
+        [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string parentDistrict;
-        
-        public pullDistrict1() {
+
+        public pullDistrict1()
+        {
         }
-        
-        public pullDistrict1(string vendorCode, string parentDistrict) {
+
+        public pullDistrict1(string vendorCode, string parentDistrict)
+        {
             this.vendorCode = vendorCode;
             this.parentDistrict = parentDistrict;
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="pullDistrictResponse", WrapperNamespace="http://resource.ems.ks/", IsWrapped=true)]
-    public partial class pullDistrictResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("districts", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Unicom.Platform.Model.UnicomPlatform.emsDistrict[] districts;
-        
-        public pullDistrictResponse() {
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    [MessageContract(WrapperName = "pullDistrictResponse", WrapperNamespace = "http://resource.ems.ks/", IsWrapped = true)]
+    public class pullDistrictResponse
+    {
+        [MessageBodyMember(Namespace = "http://resource.ems.ks/", Order = 0)]
+        [XmlElement("districts", Form = XmlSchemaForm.Unqualified)]
+        public emsDistrict[] districts;
+
+        public pullDistrictResponse()
+        {
         }
-        
-        public pullDistrictResponse(Unicom.Platform.Model.UnicomPlatform.emsDistrict[] districts) {
+
+        public pullDistrictResponse(emsDistrict[] districts)
+        {
             this.districts = districts;
         }
     }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface PushResourceServiceChannel : Unicom.Platform.Model.UnicomPlatform.PushResourceService, System.ServiceModel.IClientChannel {
+
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    public interface PushResourceServiceChannel : IPushResourceService, IClientChannel
+    {
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class PushResourceServiceClient : System.ServiceModel.ClientBase<Unicom.Platform.Model.UnicomPlatform.PushResourceService>, Unicom.Platform.Model.UnicomPlatform.PushResourceService {
-        
-        public PushResourceServiceClient() {
+
+    [DebuggerStepThrough]
+    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
+    public class PushResourceServiceClient : ClientBase<IPushResourceService>, IPushResourceService
+    {
+        public PushResourceServiceClient()
+        {
         }
-        
-        public PushResourceServiceClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+
+        public PushResourceServiceClient(string endpointConfigurationName) :
+                base(endpointConfigurationName)
+        {
         }
-        
-        public PushResourceServiceClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+
+        public PushResourceServiceClient(string endpointConfigurationName, string remoteAddress) :
+                base(endpointConfigurationName, remoteAddress)
+        {
         }
-        
-        public PushResourceServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+
+        public PushResourceServiceClient(string endpointConfigurationName, EndpointAddress remoteAddress) :
+                base(endpointConfigurationName, remoteAddress)
+        {
         }
-        
-        public PushResourceServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+
+        public PushResourceServiceClient(System.ServiceModel.Channels.Binding binding, EndpointAddress remoteAddress) :
+                base(binding, remoteAddress)
+        {
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Unicom.Platform.Model.UnicomPlatform.pullProjectCategoryResponse Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullProjectCategory(Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1 request) {
-            return base.Channel.pullProjectCategory(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        pullProjectCategoryResponse IPushResourceService.pullProjectCategory(pullProjectCategory1 request)
+        {
+            return Channel.pullProjectCategory(request);
         }
-        
-        public Unicom.Platform.Model.UnicomPlatform.emsPrjCategory[] pullProjectCategory(string vendorCode) {
-            Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1();
-            inValue.vendorCode = vendorCode;
-            Unicom.Platform.Model.UnicomPlatform.pullProjectCategoryResponse retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullProjectCategory(inValue);
+
+        public emsPrjCategory[] pullProjectCategory(string vendorCode)
+        {
+            var inValue = new pullProjectCategory1 {vendorCode = vendorCode};
+            var retVal = ((IPushResourceService)(this)).pullProjectCategory(inValue);
             return retVal.pullProjectCategoryFlag;
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectCategoryResponse> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullProjectCategoryAsync(Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1 request) {
-            return base.Channel.pullProjectCategoryAsync(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        Task<pullProjectCategoryResponse> IPushResourceService.pullProjectCategoryAsync(pullProjectCategory1 request)
+        {
+            return Channel.pullProjectCategoryAsync(request);
         }
-        
-        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectCategoryResponse> pullProjectCategoryAsync(string vendorCode) {
-            Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1();
-            inValue.vendorCode = vendorCode;
-            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullProjectCategoryAsync(inValue);
+
+        public Task<pullProjectCategoryResponse> pullProjectCategoryAsync(string vendorCode)
+        {
+            var inValue = new pullProjectCategory1 {vendorCode = vendorCode};
+            return ((IPushResourceService)(this)).pullProjectCategoryAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Unicom.Platform.Model.UnicomPlatform.pullProjectTypeResponse Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullProjectType(Unicom.Platform.Model.UnicomPlatform.pullProjectType1 request) {
-            return base.Channel.pullProjectType(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        pullProjectTypeResponse IPushResourceService.pullProjectType(pullProjectType1 request)
+        {
+            return Channel.pullProjectType(request);
         }
-        
-        public Unicom.Platform.Model.UnicomPlatform.emsPrjType[] pullProjectType(string vendorCode) {
-            Unicom.Platform.Model.UnicomPlatform.pullProjectType1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullProjectType1();
-            inValue.vendorCode = vendorCode;
-            Unicom.Platform.Model.UnicomPlatform.pullProjectTypeResponse retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullProjectType(inValue);
+
+        public emsPrjType[] pullProjectType(string vendorCode)
+        {
+            var inValue = new pullProjectType1 {vendorCode = vendorCode};
+            var retVal = ((IPushResourceService)(this)).pullProjectType(inValue);
             return retVal.pullProjectTypeFlag;
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectTypeResponse> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullProjectTypeAsync(Unicom.Platform.Model.UnicomPlatform.pullProjectType1 request) {
-            return base.Channel.pullProjectTypeAsync(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        Task<pullProjectTypeResponse> IPushResourceService.pullProjectTypeAsync(pullProjectType1 request)
+        {
+            return Channel.pullProjectTypeAsync(request);
         }
-        
-        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectTypeResponse> pullProjectTypeAsync(string vendorCode) {
-            Unicom.Platform.Model.UnicomPlatform.pullProjectType1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullProjectType1();
-            inValue.vendorCode = vendorCode;
-            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullProjectTypeAsync(inValue);
+
+        public Task<pullProjectTypeResponse> pullProjectTypeAsync(string vendorCode)
+        {
+            var inValue = new pullProjectType1 {vendorCode = vendorCode};
+            return ((IPushResourceService)(this)).pullProjectTypeAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Unicom.Platform.Model.UnicomPlatform.pullProjectPeriodResponse Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullProjectPeriod(Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1 request) {
-            return base.Channel.pullProjectPeriod(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        pullProjectPeriodResponse IPushResourceService.pullProjectPeriod(pullProjectPeriod1 request)
+        {
+            return Channel.pullProjectPeriod(request);
         }
-        
-        public Unicom.Platform.Model.UnicomPlatform.emsPrjPeriod[] pullProjectPeriod(string vendorCode) {
-            Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1();
-            inValue.vendorCode = vendorCode;
-            Unicom.Platform.Model.UnicomPlatform.pullProjectPeriodResponse retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullProjectPeriod(inValue);
+
+        public emsPrjPeriod[] pullProjectPeriod(string vendorCode)
+        {
+            var inValue = new pullProjectPeriod1 {vendorCode = vendorCode};
+            var retVal = ((IPushResourceService)(this)).pullProjectPeriod(inValue);
             return retVal.pullProjectPeriodFlag;
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectPeriodResponse> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullProjectPeriodAsync(Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1 request) {
-            return base.Channel.pullProjectPeriodAsync(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        Task<pullProjectPeriodResponse> IPushResourceService.pullProjectPeriodAsync(pullProjectPeriod1 request)
+        {
+            return Channel.pullProjectPeriodAsync(request);
         }
-        
-        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectPeriodResponse> pullProjectPeriodAsync(string vendorCode) {
-            Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1();
-            inValue.vendorCode = vendorCode;
-            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullProjectPeriodAsync(inValue);
+
+        public Task<pullProjectPeriodResponse> pullProjectPeriodAsync(string vendorCode)
+        {
+            var inValue = new pullProjectPeriod1 {vendorCode = vendorCode};
+            return ((IPushResourceService)(this)).pullProjectPeriodAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Unicom.Platform.Model.UnicomPlatform.pushDevicesResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushDevices(Unicom.Platform.Model.UnicomPlatform.pushDevices1 request) {
-            return base.Channel.pushDevices(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        pushDevicesResponse1 IPushResourceService.pushDevices(pushDevices1 request)
+        {
+            return Channel.pushDevices(request);
         }
-        
-        public Unicom.Platform.Model.UnicomPlatform.resultData pushDevices(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList) {
-            Unicom.Platform.Model.UnicomPlatform.pushDevices1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushDevices1();
-            inValue.vendorCode = vendorCode;
-            inValue.emsDeviceList = emsDeviceList;
-            Unicom.Platform.Model.UnicomPlatform.pushDevicesResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushDevices(inValue);
+
+        public resultData pushDevices(string vendorCode, emsDevice[] emsDeviceList)
+        {
+            var inValue = new pushDevices1
+            {
+                vendorCode = vendorCode,
+                emsDeviceList = emsDeviceList
+            };
+            var retVal = ((IPushResourceService)(this)).pushDevices(inValue);
             return retVal.deviceCodes;
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDevicesResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushDevicesAsync(Unicom.Platform.Model.UnicomPlatform.pushDevices1 request) {
-            return base.Channel.pushDevicesAsync(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        Task<pushDevicesResponse1> IPushResourceService.pushDevicesAsync(pushDevices1 request)
+        {
+            return Channel.pushDevicesAsync(request);
         }
-        
-        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDevicesResponse1> pushDevicesAsync(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList) {
-            Unicom.Platform.Model.UnicomPlatform.pushDevices1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushDevices1();
-            inValue.vendorCode = vendorCode;
-            inValue.emsDeviceList = emsDeviceList;
-            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushDevicesAsync(inValue);
+
+        public Task<pushDevicesResponse1> pushDevicesAsync(string vendorCode, emsDevice[] emsDeviceList)
+        {
+            var inValue = new pushDevices1
+            {
+                vendorCode = vendorCode,
+                emsDeviceList = emsDeviceList
+            };
+            return ((IPushResourceService)(this)).pushDevicesAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Unicom.Platform.Model.UnicomPlatform.pushHourlyDataResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushHourlyData(Unicom.Platform.Model.UnicomPlatform.pushHourlyData1 request) {
-            return base.Channel.pushHourlyData(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        pushHourlyDataResponse1 IPushResourceService.pushHourlyData(pushHourlyData1 request)
+        {
+            return Channel.pushHourlyData(request);
         }
-        
-        public Unicom.Platform.Model.UnicomPlatform.resultData pushHourlyData(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
-            Unicom.Platform.Model.UnicomPlatform.pushHourlyData1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushHourlyData1();
-            inValue.vendorCode = vendorCode;
-            inValue.emsDataList = emsDataList;
-            Unicom.Platform.Model.UnicomPlatform.pushHourlyDataResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushHourlyData(inValue);
+
+        public resultData pushHourlyData(string vendorCode, emsData[] emsDataList)
+        {
+            var inValue = new pushHourlyData1
+            {
+                vendorCode = vendorCode,
+                emsDataList = emsDataList
+            };
+            var retVal = ((IPushResourceService)(this)).pushHourlyData(inValue);
             return retVal.pushHourlyDataFlag;
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushHourlyDataResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushHourlyDataAsync(Unicom.Platform.Model.UnicomPlatform.pushHourlyData1 request) {
-            return base.Channel.pushHourlyDataAsync(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        Task<pushHourlyDataResponse1> IPushResourceService.pushHourlyDataAsync(pushHourlyData1 request)
+        {
+            return Channel.pushHourlyDataAsync(request);
         }
-        
-        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushHourlyDataResponse1> pushHourlyDataAsync(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
-            Unicom.Platform.Model.UnicomPlatform.pushHourlyData1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushHourlyData1();
-            inValue.vendorCode = vendorCode;
-            inValue.emsDataList = emsDataList;
-            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushHourlyDataAsync(inValue);
+
+        public Task<pushHourlyDataResponse1> pushHourlyDataAsync(string vendorCode, emsData[] emsDataList)
+        {
+            var inValue = new pushHourlyData1
+            {
+                vendorCode = vendorCode,
+                emsDataList = emsDataList
+            };
+            return ((IPushResourceService)(this)).pushHourlyDataAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Unicom.Platform.Model.UnicomPlatform.pushDailyDataResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushDailyData(Unicom.Platform.Model.UnicomPlatform.pushDailyData1 request) {
-            return base.Channel.pushDailyData(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        pushDailyDataResponse1 IPushResourceService.pushDailyData(pushDailyData1 request)
+        {
+            return Channel.pushDailyData(request);
         }
-        
-        public Unicom.Platform.Model.UnicomPlatform.resultData pushDailyData(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
-            Unicom.Platform.Model.UnicomPlatform.pushDailyData1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushDailyData1();
-            inValue.vendorCode = vendorCode;
-            inValue.emsDataList = emsDataList;
-            Unicom.Platform.Model.UnicomPlatform.pushDailyDataResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushDailyData(inValue);
+
+        public resultData pushDailyData(string vendorCode, emsData[] emsDataList)
+        {
+            var inValue = new pushDailyData1
+            {
+                vendorCode = vendorCode,
+                emsDataList = emsDataList
+            };
+            var retVal = ((IPushResourceService)(this)).pushDailyData(inValue);
             return retVal.pushDailyDataFlag;
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDailyDataResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushDailyDataAsync(Unicom.Platform.Model.UnicomPlatform.pushDailyData1 request) {
-            return base.Channel.pushDailyDataAsync(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        Task<pushDailyDataResponse1> IPushResourceService.pushDailyDataAsync(pushDailyData1 request)
+        {
+            return Channel.pushDailyDataAsync(request);
         }
-        
-        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDailyDataResponse1> pushDailyDataAsync(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
-            Unicom.Platform.Model.UnicomPlatform.pushDailyData1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushDailyData1();
-            inValue.vendorCode = vendorCode;
-            inValue.emsDataList = emsDataList;
-            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushDailyDataAsync(inValue);
+
+        public Task<pushDailyDataResponse1> pushDailyDataAsync(string vendorCode, emsData[] emsDataList)
+        {
+            var inValue = new pushDailyData1
+            {
+                vendorCode = vendorCode,
+                emsDataList = emsDataList
+            };
+            return ((IPushResourceService)(this)).pushDailyDataAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Unicom.Platform.Model.UnicomPlatform.pushRealTimeDataResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushRealTimeData(Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1 request) {
-            return base.Channel.pushRealTimeData(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        pushRealTimeDataResponse1 IPushResourceService.pushRealTimeData(pushRealTimeData1 request)
+        {
+            return Channel.pushRealTimeData(request);
         }
-        
-        public Unicom.Platform.Model.UnicomPlatform.resultData pushRealTimeData(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
-            Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1();
-            inValue.vendorCode = vendorCode;
-            inValue.emsDataList = emsDataList;
-            Unicom.Platform.Model.UnicomPlatform.pushRealTimeDataResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushRealTimeData(inValue);
+
+        public resultData pushRealTimeData(string vendorCode, emsData[] emsDataList)
+        {
+            var inValue = new pushRealTimeData1
+            {
+                vendorCode = vendorCode,
+                emsDataList = emsDataList
+            };
+            var retVal = ((IPushResourceService)(this)).pushRealTimeData(inValue);
             return retVal.pushRealTimeDataFlag;
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushRealTimeDataResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushRealTimeDataAsync(Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1 request) {
-            return base.Channel.pushRealTimeDataAsync(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        Task<pushRealTimeDataResponse1> IPushResourceService.pushRealTimeDataAsync(pushRealTimeData1 request)
+        {
+            return Channel.pushRealTimeDataAsync(request);
         }
-        
-        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushRealTimeDataResponse1> pushRealTimeDataAsync(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
-            Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1();
-            inValue.vendorCode = vendorCode;
-            inValue.emsDataList = emsDataList;
-            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushRealTimeDataAsync(inValue);
+
+        public Task<pushRealTimeDataResponse1> pushRealTimeDataAsync(string vendorCode, emsData[] emsDataList)
+        {
+            var inValue = new pushRealTimeData1
+            {
+                vendorCode = vendorCode,
+                emsDataList = emsDataList
+            };
+            return ((IPushResourceService)(this)).pushRealTimeDataAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Unicom.Platform.Model.UnicomPlatform.pushDeviceStatusResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushDeviceStatus(Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1 request) {
-            return base.Channel.pushDeviceStatus(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        pushDeviceStatusResponse1 IPushResourceService.pushDeviceStatus(pushDeviceStatus1 request)
+        {
+            return Channel.pushDeviceStatus(request);
         }
-        
-        public Unicom.Platform.Model.UnicomPlatform.resultData pushDeviceStatus(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList) {
-            Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1();
-            inValue.vendorCode = vendorCode;
-            inValue.emsDeviceList = emsDeviceList;
-            Unicom.Platform.Model.UnicomPlatform.pushDeviceStatusResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushDeviceStatus(inValue);
+
+        public resultData pushDeviceStatus(string vendorCode, emsDevice[] emsDeviceList)
+        {
+            var inValue = new pushDeviceStatus1
+            {
+                vendorCode = vendorCode,
+                emsDeviceList = emsDeviceList
+            };
+            var retVal = ((IPushResourceService)(this)).pushDeviceStatus(inValue);
             return retVal.deviceStatusCodes;
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDeviceStatusResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushDeviceStatusAsync(Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1 request) {
-            return base.Channel.pushDeviceStatusAsync(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        Task<pushDeviceStatusResponse1> IPushResourceService.pushDeviceStatusAsync(pushDeviceStatus1 request)
+        {
+            return Channel.pushDeviceStatusAsync(request);
         }
-        
-        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDeviceStatusResponse1> pushDeviceStatusAsync(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList) {
-            Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1();
-            inValue.vendorCode = vendorCode;
-            inValue.emsDeviceList = emsDeviceList;
-            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushDeviceStatusAsync(inValue);
+
+        public Task<pushDeviceStatusResponse1> pushDeviceStatusAsync(string vendorCode, emsDevice[] emsDeviceList)
+        {
+            var inValue = new pushDeviceStatus1
+            {
+                vendorCode = vendorCode,
+                emsDeviceList = emsDeviceList
+            };
+            return ((IPushResourceService)(this)).pushDeviceStatusAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Unicom.Platform.Model.UnicomPlatform.pullRegionResponse Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullRegion(Unicom.Platform.Model.UnicomPlatform.pullRegion1 request) {
-            return base.Channel.pullRegion(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        pullRegionResponse IPushResourceService.pullRegion(pullRegion1 request)
+        {
+            return Channel.pullRegion(request);
         }
-        
-        public Unicom.Platform.Model.UnicomPlatform.emsRegion[] pullRegion(string vendorCode) {
-            Unicom.Platform.Model.UnicomPlatform.pullRegion1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullRegion1();
-            inValue.vendorCode = vendorCode;
-            Unicom.Platform.Model.UnicomPlatform.pullRegionResponse retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullRegion(inValue);
+
+        public emsRegion[] pullRegion(string vendorCode)
+        {
+            var inValue = new pullRegion1 {vendorCode = vendorCode};
+            var retVal = ((IPushResourceService)(this)).pullRegion(inValue);
             return retVal.pullRegionFlag;
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullRegionResponse> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullRegionAsync(Unicom.Platform.Model.UnicomPlatform.pullRegion1 request) {
-            return base.Channel.pullRegionAsync(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        Task<pullRegionResponse> IPushResourceService.pullRegionAsync(pullRegion1 request)
+        {
+            return Channel.pullRegionAsync(request);
         }
-        
-        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullRegionResponse> pullRegionAsync(string vendorCode) {
-            Unicom.Platform.Model.UnicomPlatform.pullRegion1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullRegion1();
-            inValue.vendorCode = vendorCode;
-            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullRegionAsync(inValue);
+
+        public Task<pullRegionResponse> pullRegionAsync(string vendorCode)
+        {
+            var inValue = new pullRegion1 {vendorCode = vendorCode};
+            return ((IPushResourceService)(this)).pullRegionAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Unicom.Platform.Model.UnicomPlatform.pushProjectsResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushProjects(Unicom.Platform.Model.UnicomPlatform.pushProjects1 request) {
-            return base.Channel.pushProjects(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        pushProjectsResponse1 IPushResourceService.pushProjects(pushProjects1 request)
+        {
+            return Channel.pushProjects(request);
         }
-        
-        public Unicom.Platform.Model.UnicomPlatform.resultData pushProjects(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList) {
-            Unicom.Platform.Model.UnicomPlatform.pushProjects1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushProjects1();
-            inValue.vendorCode = vendorCode;
-            inValue.emsProjectList = emsProjectList;
-            Unicom.Platform.Model.UnicomPlatform.pushProjectsResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushProjects(inValue);
+
+        public resultData pushProjects(string vendorCode, emsProject[] emsProjectList)
+        {
+            var inValue = new pushProjects1
+            {
+                vendorCode = vendorCode,
+                emsProjectList = emsProjectList
+            };
+            var retVal = ((IPushResourceService)(this)).pushProjects(inValue);
             return retVal.projectCodes;
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushProjectsResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushProjectsAsync(Unicom.Platform.Model.UnicomPlatform.pushProjects1 request) {
-            return base.Channel.pushProjectsAsync(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        Task<pushProjectsResponse1> IPushResourceService.pushProjectsAsync(pushProjects1 request)
+        {
+            return Channel.pushProjectsAsync(request);
         }
-        
-        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushProjectsResponse1> pushProjectsAsync(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList) {
-            Unicom.Platform.Model.UnicomPlatform.pushProjects1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushProjects1();
-            inValue.vendorCode = vendorCode;
-            inValue.emsProjectList = emsProjectList;
-            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushProjectsAsync(inValue);
+
+        public Task<pushProjectsResponse1> pushProjectsAsync(string vendorCode, emsProject[] emsProjectList)
+        {
+            var inValue = new pushProjects1
+            {
+                vendorCode = vendorCode,
+                emsProjectList = emsProjectList
+            };
+            return ((IPushResourceService)(this)).pushProjectsAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Unicom.Platform.Model.UnicomPlatform.pushProjectStatusResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushProjectStatus(Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1 request) {
-            return base.Channel.pushProjectStatus(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        pushProjectStatusResponse1 IPushResourceService.pushProjectStatus(pushProjectStatus1 request)
+        {
+            return Channel.pushProjectStatus(request);
         }
-        
-        public Unicom.Platform.Model.UnicomPlatform.resultData pushProjectStatus(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList) {
-            Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1();
-            inValue.vendorCode = vendorCode;
-            inValue.emsProjectList = emsProjectList;
-            Unicom.Platform.Model.UnicomPlatform.pushProjectStatusResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushProjectStatus(inValue);
+
+        public resultData pushProjectStatus(string vendorCode, emsProject[] emsProjectList)
+        {
+            var inValue = new pushProjectStatus1
+            {
+                vendorCode = vendorCode,
+                emsProjectList = emsProjectList
+            };
+            var retVal = ((IPushResourceService)(this)).pushProjectStatus(inValue);
             return retVal.projectStatusCodes;
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushProjectStatusResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushProjectStatusAsync(Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1 request) {
-            return base.Channel.pushProjectStatusAsync(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        Task<pushProjectStatusResponse1> IPushResourceService.pushProjectStatusAsync(pushProjectStatus1 request)
+        {
+            return Channel.pushProjectStatusAsync(request);
         }
-        
-        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushProjectStatusResponse1> pushProjectStatusAsync(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList) {
-            Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1();
-            inValue.vendorCode = vendorCode;
-            inValue.emsProjectList = emsProjectList;
-            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushProjectStatusAsync(inValue);
+
+        public Task<pushProjectStatusResponse1> pushProjectStatusAsync(string vendorCode, emsProject[] emsProjectList)
+        {
+            var inValue = new pushProjectStatus1
+            {
+                vendorCode = vendorCode,
+                emsProjectList = emsProjectList
+            };
+            return ((IPushResourceService)(this)).pushProjectStatusAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Unicom.Platform.Model.UnicomPlatform.registerVendorResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.registerVendor(Unicom.Platform.Model.UnicomPlatform.registerVendor1 request) {
-            return base.Channel.registerVendor(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        registerVendorResponse1 IPushResourceService.registerVendor(registerVendor1 request)
+        {
+            return Channel.registerVendor(request);
         }
-        
-        public string registerVendor(string vendorName) {
-            Unicom.Platform.Model.UnicomPlatform.registerVendor1 inValue = new Unicom.Platform.Model.UnicomPlatform.registerVendor1();
-            inValue.vendorName = vendorName;
-            Unicom.Platform.Model.UnicomPlatform.registerVendorResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).registerVendor(inValue);
+
+        public string registerVendor(string vendorName)
+        {
+            var inValue = new registerVendor1 {vendorName = vendorName};
+            var retVal = ((IPushResourceService)(this)).registerVendor(inValue);
             return retVal.vendorCode;
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.registerVendorResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.registerVendorAsync(Unicom.Platform.Model.UnicomPlatform.registerVendor1 request) {
-            return base.Channel.registerVendorAsync(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        Task<registerVendorResponse1> IPushResourceService.registerVendorAsync(registerVendor1 request)
+        {
+            return Channel.registerVendorAsync(request);
         }
-        
-        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.registerVendorResponse1> registerVendorAsync(string vendorName) {
-            Unicom.Platform.Model.UnicomPlatform.registerVendor1 inValue = new Unicom.Platform.Model.UnicomPlatform.registerVendor1();
-            inValue.vendorName = vendorName;
-            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).registerVendorAsync(inValue);
+
+        public Task<registerVendorResponse1> registerVendorAsync(string vendorName)
+        {
+            var inValue = new registerVendor1 {vendorName = vendorName};
+            return ((IPushResourceService)(this)).registerVendorAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Unicom.Platform.Model.UnicomPlatform.pullDistrictResponse Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullDistrict(Unicom.Platform.Model.UnicomPlatform.pullDistrict1 request) {
-            return base.Channel.pullDistrict(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        pullDistrictResponse IPushResourceService.pullDistrict(pullDistrict1 request)
+        {
+            return Channel.pullDistrict(request);
         }
-        
-        public Unicom.Platform.Model.UnicomPlatform.emsDistrict[] pullDistrict(string vendorCode, string parentDistrict) {
-            Unicom.Platform.Model.UnicomPlatform.pullDistrict1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullDistrict1();
-            inValue.vendorCode = vendorCode;
-            inValue.parentDistrict = parentDistrict;
-            Unicom.Platform.Model.UnicomPlatform.pullDistrictResponse retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullDistrict(inValue);
+
+        public emsDistrict[] pullDistrict(string vendorCode, string parentDistrict)
+        {
+            var inValue = new pullDistrict1
+            {
+                vendorCode = vendorCode,
+                parentDistrict = parentDistrict
+            };
+            var retVal = ((IPushResourceService)(this)).pullDistrict(inValue);
             return retVal.districts;
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullDistrictResponse> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullDistrictAsync(Unicom.Platform.Model.UnicomPlatform.pullDistrict1 request) {
-            return base.Channel.pullDistrictAsync(request);
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        Task<pullDistrictResponse> IPushResourceService.pullDistrictAsync(pullDistrict1 request)
+        {
+            return Channel.pullDistrictAsync(request);
         }
-        
-        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullDistrictResponse> pullDistrictAsync(string vendorCode, string parentDistrict) {
-            Unicom.Platform.Model.UnicomPlatform.pullDistrict1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullDistrict1();
-            inValue.vendorCode = vendorCode;
-            inValue.parentDistrict = parentDistrict;
-            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullDistrictAsync(inValue);
+
+        public Task<pullDistrictResponse> pullDistrictAsync(string vendorCode, string parentDistrict)
+        {
+            var inValue = new pullDistrict1
+            {
+                vendorCode = vendorCode,
+                parentDistrict = parentDistrict
+            };
+            return ((IPushResourceService)(this)).pullDistrictAsync(inValue);
         }
     }
 }

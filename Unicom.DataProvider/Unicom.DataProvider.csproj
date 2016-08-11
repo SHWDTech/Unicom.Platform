@@ -51,43 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDataPRovider.cs" />
-    <Compile Include="Models\SHYF_Models.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SHYF_Models.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SHYF_Models.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SHYF_Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SHYF_Models.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SHYF_Models.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\T_DevAddr.cs">
-      <DependentUpon>SHYF_Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\T_Devs.cs">
-      <DependentUpon>SHYF_Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\T_ESDay.cs">
-      <DependentUpon>SHYF_Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\T_ESHour.cs">
-      <DependentUpon>SHYF_Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\T_ESMin.cs">
-      <DependentUpon>SHYF_Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\T_Stage.cs">
-      <DependentUpon>SHYF_Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\T_Stats.cs">
-      <DependentUpon>SHYF_Models.tt</DependentUpon>
-    </Compile>
+    <Compile Include="IDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -97,29 +61,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\SHYF_Models.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SHYF_Models.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
-    <None Include="Models\SHYF_Models.edmx.diagram">
-      <DependentUpon>SHYF_Models.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Models\SHYF_Models.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SHYF_Models.edmx</DependentUpon>
-      <LastGenOutput>SHYF_Models.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\SHYF_Models.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SHYF_Models.edmx</DependentUpon>
-      <LastGenOutput>SHYF_Models.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

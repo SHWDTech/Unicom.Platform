@@ -67,6 +67,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\EmsDevice.cs" />
+    <Compile Include="Model\EmsPrjCategory.cs" />
+    <Compile Include="Model\EmsPrjPeriod.cs" />
+    <Compile Include="Model\EmsPrjType.cs" />
+    <Compile Include="Model\EmsProject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="SQLite\DataTableExtensions.cs" />

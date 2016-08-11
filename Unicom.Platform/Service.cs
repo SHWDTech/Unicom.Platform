@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 using System.Threading.Tasks;
-using Unicom.Platform.Model.UnicomPlatform;
+using Unicom.Platform.Model.Service_References.UnicomPlatform;
 
 namespace Unicom.Platform
 {
