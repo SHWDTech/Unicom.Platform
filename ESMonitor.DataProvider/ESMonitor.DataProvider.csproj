@@ -62,6 +62,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\WDYunPlatform\Platform.Utility\Platform.Utility.csproj">
+      <Project>{95b28f0d-c7d4-479c-aabf-e0f8b4b0e06c}</Project>
+      <Name>Platform.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Unicom.DataProvider\Unicom.DataProvider.csproj">
       <Project>{163e824f-f76e-43a2-a033-6d2efdbb67be}</Project>
       <Name>Unicom.DataProvider</Name>

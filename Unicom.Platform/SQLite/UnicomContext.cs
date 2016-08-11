@@ -9,6 +9,13 @@ namespace Unicom.Platform.SQLite
 {
     public class UnicomContext
     {
+        public static string DefaultConnectionString { get; set; }
+
+        public UnicomContext()
+        {
+            _connectionString = DefaultConnectionString;
+        }
+
         public UnicomContext(string connstring)
         {
             _connectionString = connstring;
