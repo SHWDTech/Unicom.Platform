@@ -14,7 +14,7 @@ namespace Unicom.Commander.Server
     {
         private Socket _serverSocket;
 
-        private readonly List<CommanderClient> _clientSockets = new List<CommanderClient>();
+        private readonly List<CommanderTcpClient> _clientSockets = new List<CommanderTcpClient>();
 
         private Timer _routeingTimer;
 
@@ -33,7 +33,7 @@ namespace Unicom.Commander.Server
 
             var client = server.EndAccept(result);
 
-            _clientSockets.Add(new CommanderClient(client));
+            _clientSockets.Add(new CommanderTcpClient(client));
 
             server.BeginAccept(AcceptClient, server);
         }

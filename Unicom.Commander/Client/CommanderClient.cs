@@ -1,105 +1,69 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
+using SHWDTech.Platform.Utility;
 
 namespace Unicom.Commander.Client
 {
-    public class CommanderClient : ICommanderConnection
+    public class CommanderClient
     {
-        private readonly Socket _clientSocket;
-
-        public bool IsConnected { get; private set; }
+        private readonly CommanderTcpClient _tcpClient;
 
         /// <summary>
-        /// 数据接收缓存
+        /// 是否在解码协议
         /// </summary>
-        public IList<ArraySegment<byte>> ReceiveBuffer { get; }
-            = new List<ArraySegment<byte>>() { new ArraySegment<byte>(new byte[4096]) };
+        private bool _decoding;
 
         /// <summary>
-        /// 数据处理缓存
+        /// 协议解码失败次数
         /// </summary>
-        public IList<byte> ProcessBuffer { get; } = new List<byte>();
+        private byte _decodeErrorTimes;
 
-        /// <summary>
-        /// 客户端数据接收事件
-        /// </summary>
-        public event ClientReceivedDataEventHandler ClientReceivedDataEvent;
+        private byte[] _frameHead = {53, 48};
 
-        /// <summary>
-        /// 客户端断开事件
-        /// </summary>
-        public event ClientDisconnectEventHandler ClientDisconnectEvent;
+        private byte[] _frameTail = {57, 44};
 
-        public CommanderClient(Socket clientSocket)
+        public CommanderClient(CommanderTcpClient tcpClient)
         {
-            _clientSocket = clientSocket;
-            _clientSocket.BeginReceive(ReceiveBuffer, SocketFlags.None, Received, _clientSocket);
+            _tcpClient = tcpClient;
+            _tcpClient.ClientReceivedDataEvent += OnReceivedData;
         }
 
-        private void Received(IAsyncResult result)
+        private void OnReceivedData(ICommanderConnection conn)
         {
-            var client = (Socket)result.AsyncState;
+            if(!_decoding) Process();
+        }
 
-            lock (ReceiveBuffer)
+        private void Process()
+        {
+            lock (_tcpClient.ProcessBuffer)
             {
-                int readCount;
-                try
-                {
-                    readCount = client.EndReceive(result);
+                _decoding = true;
 
-                    var array = ReceiveBuffer.Last().Array;
-                    for (var i = 0; i < readCount; i++)
+                while (_tcpClient.ProcessBuffer.Count > 0)
+                {
+                    try
                     {
-                        ProcessBuffer.Add(array[i]);
+                        Decode(_tcpClient.ProcessBuffer.ToArray());
                     }
-                }
-                catch (Exception ex)
-                {
-                    if (ex.Message == "远程主机强迫关闭了一个现有的连接。")
+                    catch (Exception ex)
                     {
-                        client.Close();
-                        IsConnected = false;
+                        LogService.Instance.Warn("解析通信数据错误。", ex);
+                        _decodeErrorTimes++;
+                        if (_decodeErrorTimes == 5)
+                        {
+                            _tcpClient.ProcessBuffer.Clear();
+                            _decodeErrorTimes = 0;
+                        }
                     }
-
-                    OnClientDisconnect();
-                    return;
-                }
-
-                if (readCount <= 0)
-                {
-                    OnClientDisconnect();
-                    client.Close(0);
-                    IsConnected = false;
-                    return;
                 }
             }
-
-            OnReceivedData();
-
-            client.BeginReceive(ReceiveBuffer, SocketFlags.None, Received, client);
         }
 
-        private void SocketSend(byte[] sendBytes)
+        private void Decode(byte[] bufferBytes)
         {
-            _clientSocket.Send(sendBytes);
+            
         }
 
-        /// <summary>
-        /// 数据接收时出发
-        /// </summary>
-        private void OnReceivedData()
-        {
-            ClientReceivedDataEvent?.Invoke(this);
-        }
 
-        /// <summary>
-        /// 断开连接时触发
-        /// </summary>
-        private void OnClientDisconnect()
-        {
-            ClientDisconnectEvent?.Invoke(this);
-        }
     }
 }
