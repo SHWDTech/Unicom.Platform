@@ -10,7 +10,7 @@ namespace Unicom.Task
         private TimerCallback _execTask;
         private readonly ISchedule _schedule;
         private DateTime _lastExecuteTime;
-        private DateTime _nextExecuteTime;
+        private DateTime _nextExecuteTime = DateTime.MinValue;
 
         /// <summary> 
         /// 任务名称 
@@ -23,19 +23,19 @@ namespace Unicom.Task
         /// <summary> 
         /// 执行任务的计划 
         /// </summary> 
-        public ISchedule Shedule 
+        public ISchedule Shedule
             => _schedule;
 
         /// <summary> 
         /// 该任务最后一次执行的时间 
         /// </summary> 
-        public DateTime LastExecuteTime 
+        public DateTime LastExecuteTime
             => _lastExecuteTime;
 
         /// <summary> 
         /// 任务下执行时间 
         /// </summary> 
-        public DateTime NextExecuteTime 
+        public DateTime NextExecuteTime
             => _nextExecuteTime;
 
         /// <summary> 
@@ -62,14 +62,20 @@ namespace Unicom.Task
         private void Execute(object state)
         {
             _lastExecuteTime = DateTime.Now;
+
+            if (_nextExecuteTime == DateTime.MinValue)
+            {
+                _nextExecuteTime = _lastExecuteTime;
+            }
+
             if (_schedule.Period == Timeout.Infinite)
             {
                 _nextExecuteTime = DateTime.MaxValue; //下次运行的时间不存在 
             }
             else
             {
-                TimeSpan period = new TimeSpan(_schedule.Period * 1000);
-                _nextExecuteTime = _lastExecuteTime + period;
+                TimeSpan period = new TimeSpan(_schedule.Period * 10000);
+                _nextExecuteTime = _nextExecuteTime + period;
             }
             if (!(_schedule is CycExecution))
             {

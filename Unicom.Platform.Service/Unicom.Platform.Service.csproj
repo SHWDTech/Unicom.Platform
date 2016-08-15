@@ -80,9 +80,33 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\WDYunPlatform\Platform.Utility\Platform.Utility.csproj">
+      <Project>{95b28f0d-c7d4-479c-aabf-e0f8b4b0e06c}</Project>
+      <Name>Platform.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ESMonitor.DataProvider\ESMonitor.DataProvider.csproj">
+      <Project>{7abaced3-fb0c-4031-ab00-42f192cfcb1a}</Project>
+      <Name>ESMonitor.DataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Unicom.Commander\Unicom.Commander.csproj">
+      <Project>{63c61b49-7841-4019-a16a-78a7268569a6}</Project>
+      <Name>Unicom.Commander</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Unicom.DataProvider\Unicom.DataProvider.csproj">
+      <Project>{163e824f-f76e-43a2-a033-6d2efdbb67be}</Project>
+      <Name>Unicom.DataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Unicom.Platform.Model\Unicom.Platform.Model.csproj">
+      <Project>{25a62cb5-7b57-404a-a343-cbb22bc0f793}</Project>
+      <Name>Unicom.Platform.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Unicom.Platform\Unicom.Platform.csproj">
       <Project>{bae7b7fe-9fd9-4784-b443-707e733b6861}</Project>
       <Name>Unicom.Platform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Unicom.Task\Unicom.Task.csproj">
+      <Project>{201dcff3-5785-4f6e-962f-2c9c0c1e69a1}</Project>
+      <Name>Unicom.Task</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

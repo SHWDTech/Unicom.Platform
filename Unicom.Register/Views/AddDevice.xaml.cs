@@ -51,7 +51,7 @@ namespace Unicom.Register.Views
                 videoUrl = TxtVideoUrl.Text
             };
 
-            var service = new Service();
+            var service = new UnicomService();
             var result = service.PushDevices(new[] { emsDevice });
             if (!result.result[0].value.ToString().Contains("ERROR"))
             {

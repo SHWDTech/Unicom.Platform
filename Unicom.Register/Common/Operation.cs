@@ -6,7 +6,7 @@ namespace Unicom.Register.Common
 {
     public class Operation
     {
-        private static readonly Service Service = new Service();
+        private static readonly UnicomService Service = new UnicomService();
 
         private static readonly UnicomContext Context = new UnicomContext(AppConfig.ConnectionString);
         /// <summary>

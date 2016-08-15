@@ -4,7 +4,7 @@ using Unicom.Platform.Model.Service_References.UnicomPlatform;
 
 namespace Unicom.Platform
 {
-    public class Service
+    public class UnicomService
     {
         /// <summary>
         /// 获取联通服务实例
@@ -22,7 +22,7 @@ namespace Unicom.Platform
         /// </summary>
         public static string ProjectShortTitle { get; private set; }
 
-        static Service()
+        static UnicomService()
         {
             VendorCode = ConfigurationManager.AppSettings["VendorCode"];
             ProjectShortTitle = ConfigurationManager.AppSettings["ProjectShortTitle"];

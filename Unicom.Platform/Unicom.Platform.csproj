@@ -74,7 +74,7 @@
     <Compile Include="Model\EmsProject.cs" />
     <Compile Include="Model\EmsRegion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service.cs" />
+    <Compile Include="UnicomService.cs" />
     <Compile Include="SQLite\DataTableExtensions.cs" />
     <Compile Include="SQLite\UnicomContext.cs" />
   </ItemGroup>

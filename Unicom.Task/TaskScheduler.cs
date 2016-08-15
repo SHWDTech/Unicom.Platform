@@ -52,14 +52,14 @@ namespace Unicom.Task
             }
         }
 
-        internal static void Register(Task task)
+        public static void Register(Task task)
         {
             lock (Tasks)
             {
                 Tasks.Add(task);
             }
         }
-        internal static void Deregister(Task task)
+        public static void Deregister(Task task)
         {
             lock (Tasks)
             {
