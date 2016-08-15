@@ -38,6 +38,12 @@ namespace Unicom.Platform.SQLite
         public List<EmsPrjPeriod> PrjPeriods
             => GetDbSet<EmsPrjPeriod>();
 
+        public List<EmsRegion> Regions
+            => GetDbSet<EmsRegion>();
+
+        public List<EmsDistrict> Districts
+            => GetDbSet<EmsDistrict>();
+
 
         private List<T> GetDbSet<T>() where T : class, new()
         {
@@ -70,6 +76,20 @@ namespace Unicom.Platform.SQLite
                 return (long) cmd.ExecuteScalar() != 0;
             }
         }
+
+        public object GetId<T>(string where) where T : class, new()
+        {
+            var tableName = typeof(T).Name;
+            using (var conn = new SQLiteConnection(_connectionString))
+            {
+                conn.Open();
+
+                var cmd = new SQLiteCommand($"SELECT ID FROM {tableName} where {where}", conn);
+
+                return cmd.ExecuteScalar();
+            }
+        }
+    
 
         private int Add<T>(T model) where T : class, new()
         {
@@ -108,6 +128,7 @@ namespace Unicom.Platform.SQLite
 
             foreach (var objectProperty in objectProperties)
             {
+                if (objectProperty.Name == "Id") continue;
                 columns.Add(objectProperty.Name);
                 var value = objectProperty.GetValue(model, null);
                 if (value is string)
@@ -135,6 +156,7 @@ namespace Unicom.Platform.SQLite
             var result = new List<string>();
             foreach (var objectProperty in objectProperties)
             {
+                if (objectProperty.Name == "Id") continue;
                 var value = objectProperty.GetValue(model, null);
                 if (value is string)
                 {
@@ -148,6 +170,5 @@ namespace Unicom.Platform.SQLite
             }
             return $"{string.Join(",", result)} WHERE ID = {(long)model.GetType().GetProperty("Id").GetValue(model, null)}";
         }
-
     }
 }

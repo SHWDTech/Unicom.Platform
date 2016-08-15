@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platform.Utility", "..\WDYu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unicom.Commander", "Unicom.Commander\Unicom.Commander.csproj", "{63C61B49-7841-4019-A16A-78A7268569A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unicom.Task", "Unicom.Task\Unicom.Task.csproj", "{201DCFF3-5785-4F6E-962F-2C9C0C1E69A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unicom.Register", "Unicom.Register\Unicom.Register.csproj", "{C9FB8549-5300-4E0E-B0DC-46C46E82B8DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,14 @@ Global
 		{63C61B49-7841-4019-A16A-78A7268569A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63C61B49-7841-4019-A16A-78A7268569A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63C61B49-7841-4019-A16A-78A7268569A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{201DCFF3-5785-4F6E-962F-2C9C0C1E69A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{201DCFF3-5785-4F6E-962F-2C9C0C1E69A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{201DCFF3-5785-4F6E-962F-2C9C0C1E69A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{201DCFF3-5785-4F6E-962F-2C9C0C1E69A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9FB8549-5300-4E0E-B0DC-46C46E82B8DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9FB8549-5300-4E0E-B0DC-46C46E82B8DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9FB8549-5300-4E0E-B0DC-46C46E82B8DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9FB8549-5300-4E0E-B0DC-46C46E82B8DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

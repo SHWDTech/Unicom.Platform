@@ -10,7 +10,7 @@ namespace Unicom.Platform
         /// 获取联通服务实例
         /// </summary>
         /// <returns></returns>
-        public static PushResourceServiceClient Instance { get; }
+        private static PushResourceServiceClient Instance { get; }
 
         /// <summary>
         /// 公司代号

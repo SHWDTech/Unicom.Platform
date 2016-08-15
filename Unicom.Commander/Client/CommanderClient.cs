@@ -18,9 +18,9 @@ namespace Unicom.Commander.Client
         /// </summary>
         private byte _decodeErrorTimes;
 
-        private byte[] _frameHead = {53, 48};
+        private byte[] _frameHead = {0x0A, 0x0D};
 
-        private byte[] _frameTail = {57, 44};
+        private byte[] _frameTail = {0x0D, 0x0A};
 
         public CommanderClient(CommanderTcpClient tcpClient)
         {
