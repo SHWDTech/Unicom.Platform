@@ -93,7 +93,7 @@ namespace ESMonitor.DataProvider
             {
                 var emsData = new emsData
                 {
-                    dust = (float)esMin.TP,
+                    dust = ((float)esMin.TP) / 1000,
                     temperature = (float)esMin.Temperature,
                     humidity = (float)esMin.Humidity,
                     noise = (int)esMin.DB,
@@ -115,7 +115,7 @@ namespace ESMonitor.DataProvider
             {
                 var emsData = new emsData
                 {
-                    dust = (float)esHour.TP,
+                    dust = ((float)esHour.TP) / 1000,
                     noise = (int)esHour.DB,
                     dateTime = ConvertToUnixTime(esHour.UpdateTime)
                 };
@@ -133,7 +133,7 @@ namespace ESMonitor.DataProvider
             {
                 var emsData = new emsData
                 {
-                    dust = (float)esDay.TP,
+                    dust = ((float)esDay.TP) / 1000,
                     noise = (int)esDay.DB,
                     dateTime = ConvertToUnixTime(esDay.UpdateTime)
                 };

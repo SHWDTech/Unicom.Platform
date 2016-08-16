@@ -34,9 +34,12 @@ namespace Unicom.Platform.Service
             var context = new UnicomContext(_sqliteConnectionString);
             foreach (var device  in context.Devices)
             {
-                AddMinuteTask(device.SystemCode);
-                AddHourTask(device.SystemCode);
-                AddDayTask(device.SystemCode);
+                if (device.OnTransfer)
+                {
+                    AddMinuteTask(device.SystemCode);
+                    AddHourTask(device.SystemCode);
+                    AddDayTask(device.SystemCode);
+                }
             }
         }
 
@@ -121,6 +124,10 @@ namespace Unicom.Platform.Service
                 {
                     Console.WriteLine($"Result Error=> key:{dataEntry.key},value:{dataEntry.value}");
                 }
+            }
+            else
+            {
+                Console.WriteLine($"发送数据成功，时间：{DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}。");
             }
         }
 
