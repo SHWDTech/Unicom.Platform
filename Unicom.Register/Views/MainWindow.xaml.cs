@@ -23,5 +23,11 @@ namespace Unicom.Register.Views
             var addDeviceWindow = new AddDevice();
             addDeviceWindow.ShowDialog();
         }
+
+        private void OpenProjectDeviceManage(object sender, RoutedEventArgs e)
+        {
+            var manageWindow = new ProjectDeviceManage();
+            manageWindow.ShowDialog();
+        }
     }
 }

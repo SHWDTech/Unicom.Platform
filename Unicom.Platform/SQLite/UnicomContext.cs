@@ -64,7 +64,9 @@ namespace Unicom.Platform.SQLite
             var tableName = typeof(T).Name;
             using (var conn = new SQLiteConnection(_connectionString))
             {
-                var cmd = new SQLiteCommand($"SELECT * FROM {tableName}", conn);
+                var cmd = string.IsNullOrWhiteSpace(where) 
+                    ? new SQLiteCommand($"SELECT * FROM {tableName}", conn) 
+                    : new SQLiteCommand($"SELECT * FROM {tableName} WHERE {where}", conn);
                 var adapter = new SQLiteDataAdapter(cmd);
                 var table = new DataTable();
                 adapter.Fill(table);
@@ -183,6 +185,17 @@ namespace Unicom.Platform.SQLite
                 result.Add($"{objectProperty.Name} = {value}");
             }
             return $"{string.Join(",", result)} WHERE ID = {(long)model.GetType().GetProperty("Id").GetValue(model, null)}";
+        }
+
+        public int Execute(string executeSql)
+        {
+            using (var conn = new SQLiteConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand(executeSql, conn);
+
+                return cmd.ExecuteNonQuery();
+            }
         }
     }
 }

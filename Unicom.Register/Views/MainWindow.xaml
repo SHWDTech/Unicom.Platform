@@ -7,7 +7,9 @@
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button x:Name="BtnAddProject" Width="200" Height="50" Content="添加工地" Margin="40" HorizontalAlignment="Left" Click="OpenAddProject"></Button>
-        <Button x:Name="BtnAddDevice" Width="200" Height="50" Content="添加设备" Margin="40" HorizontalAlignment="Right" Click="OpenAddDevice"></Button>
+        <Button x:Name="BtnAddProject" Width="200" Height="50" Content="添加工地" Margin="40" VerticalAlignment="Top" HorizontalAlignment="Left" Click="OpenAddProject"></Button>
+        <Button x:Name="BtnAddDevice" Width="200" Height="50" Content="添加设备" Margin="40" VerticalAlignment="Top" HorizontalAlignment="Right" Click="OpenAddDevice"></Button>
+        <Button x:Name="BtnProjectDeviceManage" Width="200" Height="50" Content="管理工地及设备" Margin="40" HorizontalAlignment="Left"
+                Click="OpenProjectDeviceManage"></Button>
     </Grid>
 </Window>
