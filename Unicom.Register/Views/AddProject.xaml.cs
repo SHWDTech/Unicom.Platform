@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using Unicom.Platform;
 using Unicom.Platform.Model;
 using Unicom.Platform.Model.Service_References.UnicomPlatform;
@@ -52,51 +53,62 @@ namespace Unicom.Register.Views
 
         private void Submit(object sender, RoutedEventArgs e)
         {
-            var emsProject = new emsProject
+            try
             {
-                code = $"{TxtShortTitle.Text}{TxtBjCode.Text}",
-                name = $"{TxtPrjName.Text}",
-                district = $"{CmbDistrict.Text}",
-                prjType = int.Parse(CmbPrjType.SelectedValue.ToString()),
-                prjTypeSpecified = true,
-                prjCategory = int.Parse(CmbPrjCategory.SelectedValue.ToString()),
-                prjCategorySpecified = true,
-                prjPeriod = int.Parse(CmbPrjPeriod.SelectedValue.ToString()),
-                prjPeriodSpecified = true,
-                region = int.Parse(CmbRegion.SelectedValue.ToString()),
-                regionSpecified = true,
-                street = TxtStreet.Text,
-                longitude = TxtLongitude.Text,
-                latitude = TxtLatitude.Text,
-                contractors = TxtContractors.Text,
-                superintendent = TxtSuperintendent.Text,
-                telephone = TxtTelephone.Text,
-                address = TxtAddress.Text,
-                siteArea = float.Parse(TxtSiteArea.Text),
-                siteAreaSpecified = true,
-                buildingArea = float.Parse(TxtBuildingArea.Text),
-                buildingAreaSpecified = true,
-                startDate = DpStartDate.DisplayDate,
-                startDateSpecified = true,
-                endDate = DpEndDate.DisplayDate,
-                endDateSpecified = true,
-                stage = TxtStage.Text,
-                isCompleted = CbCompleted.IsChecked == true,
-                isCompletedSpecified = true
-            };
-
-            var service = new UnicomService();
-            var result = service.PushProjects(new[] {emsProject});
-            if (!result.result[0].value.ToString().Contains("ERROR"))
-            {
-                var project = new EmsProject
+                var emsProject = new emsProject
                 {
-                    UnicomCode = result.result[0].value.ToString(),
-                    SystemCode = TxtSystemCode.Text,
-                    OnTransfer = false
+                    code = $"{TxtShortTitle.Text}{TxtBjCode.Text}",
+                    name = $"{TxtPrjName.Text}",
+                    district = $"{CmbDistrict.Text}",
+                    prjType = int.Parse(CmbPrjType.SelectedValue.ToString()),
+                    prjTypeSpecified = true,
+                    prjCategory = int.Parse(CmbPrjCategory.SelectedValue.ToString()),
+                    prjCategorySpecified = true,
+                    prjPeriod = int.Parse(CmbPrjPeriod.SelectedValue.ToString()),
+                    prjPeriodSpecified = true,
+                    region = int.Parse(CmbRegion.SelectedValue.ToString()),
+                    regionSpecified = true,
+                    street = TxtStreet.Text,
+                    longitude = TxtLongitude.Text,
+                    latitude = TxtLatitude.Text,
+                    contractors = TxtContractors.Text,
+                    superintendent = TxtSuperintendent.Text,
+                    telephone = TxtTelephone.Text,
+                    address = TxtAddress.Text,
+                    siteArea = float.Parse(TxtSiteArea.Text),
+                    siteAreaSpecified = true,
+                    buildingArea = float.Parse(TxtBuildingArea.Text),
+                    buildingAreaSpecified = true,
+                    startDate = DpStartDate.DisplayDate,
+                    startDateSpecified = true,
+                    endDate = DpEndDate.DisplayDate,
+                    endDateSpecified = true,
+                    stage = TxtStage.Text,
+                    isCompleted = CbCompleted.IsChecked == true,
+                    isCompletedSpecified = true
                 };
-                _context.AddOrUpdate(project);
+
+                var service = new UnicomService();
+                var result = service.PushProjects(new[] {emsProject});
+                if (!result.result[0].value.ToString().Contains("ERROR"))
+                {
+                    var project = new EmsProject
+                    {
+                        UnicomCode = result.result[0].value.ToString(),
+                        SystemCode = TxtSystemCode.Text,
+                        OnTransfer = false,
+                        UnicomName = result.result[0].key.ToString(),
+                        PrjType = int.Parse(CmbPrjType.SelectedValue.ToString())
+                    };
+                    _context.AddOrUpdate(project);
+                    MessageBox.Show("添加成功。");
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }

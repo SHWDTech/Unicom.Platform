@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.Linq;
 using System.Reflection;
 using Unicom.Platform.Model;
 
@@ -55,6 +56,19 @@ namespace Unicom.Platform.SQLite
                 var table = new DataTable();
                 adapter.Fill(table);
                 return table.ToListOf<T>();
+            }
+        }
+
+        public T FirstOrDefault<T>(string where) where T : class, new()
+        {
+            var tableName = typeof(T).Name;
+            using (var conn = new SQLiteConnection(_connectionString))
+            {
+                var cmd = new SQLiteCommand($"SELECT * FROM {tableName}", conn);
+                var adapter = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                adapter.Fill(table);
+                return table.ToListOf<T>().FirstOrDefault();
             }
         }
 

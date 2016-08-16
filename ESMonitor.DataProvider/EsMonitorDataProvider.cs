@@ -16,8 +16,9 @@ namespace ESMonitor.DataProvider
             using (var context = new EsMonitorModels())
             {
                 var deviceId = int.Parse(devCode);
+                var minute = DateTime.Now.AddMinutes(-1);
                 var esMinDatas =
-                    context.EsMin.Where(obj => obj.DevId == deviceId && obj.UpdateTime > DateTime.Now).ToList();
+                    context.EsMin.Where(obj => obj.DevId == deviceId && obj.UpdateTime > minute).ToList();
 
                 return EsMinToEmsDatas(esMinDatas);
             }

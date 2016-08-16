@@ -13,6 +13,8 @@ namespace Unicom.Platform.Model
 
         public virtual string UnicomCode { get; set; }
 
+        public virtual int PrjType { get; set; }
+
         public virtual bool OnTransfer { get; set; }
     }
 }

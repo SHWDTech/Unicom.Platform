@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using Unicom.Platform;
 using Unicom.Platform.Model;
 using Unicom.Platform.Model.Service_References.UnicomPlatform;
@@ -30,39 +31,48 @@ namespace Unicom.Register.Views
 
         private void Submit(object sender, RoutedEventArgs e)
         {
-            var emsDevice = new emsDevice
+            try
             {
-                name = TxtDeviceName.Text,
-                ipAddr = TxtIpAddress.Text,
-                macAddr = TxtMacAddress.Text,
-                port = TxtPort.Text,
-                version = TxtDeviceVersion.Text,
-                projectCode = CmbProject.SelectedValue.ToString(),
-                longitude = TxtLongitude.Text,
-                latitude = TxtLatitude.Text,
-                startDate = DpStartDate.DisplayDate,
-                startDateSpecified = true,
-                endDate = DpEndDate.DisplayDate,
-                endDateSpecified = true,
-                installDate = DpInstallDate.DisplayDate,
-                installDateSpecified = true,
-                onlineStatus = CbOnlineStatus.IsChecked == true,
-                onlineStatusSpecified = true,
-                videoUrl = TxtVideoUrl.Text
-            };
-
-            var service = new UnicomService();
-            var result = service.PushDevices(new[] { emsDevice });
-            if (!result.result[0].value.ToString().Contains("ERROR"))
-            {
-                var project = new EmsProject
+                var emsDevice = new emsDevice
                 {
-                    SystemCode = TxtSystemCode.Text,
-                    UnicomCode = result.result[0].key.ToString(),
-                    UnicomName = TxtDeviceName.Text,
-                    OnTransfer = false
+                    name = TxtDeviceName.Text,
+                    ipAddr = TxtIpAddress.Text,
+                    macAddr = TxtMacAddress.Text,
+                    port = TxtPort.Text,
+                    version = TxtDeviceVersion.Text,
+                    projectCode = CmbProject.SelectedValue.ToString(),
+                    longitude = TxtLongitude.Text,
+                    latitude = TxtLatitude.Text,
+                    startDate = DpStartDate.DisplayDate,
+                    startDateSpecified = true,
+                    endDate = DpEndDate.DisplayDate,
+                    endDateSpecified = true,
+                    installDate = DpInstallDate.DisplayDate,
+                    installDateSpecified = true,
+                    onlineStatus = CbOnlineStatus.IsChecked == true,
+                    onlineStatusSpecified = true,
+                    videoUrl = TxtVideoUrl.Text
                 };
-                _context.AddOrUpdate(project);
+
+                var service = new UnicomService();
+                var result = service.PushDevices(new[] {emsDevice});
+                if (!result.result[0].value.ToString().Contains("ERROR"))
+                {
+                    var project = new EmsDevice
+                    {
+                        SystemCode = TxtSystemCode.Text,
+                        UnicomCode = result.result[0].key.ToString(),
+                        ProjectUnicomCode = CmbProject.SelectedValue.ToString(),
+                        UnicomName = TxtDeviceName.Text,
+                        OnTransfer = false
+                    };
+                    _context.AddOrUpdate(project);
+                    MessageBox.Show("添加成功。");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

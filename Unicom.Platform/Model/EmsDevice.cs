@@ -7,6 +7,8 @@ namespace Unicom.Platform.Model
         [Key]
         public virtual long Id { get; set; }
 
+        public virtual string ProjectUnicomCode { get; set; }
+
         public virtual string UnicomCode { get; set; }
 
         public virtual string UnicomName { get; set; }
