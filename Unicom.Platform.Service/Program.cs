@@ -6,10 +6,11 @@ using System.Threading;
 using ESMonitor.DataProvider;
 using SHWDTech.Platform.Utility;
 using SHWDTech.Platform.Utility.ExtensionMethod;
-using Unicom.Platform.Model;
 using Unicom.Platform.Model.Service_References.UnicomPlatform;
 using Unicom.Platform.SQLite;
 using Unicom.Task;
+using EmsDevice = Unicom.Platform.Model.EmsDevice;
+using EmsProject = Unicom.Platform.Model.EmsProject;
 
 namespace Unicom.Platform.Service
 {
@@ -40,13 +41,11 @@ namespace Unicom.Platform.Service
         {
             foreach (var device  in _context.Devices)
             {
-                if (device.OnTransfer)
-                {
-                    AddMinuteTask(device.SystemCode);
-                    AddHourTask(device.SystemCode);
-                    AddDayTask(device.SystemCode);
-                    OnTransferDevices.Add(device.SystemCode);
-                }
+                if (!device.OnTransfer) continue;
+                AddMinuteTask(device.SystemCode);
+                AddHourTask(device.SystemCode);
+                AddDayTask(device.SystemCode);
+                OnTransferDevices.Add(device.SystemCode);
             }
         }
 
@@ -167,7 +166,7 @@ namespace Unicom.Platform.Service
             }
             else
             {
-                Console.WriteLine($"发送数据成功，时间：{DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}。");
+                Console.WriteLine($"发送数据成功，时间：{DateTime.Now:yyyy-MM-dd hh:mm:ss}。");
             }
         }
 
@@ -175,7 +174,7 @@ namespace Unicom.Platform.Service
         {
             var device = _context.FirstOrDefault<EmsDevice>($"SystemCode = {systemDeviceCode}");
 
-            var project = _context.FirstOrDefault<EmsProject>($"UnicomCode == {device.ProjectUnicomCode}");
+            var project = _context.FirstOrDefault<EmsProject>($"UnicomCode == '{device.ProjectUnicomCode}'");
 
             foreach (var emsData in emsDatas)
             {

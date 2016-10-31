@@ -5,6 +5,7 @@ using ESMonitor.DataProvider.Models;
 using SHWDTech.Platform.Utility.ExtensionMethod;
 using Unicom.DataProvider;
 using Unicom.Platform.Model.Service_References.UnicomPlatform;
+
 // ReSharper disable PossibleInvalidOperationException
 
 namespace ESMonitor.DataProvider
@@ -99,7 +100,10 @@ namespace ESMonitor.DataProvider
                     noise = (int)esMin.DB,
                     windSpeed = (float)esMin.WindSpeed,
                     windDirection = (int)esMin.WindDirection,
-                    dateTime = ConvertToUnixTime(esMin.UpdateTime.Value)
+                    dateTime = ConvertToUnixTime(esMin.UpdateTime.Value),
+                    dustFlag = "N",
+                    humiFlag = "N",
+                    noiseFlag = "N"
                 };
 
                 emsDatas.Add(emsData);
@@ -117,7 +121,10 @@ namespace ESMonitor.DataProvider
                 {
                     dust = ((float)esHour.TP) / 1000,
                     noise = (int)esHour.DB,
-                    dateTime = ConvertToUnixTime(esHour.UpdateTime)
+                    dateTime = ConvertToUnixTime(esHour.UpdateTime),
+                    dustFlag = "N",
+                    humiFlag = "N",
+                    noiseFlag = "N"
                 };
 
                 emsDatas.Add(emsData);
@@ -135,7 +142,10 @@ namespace ESMonitor.DataProvider
                 {
                     dust = ((float)esDay.TP) / 1000,
                     noise = (int)esDay.DB,
-                    dateTime = ConvertToUnixTime(esDay.UpdateTime)
+                    dateTime = ConvertToUnixTime(esDay.UpdateTime),
+                    dustFlag = "N",
+                    humiFlag = "N",
+                    noiseFlag = "N"
                 };
 
                 emsDatas.Add(emsData);

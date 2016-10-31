@@ -24,7 +24,7 @@ namespace Unicom.Platform
 
         static UnicomService()
         {
-            VendorCode = ConfigurationManager.AppSettings["VendorCode"];
+            VendorCode = ConfigurationManager.AppSettings["vendorCode"];
             ProjectShortTitle = ConfigurationManager.AppSettings["ProjectShortTitle"];
             Instance = new PushResourceServiceClient();
         }

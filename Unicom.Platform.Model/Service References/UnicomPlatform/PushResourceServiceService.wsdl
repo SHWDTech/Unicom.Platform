@@ -155,6 +155,9 @@
           <xs:element name="windSpeed" type="xs:float" />
           <xs:element name="windDirection" type="xs:int" />
           <xs:element name="dateTime" type="xs:long" />
+          <xs:element minOccurs="0" name="dustFlag" type="xs:string" />
+          <xs:element minOccurs="0" name="noiseFlag" type="xs:string" />
+          <xs:element minOccurs="0" name="humiFlag" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="pushHourlyDataResponse">
@@ -239,6 +242,7 @@
           <xs:element minOccurs="0" name="endDate" type="xs:dateTime" />
           <xs:element minOccurs="0" name="stage" type="xs:string" />
           <xs:element minOccurs="0" name="isCompleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="status" type="xs:boolean" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="pushProjectsResponse">

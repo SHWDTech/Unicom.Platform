@@ -5,6 +5,7 @@ using Unicom.Platform.Model;
 using Unicom.Platform.Model.Service_References.UnicomPlatform;
 using Unicom.Platform.SQLite;
 using Unicom.Register.Common;
+using EmsDevice = Unicom.Platform.Model.Service_References.UnicomPlatform.EmsDevice;
 
 namespace Unicom.Register.Views
 {
@@ -33,35 +34,35 @@ namespace Unicom.Register.Views
         {
             try
             {
-                var emsDevice = new emsDevice
+                var emsDevice = new EmsDevice
                 {
-                    name = TxtDeviceName.Text,
-                    ipAddr = TxtIpAddress.Text,
-                    macAddr = TxtMacAddress.Text,
-                    port = TxtPort.Text,
-                    version = TxtDeviceVersion.Text,
-                    projectCode = CmbProject.SelectedValue.ToString(),
-                    longitude = TxtLongitude.Text,
-                    latitude = TxtLatitude.Text,
-                    startDate = DpStartDate.DisplayDate,
-                    startDateSpecified = true,
-                    endDate = DpEndDate.DisplayDate,
-                    endDateSpecified = true,
-                    installDate = DpInstallDate.DisplayDate,
-                    installDateSpecified = true,
-                    onlineStatus = CbOnlineStatus.IsChecked == true,
-                    onlineStatusSpecified = true,
-                    videoUrl = TxtVideoUrl.Text
+                    Name = TxtDeviceName.Text,
+                    IpAddr = TxtIpAddress.Text,
+                    MacAddr = TxtMacAddress.Text,
+                    Port = TxtPort.Text,
+                    Version = TxtDeviceVersion.Text,
+                    ProjectCode = CmbProject.SelectedValue.ToString(),
+                    Longitude = TxtLongitude.Text,
+                    Latitude = TxtLatitude.Text,
+                    StartDate = DpStartDate.DisplayDate,
+                    StartDateSpecified = true,
+                    EndDate = DpEndDate.DisplayDate,
+                    EndDateSpecified = true,
+                    InstallDate = DpInstallDate.DisplayDate,
+                    InstallDateSpecified = true,
+                    OnlineStatus = CbOnlineStatus.IsChecked == true,
+                    OnlineStatusSpecified = true,
+                    VideoUrl = TxtVideoUrl.Text
                 };
 
                 var service = new UnicomService();
                 var result = service.PushDevices(new[] {emsDevice});
-                if (!result.result[0].value.ToString().Contains("ERROR"))
+                if (!result.Result[0].Value.ToString().Contains("ERROR"))
                 {
-                    var project = new EmsDevice
+                    var project = new Platform.Model.EmsDevice
                     {
                         SystemCode = TxtSystemCode.Text,
-                        UnicomCode = result.result[0].key.ToString(),
+                        UnicomCode = result.Result[0].Key.ToString(),
                         ProjectUnicomCode = CmbProject.SelectedValue.ToString(),
                         UnicomName = TxtDeviceName.Text,
                         OnTransfer = false
