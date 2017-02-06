@@ -27,14 +27,14 @@ namespace Unicom.Register.Views
         {
             foreach (var project in _context.Projects)
             {
-                _projectOnTransfer.Add(project.Id, project.OnTransfer);
-                CmbProjects.Items.Add(new { Key = project.Id, Value = project.UnicomName });
+                _projectOnTransfer.Add(project.Id, project.onTransfer);
+                CmbProjects.Items.Add(new { Key = project.Id, Value = project.name });
             }
             CmbProjects.SelectedIndex = 0;
             foreach (var device in _context.Devices)
             {
                 _deviceOnTransfer.Add(device.Id, device.OnTransfer);
-                CmbDevices.Items.Add(new { Key = device.Id, Value = device.UnicomName });
+                CmbDevices.Items.Add(new { Key = device.Id, Value = device.name });
             }
             CmbDevices.SelectedIndex = 0;
         }
@@ -43,11 +43,11 @@ namespace Unicom.Register.Views
         {
             var projectId = (long) CmbProjects.SelectedValue;
             var project = _context.FirstOrDefault<EmsProject>($"Id = {projectId}");
-            project.OnTransfer = !project.OnTransfer;
+            project.onTransfer = !project.onTransfer;
             var result = _context.AddOrUpdate(project);
             if (result > 0)
             {
-                LblProjectOnTransfer.Content = project.OnTransfer;
+                LblProjectOnTransfer.Content = project.onTransfer;
             }
         }
 

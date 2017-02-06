@@ -21,7 +21,20 @@ namespace Unicom.Platform.SQLite
 
                 foreach (var properties in objectProperties.Where(properties => columnNames.Contains(properties.Name) && dataRow[properties.Name] != DBNull.Value))
                 {
-                    properties.SetValue(instanceOfT, dataRow[properties.Name], null);
+                    if (properties.PropertyType == typeof(float))
+                    {
+                        var value = float.Parse(dataRow[properties.Name].ToString());
+                        properties.SetValue(instanceOfT, value, null);
+                    }
+                    else if (properties.PropertyType == typeof(DateTime))
+                    {
+                        var value = DateTime.Parse(dataRow[properties.Name].ToString());
+                        properties.SetValue(instanceOfT, value, null);
+                    }
+                    else
+                    {
+                        properties.SetValue(instanceOfT, dataRow[properties.Name], null);
+                    }
                 }
                 return instanceOfT;
             }).ToList();

@@ -1,17 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Unicom.Platform.Model.Service_References.UnicomPlatform;
 
 namespace Unicom.Platform.Model
 {
-    public class EmsDevice
+    public class EmsDevice : emsDevice
     {
         [Key]
         public virtual long Id { get; set; }
-
-        public virtual string ProjectUnicomCode { get; set; }
-
-        public virtual string UnicomCode { get; set; }
-
-        public virtual string UnicomName { get; set; }
 
         public virtual string SystemCode { get; set; }
 

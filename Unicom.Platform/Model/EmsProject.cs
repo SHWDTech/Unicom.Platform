@@ -1,20 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Unicom.Platform.Model.Service_References.UnicomPlatform;
 
 namespace Unicom.Platform.Model
 {
-    public class EmsProject
+    public class EmsProject : emsProject
     {
         [Key]
         public virtual long Id { get; set; }
 
         public virtual string SystemCode { get; set; }
 
-        public virtual string UnicomName { get; set; }
-
-        public virtual string UnicomCode { get; set; }
-
-        public virtual int PrjType { get; set; }
-
-        public virtual bool OnTransfer { get; set; }
+        // ReSharper disable once InconsistentNaming
+        public virtual bool onTransfer { get; set; }
     }
 }

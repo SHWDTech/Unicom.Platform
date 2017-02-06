@@ -100,7 +100,7 @@ namespace Unicom.Platform.SQLite
             {
                 conn.Open();
 
-                var cmd = new SQLiteCommand($"SELECT ID FROM {tableName} where {where}", conn);
+                var cmd = new SQLiteCommand($"SELECT Id FROM {tableName} where {where}", conn);
 
                 return cmd.ExecuteScalar();
             }
@@ -184,7 +184,7 @@ namespace Unicom.Platform.SQLite
                 }
                 result.Add($"{objectProperty.Name} = {value}");
             }
-            return $"{string.Join(",", result)} WHERE ID = {(long)model.GetType().GetProperty("Id").GetValue(model, null)}";
+            return $"{string.Join(",", result)} WHERE Id = {(long)model.GetType().GetProperty("Id").GetValue(model, null)}";
         }
 
         public int Execute(string executeSql)

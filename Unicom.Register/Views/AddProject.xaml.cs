@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using Unicom.Platform;
+using Unicom.Platform.Model;
 using Unicom.Platform.Model.Service_References.UnicomPlatform;
 using Unicom.Platform.SQLite;
 using Unicom.Register.Common;
@@ -47,14 +48,24 @@ namespace Unicom.Register.Views
                 CmbDistrict.Items.Add(new { Key = district.Name, Value = district.Code });
             }
 
+            foreach (var project in _context.Projects)
+            {
+                CmbProjectList.Items.Add(new { Key = project.name, Value = project.Id });
+            }
+
             TxtShortTitle.Text = AppConfig.ShortTitle;
+        }
+
+        private void LoadProject(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void Submit(object sender, RoutedEventArgs e)
         {
             try
             {
-                var emsProject = new emsProject()
+                var emsProject = new EmsProject()
                 {
                     code = $"{TxtShortTitle.Text}{TxtBjCode.Text}",
                     name = $"{TxtPrjName.Text}",
@@ -88,24 +99,17 @@ namespace Unicom.Register.Views
                 };
 
                 var service = new UnicomService();
-                var result = service.PushProjects(new[] {emsProject});
+                var result = service.PushProjects(new emsProject[] { emsProject });
                 if (result.result[0].value.ToString().Contains("ERROR")) return;
-                var project = new Platform.Model.EmsProject
-                {
-                    UnicomCode = result.result[0].value.ToString(),
-                    SystemCode = TxtSystemCode.Text,
-                    OnTransfer = false,
-                    UnicomName = result.result[0].key.ToString(),
-                    PrjType = int.Parse(CmbPrjType.SelectedValue.ToString())
-                };
-                _context.AddOrUpdate(project);
+                emsProject.SystemCode = TxtSystemCode.Text;
+                _context.AddOrUpdate(emsProject);
                 MessageBox.Show("添加成功。");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
     }
 }

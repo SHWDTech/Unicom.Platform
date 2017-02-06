@@ -110,8 +110,10 @@
             </StackPanel>
         </Grid>
         <Grid Row="11">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button x:Name="BtnSubmit" Content="确认提交" Width="100" Height="40" Click="Submit"></Button>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <ComboBox x:Name="CmbProjectList" Width="200" Margin="0, 0, 30, 0" SelectedValuePath="Value" DisplayMemberPath="Key" SelectedIndex="0"></ComboBox>
+                <Button x:Name="BtnLoad" Content="读取数据" Width="100" Height="40" Click="LoadProject" Margin="0, 0, 30, 0"/>
+                <Button x:Name="BtnSubmit" Content="确认提交" Width="100" Height="40" Click="Submit" Margin="0, 0, 30, 0"/>
             </StackPanel>
         </Grid>
     </Grid>
