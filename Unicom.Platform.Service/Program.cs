@@ -24,6 +24,8 @@ namespace Unicom.Platform.Service
 
         private static readonly List<string> OnTransferDevices = new List<string>();
 
+        private static readonly Dictionary<string, List<emsData>> HistoryDatas = new Dictionary<string, List<emsData>>();
+
         private static void Main()
         {
             _sqliteConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
@@ -57,9 +59,14 @@ namespace Unicom.Platform.Service
                 {
                     var dataProvider = new EsMonitorDataProvider();
                     var emsDatas = dataProvider.GetCurrentMinEmsDatas(taskState.ToString());
+                    if (emsDatas.Count <= 0)
+                    {
+                        LoadFormHistoryData(taskState.ToString(), emsDatas);
+                        NotifyServer.Notify(taskState.ToString(), $"设备分钟值取值失败，请检查设备状态，异常设备系统编码为：{taskState}");
+                    }
                     AddDeviceInfo(emsDatas, taskState.ToString());
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
-                    OutputError(result);
+                    OutputError(result, taskState, emsDatas);
                     AddMinuteTask(taskState);
                 }
                 else
@@ -86,9 +93,14 @@ namespace Unicom.Platform.Service
                 {
                     var dataProvider = new EsMonitorDataProvider();
                     var emsDatas = dataProvider.GetCurrentHourEmsDatas(taskState.ToString());
+                    if (emsDatas.Count <= 0)
+                    {
+                        LoadFormHistoryData(taskState.ToString(), emsDatas);
+                        NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备系统编码为：{taskState}");
+                    }
                     AddDeviceInfo(emsDatas, taskState.ToString());
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
-                    OutputError(result);
+                    OutputError(result, taskState, emsDatas);
                     AddHourTask(taskState);
                 }
                 else
@@ -114,9 +126,14 @@ namespace Unicom.Platform.Service
                 {
                     var dataProvider = new EsMonitorDataProvider();
                     var emsDatas = dataProvider.GetCurrentDayEmsDatas(taskState.ToString());
+                    if (emsDatas.Count <= 0)
+                    {
+                        LoadFormHistoryData(taskState.ToString(), emsDatas);
+                        NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备系统编码为：{taskState}");
+                    }
                     AddDeviceInfo(emsDatas, taskState.ToString());
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
-                    OutputError(result);
+                    OutputError(result, taskState, emsDatas);
                     AddDayTask(taskState);
                 }
                 else
@@ -136,7 +153,7 @@ namespace Unicom.Platform.Service
 
         private static void AddMinuteTask(object taskState)
         {
-            var runTime = DateTime.Now.GetCurrentMinute().AddMinutes(5);
+            var runTime = DateTime.Now.GetCurrentMinute().AddMinutes(15);
             var task = new Task.Task(MinuteTimerCallBack, new ScheduleExecutionOnce(runTime));
             task.Start(taskState);
         }
@@ -155,7 +172,7 @@ namespace Unicom.Platform.Service
             task.Start(taskState);
         }
 
-        private static void OutputError(resultData result)
+        private static void OutputError(resultData result, object devId, IEnumerable<emsData> emsDatas)
         {
             if (result.result.Length > 0)
             {
@@ -167,6 +184,7 @@ namespace Unicom.Platform.Service
             else
             {
                 Console.WriteLine($"发送数据成功，时间：{DateTime.Now:yyyy-MM-dd hh:mm:ss}。");
+                AddToHistoryData(devId.ToString(), emsDatas);
             }
         }
 
@@ -194,14 +212,39 @@ namespace Unicom.Platform.Service
         {
             foreach (var device in _context.Devices)
             {
-                if (!OnTransferDevices.Contains(device.SystemCode) && device.OnTransfer)
-                {
-                    AddMinuteTask(device.SystemCode);
-                    AddHourTask(device.SystemCode);
-                    AddDayTask(device.SystemCode);
-                    OnTransferDevices.Add(device.SystemCode);
-                }
+                if (OnTransferDevices.Contains(device.SystemCode) || !device.OnTransfer) continue;
+                AddMinuteTask(device.SystemCode);
+                AddHourTask(device.SystemCode);
+                AddDayTask(device.SystemCode);
+                OnTransferDevices.Add(device.SystemCode);
             }
+        }
+
+        private static void AddToHistoryData(string dev, IEnumerable<emsData> datas)
+        {
+            if (!HistoryDatas.ContainsKey(dev))
+            {
+                HistoryDatas.Add(dev, new List<emsData>());
+            }
+            HistoryDatas[dev].AddRange(datas);
+        }
+
+        private static void LoadFormHistoryData(string dev, ICollection<emsData> emsDatas)
+        {
+            if (!HistoryDatas.ContainsKey(dev)) return;
+
+            var list = HistoryDatas[dev];
+            var rd = new Random();
+            var value = list[rd.Next(0, list.Count)];
+            value.dateTime = ConvertToUnixTime(DateTime.Now);
+            emsDatas.Add(value);
+        }
+
+        private static long ConvertToUnixTime(DateTime dateTime)
+        {
+            var sTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
+            return (long)(dateTime.ToUniversalTime() - sTime).TotalMilliseconds;
         }
     }
 }

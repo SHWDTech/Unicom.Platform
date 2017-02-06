@@ -31,24 +31,24 @@ namespace Unicom.Register.Common
 
             foreach (var emsPrjType in types)
             {
-                var ret = Context.GetId<EmsPrjType>($"Code = {emsPrjType.Code}");
+                var ret = Context.GetId<EmsPrjType>($"Code = {emsPrjType.code}");
                 if (ret != null)
                 {
                     var id = (long) ret;
                     Context.AddOrUpdate(new EmsPrjType
                     {
-                        Code = emsPrjType.Code.ToString(),
+                        Code = emsPrjType.code.ToString(),
                         Id = id,
-                        Name = emsPrjType.Name
+                        Name = emsPrjType.name
                     });
                 }
                 else
                 {
                     Context.AddOrUpdate(new EmsPrjType
                     {
-                        Code = emsPrjType.Code.ToString(),
+                        Code = emsPrjType.code.ToString(),
                         Id = -1,
-                        Name = emsPrjType.Name
+                        Name = emsPrjType.name
 
                     });
                 }
@@ -61,24 +61,24 @@ namespace Unicom.Register.Common
 
             foreach (var emsPrjPeriod in periods)
             {
-                var ret = Context.GetId<EmsPrjPeriod>($"Code = {emsPrjPeriod.Code}");
+                var ret = Context.GetId<EmsPrjPeriod>($"Code = {emsPrjPeriod.code}");
                 if (ret != null)
                 {
                     var id = (long)ret;
                     Context.AddOrUpdate(new EmsPrjPeriod
                     {
-                        Code = emsPrjPeriod.Code.ToString(),
+                        Code = emsPrjPeriod.code.ToString(),
                         Id = id,
-                        Name = emsPrjPeriod.Name
+                        Name = emsPrjPeriod.name
                     });
                 }
                 else
                 {
                     Context.AddOrUpdate(new EmsPrjPeriod
                     {
-                        Code = emsPrjPeriod.Code.ToString(),
+                        Code = emsPrjPeriod.code.ToString(),
                         Id = -1,
-                        Name = emsPrjPeriod.Name
+                        Name = emsPrjPeriod.name
 
                     });
                 }
@@ -91,24 +91,24 @@ namespace Unicom.Register.Common
 
             foreach (var emsPrjCategory in categories)
             {
-                var ret = Context.GetId<EmsPrjCategory>($"Code = {emsPrjCategory.Code}");
+                var ret = Context.GetId<EmsPrjCategory>($"Code = {emsPrjCategory.code}");
                 if (ret != null)
                 {
                     var id = (long)ret;
                     Context.AddOrUpdate(new EmsPrjCategory
                     {
-                        Code = emsPrjCategory.Code.ToString(),
+                        Code = emsPrjCategory.code.ToString(),
                         Id = id,
-                        Name = emsPrjCategory.Name
+                        Name = emsPrjCategory.name
                     });
                 }
                 else
                 {
                     Context.AddOrUpdate(new EmsPrjCategory
                     {
-                        Code = emsPrjCategory.Code.ToString(),
+                        Code = emsPrjCategory.code.ToString(),
                         Id = -1,
-                        Name = emsPrjCategory.Name
+                        Name = emsPrjCategory.name
 
                     });
                 }
@@ -121,24 +121,24 @@ namespace Unicom.Register.Common
 
             foreach (var emsRegion in regions)
             {
-                var ret = Context.GetId<EmsRegion>($"Code = {emsRegion.Code}");
+                var ret = Context.GetId<EmsRegion>($"Code = {emsRegion.code}");
                 if (ret != null)
                 {
                     var id = (long)ret;
                     Context.AddOrUpdate(new EmsRegion
                     {
-                        Code = emsRegion.Code.ToString(),
+                        Code = emsRegion.code.ToString(),
                         Id = id,
-                        Name = emsRegion.Name
+                        Name = emsRegion.name
                     });
                 }
                 else
                 {
                     Context.AddOrUpdate(new EmsRegion
                     {
-                        Code = emsRegion.Code.ToString(),
+                        Code = emsRegion.code.ToString(),
                         Id = -1,
-                        Name = emsRegion.Name
+                        Name = emsRegion.name
 
                     });
                 }
@@ -151,24 +151,24 @@ namespace Unicom.Register.Common
 
             foreach (var emsDistrict in districts)
             {
-                var ret = Context.GetId<EmsDistrict>($"Code = '{emsDistrict.Code}'");
+                var ret = Context.GetId<EmsDistrict>($"Code = '{emsDistrict.code}'");
                 if (ret != null)
                 {
                     var id = (long)ret;
                     Context.AddOrUpdate(new EmsDistrict
                     {
-                        Code = emsDistrict.Code,
+                        Code = emsDistrict.code,
                         Id = id,
-                        Name = emsDistrict.Name
+                        Name = emsDistrict.name
                     });
                 }
                 else
                 {
                     Context.AddOrUpdate(new EmsDistrict
                     {
-                        Code = emsDistrict.Code,
+                        Code = emsDistrict.code,
                         Id = -1,
-                        Name = emsDistrict.Name
+                        Name = emsDistrict.name
 
                     });
                 }

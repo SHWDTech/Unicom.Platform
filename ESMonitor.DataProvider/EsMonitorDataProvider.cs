@@ -87,71 +87,28 @@ namespace ESMonitor.DataProvider
             }
         }
 
-        private List<emsData> EsMinToEmsDatas(List<T_ESMin> esMins)
+        private static List<emsData> EsMinToEmsDatas(IEnumerable<T_ESMin> esMins)
         {
-            var emsDatas = new List<emsData>();
-            foreach (var esMin in esMins)
+            return esMins.Select(esMin => new emsData
             {
-                var emsData = new emsData
-                {
-                    dust = ((float)esMin.TP) / 1000,
-                    temperature = (float)esMin.Temperature,
-                    humidity = (float)esMin.Humidity,
-                    noise = (int)esMin.DB,
-                    windSpeed = (float)esMin.WindSpeed,
-                    windDirection = (int)esMin.WindDirection,
-                    dateTime = ConvertToUnixTime(esMin.UpdateTime.Value),
-                    dustFlag = "N",
-                    humiFlag = "N",
-                    noiseFlag = "N"
-                };
-
-                emsDatas.Add(emsData);
-            }
-
-            return emsDatas;
+                dust = ((float) esMin.TP)/1000, temperature = (float) esMin.Temperature, humidity = (float) esMin.Humidity, noise = (int) esMin.DB, windSpeed = (float) esMin.WindSpeed, windDirection = (int) esMin.WindDirection, dateTime = ConvertToUnixTime(esMin.UpdateTime.Value), dustFlag = "N", humiFlag = "N", noiseFlag = "N"
+            }).ToList();
         }
 
-        private List<emsData> EsHourToEmsDatas(List<T_ESHour> esHours)
+        private static List<emsData> EsHourToEmsDatas(IEnumerable<T_ESHour> esHours)
         {
-            var emsDatas = new List<emsData>();
-            foreach (var esHour in esHours)
+            return esHours.Select(esHour => new emsData
             {
-                var emsData = new emsData
-                {
-                    dust = ((float)esHour.TP) / 1000,
-                    noise = (int)esHour.DB,
-                    dateTime = ConvertToUnixTime(esHour.UpdateTime),
-                    dustFlag = "N",
-                    humiFlag = "N",
-                    noiseFlag = "N"
-                };
-
-                emsDatas.Add(emsData);
-            }
-
-            return emsDatas;
+                dust = ((float) esHour.TP)/1000, noise = (int) esHour.DB, dateTime = ConvertToUnixTime(esHour.UpdateTime), dustFlag = "N", humiFlag = "N", noiseFlag = "N"
+            }).ToList();
         }
 
-        private List<emsData> EsDayToEmsDatas(List<T_ESDay> esDays)
+        private static List<emsData> EsDayToEmsDatas(IEnumerable<T_ESDay> esDays)
         {
-            var emsDatas = new List<emsData>();
-            foreach (var esDay in esDays)
+            return esDays.Select(esDay => new emsData
             {
-                var emsData = new emsData
-                {
-                    dust = ((float)esDay.TP) / 1000,
-                    noise = (int)esDay.DB,
-                    dateTime = ConvertToUnixTime(esDay.UpdateTime),
-                    dustFlag = "N",
-                    humiFlag = "N",
-                    noiseFlag = "N"
-                };
-
-                emsDatas.Add(emsData);
-            }
-
-            return emsDatas;
+                dust = ((float) esDay.TP)/1000, noise = (int) esDay.DB, dateTime = ConvertToUnixTime(esDay.UpdateTime), dustFlag = "N", humiFlag = "N", noiseFlag = "N"
+            }).ToList();
         }
 
         private static long ConvertToUnixTime(DateTime dateTime)
