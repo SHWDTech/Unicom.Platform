@@ -192,13 +192,13 @@ namespace Unicom.Platform.Service
         {
             var device = _context.FirstOrDefault<EmsDevice>($"SystemCode = {systemDeviceCode}");
 
-            var project = _context.FirstOrDefault<EmsProject>($"UnicomCode == '{device.ProjectUnicomCode}'");
+            var project = _context.FirstOrDefault<EmsProject>($"UnicomCode == '{device.code}'");
 
             foreach (var emsData in emsDatas)
             {
-                emsData.devCode = device.UnicomCode;
-                emsData.prjCode = project.UnicomCode;
-                emsData.prjType = project.PrjType;
+                emsData.devCode = device.code;
+                emsData.prjCode = project.code;
+                emsData.prjType = project.prjType;
             }
         }
 

@@ -155,6 +155,10 @@ namespace Unicom.Platform.SQLite
                 {
                     value = Convert.ToInt32(value);
                 }
+                if (value is DateTime)
+                {
+                    value = $"{value:yyyy-MM-dd HH:mm:ss}";
+                }
                 values.Add(value.ToString());
             }
 

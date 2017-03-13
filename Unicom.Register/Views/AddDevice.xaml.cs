@@ -33,9 +33,8 @@ namespace Unicom.Register.Views
         {
             try
             {
-                var emsDevice = new EmsDevice
+                var emsDevice = new emsDevice()
                 {
-                    code = $"{AppConfig.ShortTitle}{AppConfig.VendorCode}{TxtDeviceName.Text}",
                     name = TxtDeviceName.Text,
                     ipAddr = TxtIpAddress.Text,
                     macAddr = TxtMacAddress.Text,
@@ -56,11 +55,32 @@ namespace Unicom.Register.Views
                 };
 
                 var service = new UnicomService();
-                var result = service.PushDevices(new emsDevice[] { emsDevice });
+                var result = service.PushDevices(new[] { emsDevice });
                 if (result.result[0].value.ToString().Contains("ERROR")) return;
-                emsDevice.SystemCode = TxtSystemCode.Text;
-                emsDevice.OnTransfer = false;
-                _context.AddOrUpdate(emsDevice);
+                var dev = new EmsDevice
+                {
+                    SystemCode = TxtSystemCode.Text,
+                    OnTransfer = CbOnlineStatus.IsChecked == true,
+                    code = emsDevice.code,
+                    name = emsDevice.name,
+                    ipAddr = emsDevice.ipAddr,
+                    macAddr = emsDevice.macAddr,
+                    port = emsDevice.port,
+                    version = emsDevice.version,
+                    projectCode = emsDevice.projectCode,
+                    longitude = emsDevice.longitude,
+                    latitude = emsDevice.latitude,
+                    startDate = emsDevice.startDate,
+                    startDateSpecified = true,
+                    endDate = emsDevice.endDate,
+                    endDateSpecified = true,
+                    installDate = emsDevice.installDate,
+                    installDateSpecified = true,
+                    onlineStatus = true,
+                    onlineStatusSpecified = true,
+                    videoUrl = emsDevice.videoUrl
+                };
+                _context.AddOrUpdate(dev);
                 MessageBox.Show("添加成功。");
             }
             catch (Exception ex)

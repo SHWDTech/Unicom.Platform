@@ -65,7 +65,7 @@ namespace Unicom.Register.Views
         {
             try
             {
-                var emsProject = new EmsProject()
+                var emsProject = new emsProject
                 {
                     code = $"{TxtShortTitle.Text}{TxtBjCode.Text}",
                     name = $"{TxtPrjName.Text}",
@@ -94,20 +94,63 @@ namespace Unicom.Register.Views
                     endDate = DpEndDate.DisplayDate,
                     endDateSpecified = true,
                     stage = TxtStage.Text,
+                    status = true,
+                    statusSpecified = true,
                     isCompleted = CbCompleted.IsChecked == true,
                     isCompletedSpecified = true
                 };
 
                 var service = new UnicomService();
-                var result = service.PushProjects(new emsProject[] { emsProject });
+                var result = service.PushProjects(new[] { emsProject });
                 if (result.result[0].value.ToString().Contains("ERROR")) return;
-                emsProject.SystemCode = TxtSystemCode.Text;
-                _context.AddOrUpdate(emsProject);
+                var prj = new EmsProject
+                {
+                    SystemCode = TxtSystemCode.Text,
+                    onTransfer = false,
+                    code = emsProject.code,
+                    name = emsProject.name,
+                    district = emsProject.district,
+                    prjType = emsProject.prjType,
+                    prjTypeSpecified = true,
+                    prjCategory = emsProject.prjCategory,
+                    prjCategorySpecified = true,
+                    prjPeriod = emsProject.prjPeriod,
+                    prjPeriodSpecified = true,
+                    region = emsProject.region,
+                    regionSpecified = true,
+                    street = emsProject.street,
+                    longitude = emsProject.longitude,
+                    latitude = emsProject.latitude,
+                    contractors = emsProject.contractors,
+                    superintendent = emsProject.superintendent,
+                    telephone = emsProject.telephone,
+                    address = emsProject.address,
+                    siteArea = emsProject.siteArea,
+                    siteAreaSpecified = true,
+                    buildingArea = emsProject.buildingArea,
+                    buildingAreaSpecified = true,
+                    startDate = emsProject.startDate,
+                    startDateSpecified = true,
+                    endDate = emsProject.endDate,
+                    endDateSpecified = true,
+                    stage = emsProject.stage,
+                    status = emsProject.status,
+                    statusSpecified = emsProject.statusSpecified,
+                    isCompleted = emsProject.isCompleted,
+                    isCompletedSpecified = true
+                };
+                _context.AddOrUpdate(prj);
                 MessageBox.Show("添加成功。");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                var innerException = ex.InnerException;
+                while (innerException != null)
+                {
+                    MessageBox.Show(innerException.Message);
+                    innerException = innerException.InnerException;
+                }
             }
 
         }

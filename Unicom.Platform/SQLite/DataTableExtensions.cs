@@ -31,6 +31,16 @@ namespace Unicom.Platform.SQLite
                         var value = DateTime.Parse(dataRow[properties.Name].ToString());
                         properties.SetValue(instanceOfT, value, null);
                     }
+                    else if (properties.PropertyType == typeof(bool))
+                    {
+                        var value = long.Parse(dataRow[properties.Name].ToString()) == 0;
+                        properties.SetValue(instanceOfT, value, null);
+                    }
+                    else if (properties.PropertyType == typeof(int))
+                    {
+                        var value = int.Parse(dataRow[properties.Name].ToString());
+                        properties.SetValue(instanceOfT, value, null);
+                    }
                     else
                     {
                         properties.SetValue(instanceOfT, dataRow[properties.Name], null);
