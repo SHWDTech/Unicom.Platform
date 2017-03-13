@@ -33,7 +33,7 @@ namespace Unicom.Platform.SQLite
                     }
                     else if (properties.PropertyType == typeof(bool))
                     {
-                        var value = long.Parse(dataRow[properties.Name].ToString()) == 0;
+                        var value = long.Parse(dataRow[properties.Name].ToString()) == 1;
                         properties.SetValue(instanceOfT, value, null);
                     }
                     else if (properties.PropertyType == typeof(int))

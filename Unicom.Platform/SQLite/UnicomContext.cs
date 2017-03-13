@@ -157,7 +157,7 @@ namespace Unicom.Platform.SQLite
                 }
                 if (value is DateTime)
                 {
-                    value = $"{value:yyyy-MM-dd HH:mm:ss}";
+                    value = ($"'{value:yyyy-MM-dd HH:mm:ss}'");
                 }
                 values.Add(value.ToString());
             }

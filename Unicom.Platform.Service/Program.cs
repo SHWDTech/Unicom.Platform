@@ -153,7 +153,7 @@ namespace Unicom.Platform.Service
 
         private static void AddMinuteTask(object taskState)
         {
-            var runTime = DateTime.Now.GetCurrentMinute().AddMinutes(15);
+            var runTime = DateTime.Now.GetCurrentMinute().AddMinutes(1);
             var task = new Task.Task(MinuteTimerCallBack, new ScheduleExecutionOnce(runTime));
             task.Start(taskState);
         }
@@ -192,7 +192,7 @@ namespace Unicom.Platform.Service
         {
             var device = _context.FirstOrDefault<EmsDevice>($"SystemCode = {systemDeviceCode}");
 
-            var project = _context.FirstOrDefault<EmsProject>($"UnicomCode == '{device.code}'");
+            var project = _context.FirstOrDefault<EmsProject>($"code == '{device.projectCode}'");
 
             foreach (var emsData in emsDatas)
             {

@@ -56,7 +56,12 @@ namespace Unicom.Register.Views
 
                 var service = new UnicomService();
                 var result = service.PushDevices(new[] { emsDevice });
-                if (result.result[0].value.ToString().Contains("ERROR")) return;
+                if (result.result[0].value.ToString().Contains("ERROR"))
+                {
+                    MessageBox.Show(result.result[0].value.ToString());
+                    return;
+                }
+                emsDevice.code = result.result[0].key.ToString();
                 var dev = new EmsDevice
                 {
                     SystemCode = TxtSystemCode.Text,
