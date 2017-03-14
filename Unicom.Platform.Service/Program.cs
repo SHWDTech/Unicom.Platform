@@ -160,14 +160,14 @@ namespace Unicom.Platform.Service
 
         private static void AddHourTask(object taskState)
         {
-            var runTime = DateTime.Now.GetCurrentHour().AddHours(1);
+            var runTime = DateTime.Now.GetCurrentHour().AddHours(1).AddMinutes(5);
             var task = new Task.Task(HourTimerCallBack, new ScheduleExecutionOnce(runTime));
             task.Start(taskState);
         }
 
         private static void AddDayTask(object taskState)
         {
-            var runTime = DateTime.Now.GetToday().AddDays(1);
+            var runTime = DateTime.Now.GetToday().AddDays(1).AddMinutes(5);
             var task = new Task.Task(DayTimerCallBack, new ScheduleExecutionOnce(runTime));
             task.Start(taskState);
         }

@@ -102,7 +102,11 @@ namespace Unicom.Register.Views
 
                 var service = new UnicomService();
                 var result = service.PushProjects(new[] { emsProject });
-                if (result.result[0].value.ToString().Contains("ERROR")) return;
+                if (result.result[0].value.ToString().Contains("ERROR"))
+                {
+                    MessageBox.Show(result.result[0].value.ToString());
+                    return;
+                }
                 var prj = new EmsProject
                 {
                     SystemCode = TxtSystemCode.Text,

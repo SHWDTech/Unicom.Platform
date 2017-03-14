@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using Unicom.Platform;
 using Unicom.Platform.Model;
@@ -15,6 +16,8 @@ namespace Unicom.Register.Views
     {
         private readonly UnicomContext _context = new UnicomContext(AppConfig.ConnectionString);
 
+        private string _deviceCode;
+
         public AddDevice()
         {
             InitializeComponent();
@@ -27,6 +30,10 @@ namespace Unicom.Register.Views
             {
                 CmbProject.Items.Add(new { Key = project.code, Value = project.name });
             }
+            foreach (var contextDevice in _context.Devices)
+            {
+                CmbDeviceList.Items.Add(new {Key = contextDevice.Id, Value = contextDevice.code});
+            }
         }
 
         private void Submit(object sender, RoutedEventArgs e)
@@ -35,6 +42,7 @@ namespace Unicom.Register.Views
             {
                 var emsDevice = new emsDevice()
                 {
+                    code = _deviceCode,
                     name = TxtDeviceName.Text,
                     ipAddr = TxtIpAddress.Text,
                     macAddr = TxtMacAddress.Text,
@@ -92,6 +100,27 @@ namespace Unicom.Register.Views
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void LoadDevice(object sender, RoutedEventArgs args)
+        {
+            var devId = long.Parse(CmbDeviceList.SelectedValue.ToString());
+            var device = _context.Devices.FirstOrDefault(dev => dev.Id == devId);
+            if (device == null) return;
+            _deviceCode = device.code;
+            TxtDeviceName.Text = device.name;
+            TxtIpAddress.Text = device.ipAddr;
+            TxtMacAddress.Text = device.macAddr;
+            TxtPort.Text = device.port;
+            TxtDeviceVersion.Text = device.version;
+            CmbProject.SelectedValue = device.projectCode;
+            TxtLongitude.Text = device.longitude;
+            TxtLatitude.Text = device.latitude;
+            DpStartDate.SelectedDate = device.startDate;
+            DpEndDate.SelectedDate = device.endDate;
+            DpInstallDate.SelectedDate = device.endDate;
+            CbOnlineStatus.IsChecked = true;
+            TxtVideoUrl.Text = device.videoUrl;
         }
     }
 }

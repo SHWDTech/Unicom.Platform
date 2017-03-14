@@ -75,6 +75,8 @@
         </Grid>
         <Grid Row="7">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <ComboBox x:Name="CmbDeviceList" Width="200" Margin="0, 0, 30, 0" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="0"></ComboBox>
+                <Button Content="读取设备信息" Margin="0, 0, 30, 0" Width="120" Click="LoadDevice"></Button>
                 <Button x:Name="BtnSubmit" Content="确认提交" Width="100" Height="40" Click="Submit"></Button>
             </StackPanel>
         </Grid>
