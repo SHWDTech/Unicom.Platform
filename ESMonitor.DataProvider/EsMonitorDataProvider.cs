@@ -19,7 +19,7 @@ namespace ESMonitor.DataProvider
                 var deviceId = int.Parse(devCode);
                 var minute = DateTime.Now.AddMinutes(-1);
                 var esMinDatas =
-                    context.EsMin.Where(obj => obj.DevId == deviceId && obj.UpdateTime > minute).ToList();
+                    context.EsMin.Where(obj => obj.DevId == deviceId && obj.UpdateTime >= minute).ToList();
 
                 return EsMinToEmsDatas(esMinDatas);
             }
@@ -32,7 +32,7 @@ namespace ESMonitor.DataProvider
                 var hour = DateTime.Now.GetPreviousHour();
                 var deviceId = int.Parse(devCode);
                 var esHourDatas =
-                    context.EsHour.Where(obj => obj.DevId == deviceId && obj.UpdateTime > hour).ToList();
+                    context.EsHour.Where(obj => obj.DevId == deviceId && obj.UpdateTime >= hour).ToList();
 
                 return EsHourToEmsDatas(esHourDatas);
             }
@@ -45,7 +45,7 @@ namespace ESMonitor.DataProvider
                 var day = DateTime.Now.GetPrevioudDay();
                 var deviceId = int.Parse(devCode);
                 var esDayDatas =
-                    context.EsDay.Where(obj => obj.DevId == deviceId && obj.UpdateTime > day).ToList();
+                    context.EsDay.Where(obj => obj.DevId == deviceId && obj.UpdateTime >= day).ToList();
 
                 return EsDayToEmsDatas(esDayDatas);
             }
@@ -87,29 +87,20 @@ namespace ESMonitor.DataProvider
             }
         }
 
-        private static List<emsData> EsMinToEmsDatas(IEnumerable<T_ESMin> esMins)
+        private static List<emsData> EsMinToEmsDatas(IEnumerable<T_ESMin> esMins) => esMins.Select(esMin => new emsData
         {
-            return esMins.Select(esMin => new emsData
-            {
-                dust = ((float) esMin.TP)/1000, temperature = (float) esMin.Temperature, humidity = (float) esMin.Humidity, noise = (int) esMin.DB, windSpeed = (float) esMin.WindSpeed, windDirection = (int) esMin.WindDirection, dateTime = ConvertToUnixTime(esMin.UpdateTime.Value), dustFlag = "N", humiFlag = "N", noiseFlag = "N"
-            }).ToList();
-        }
+            dust = ((float) esMin.TP)/1000, temperature = (float) esMin.Temperature, humidity = (float) esMin.Humidity, noise = (int) esMin.DB, windSpeed = (float) esMin.WindSpeed, windDirection = (int) esMin.WindDirection, dateTime = ConvertToUnixTime(esMin.UpdateTime.Value), dustFlag = "N", humiFlag = "N", noiseFlag = "N"
+        }).ToList();
 
-        private static List<emsData> EsHourToEmsDatas(IEnumerable<T_ESHour> esHours)
+        private static List<emsData> EsHourToEmsDatas(IEnumerable<T_ESHour> esHours) => esHours.Select(esHour => new emsData
         {
-            return esHours.Select(esHour => new emsData
-            {
-                dust = ((float) esHour.TP)/1000, noise = (int) esHour.DB, dateTime = ConvertToUnixTime(esHour.UpdateTime), dustFlag = "N", humiFlag = "N", noiseFlag = "N"
-            }).ToList();
-        }
+            dust = ((float) esHour.TP)/1000, noise = (int) esHour.DB, dateTime = ConvertToUnixTime(esHour.UpdateTime), dustFlag = "N", humiFlag = "N", noiseFlag = "N"
+        }).ToList();
 
-        private static List<emsData> EsDayToEmsDatas(IEnumerable<T_ESDay> esDays)
+        private static List<emsData> EsDayToEmsDatas(IEnumerable<T_ESDay> esDays) => esDays.Select(esDay => new emsData
         {
-            return esDays.Select(esDay => new emsData
-            {
-                dust = ((float) esDay.TP)/1000, noise = (int) esDay.DB, dateTime = ConvertToUnixTime(esDay.UpdateTime), dustFlag = "N", humiFlag = "N", noiseFlag = "N"
-            }).ToList();
-        }
+            dust = ((float) esDay.TP)/1000, noise = (int) esDay.DB, dateTime = ConvertToUnixTime(esDay.UpdateTime), dustFlag = "N", humiFlag = "N", noiseFlag = "N"
+        }).ToList();
 
         private static long ConvertToUnixTime(DateTime dateTime)
         {

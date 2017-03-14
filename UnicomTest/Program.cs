@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using ESMonitor.DataProvider;
 
 namespace UnicomTest
 {
@@ -10,10 +11,24 @@ namespace UnicomTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(DateTime.Today.AddHours(-4).AddMinutes(-25).AddSeconds(-55) < DateTime.Today);
-            Console.WriteLine(DateTime.Today.ToLongTimeString());
+            //Console.WriteLine(DateTime.Today.AddHours(-4).AddMinutes(-25).AddSeconds(-55) < DateTime.Today);
+            //Console.WriteLine(DateTime.Today.ToLongTimeString());
             //DoIt();
+            GetMin();
             Console.ReadKey();
+        }
+
+        static void GetMin()
+        {
+            var provider = new EsMonitorDataProvider();
+            var datas = provider.GetCurrentHourEmsDatas("17");
+            if (datas != null)
+            {
+                foreach (var emsData in datas)
+                {
+                    Console.WriteLine(emsData.dust);
+                }
+            }
         }
 
         static void DoIt()
