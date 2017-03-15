@@ -18,6 +18,8 @@ namespace Unicom.Register.Views
 
         private string _deviceCode;
 
+        private long _deviceId;
+
         public AddDevice()
         {
             InitializeComponent();
@@ -36,32 +38,66 @@ namespace Unicom.Register.Views
             }
         }
 
+        private emsDevice ConbineDevice()
+        {
+            var emsDevice = new emsDevice()
+            {
+                name = TxtDeviceName.Text,
+                ipAddr = TxtIpAddress.Text,
+                macAddr = TxtMacAddress.Text,
+                port = TxtPort.Text,
+                version = TxtDeviceVersion.Text,
+                projectCode = CmbProject.SelectedValue.ToString(),
+                longitude = TxtLongitude.Text,
+                latitude = TxtLatitude.Text,
+                startDate = DpStartDate.DisplayDate,
+                startDateSpecified = true,
+                endDate = DpEndDate.DisplayDate,
+                endDateSpecified = true,
+                installDate = DpInstallDate.DisplayDate,
+                installDateSpecified = true,
+                onlineStatus = CbOnlineStatus.IsChecked == true,
+                onlineStatusSpecified = true,
+                videoUrl = TxtVideoUrl.Text
+            };
+
+            return emsDevice;
+        }
+
+        private EmsDevice ConbineStoreDevice(emsDevice emsDevice)
+        {
+            var dev = new EmsDevice
+            {
+                SystemCode = TxtSystemCode.Text,
+                OnTransfer = CbOnlineStatus.IsChecked == true,
+                code = emsDevice.code,
+                name = emsDevice.name,
+                ipAddr = emsDevice.ipAddr,
+                macAddr = emsDevice.macAddr,
+                port = emsDevice.port,
+                version = emsDevice.version,
+                projectCode = emsDevice.projectCode,
+                longitude = emsDevice.longitude,
+                latitude = emsDevice.latitude,
+                startDate = emsDevice.startDate,
+                startDateSpecified = true,
+                endDate = emsDevice.endDate,
+                endDateSpecified = true,
+                installDate = emsDevice.installDate,
+                installDateSpecified = true,
+                onlineStatus = true,
+                onlineStatusSpecified = true,
+                videoUrl = emsDevice.videoUrl
+            };
+
+            return dev;
+        }
+
         private void Submit(object sender, RoutedEventArgs e)
         {
             try
             {
-                var emsDevice = new emsDevice()
-                {
-                    code = _deviceCode,
-                    name = TxtDeviceName.Text,
-                    ipAddr = TxtIpAddress.Text,
-                    macAddr = TxtMacAddress.Text,
-                    port = TxtPort.Text,
-                    version = TxtDeviceVersion.Text,
-                    projectCode = CmbProject.SelectedValue.ToString(),
-                    longitude = TxtLongitude.Text,
-                    latitude = TxtLatitude.Text,
-                    startDate = DpStartDate.DisplayDate,
-                    startDateSpecified = true,
-                    endDate = DpEndDate.DisplayDate,
-                    endDateSpecified = true,
-                    installDate = DpInstallDate.DisplayDate,
-                    installDateSpecified = true,
-                    onlineStatus = CbOnlineStatus.IsChecked == true,
-                    onlineStatusSpecified = true,
-                    videoUrl = TxtVideoUrl.Text
-                };
-
+                var emsDevice = ConbineDevice();
                 var service = new UnicomService();
                 var result = service.PushDevices(new[] { emsDevice });
                 if (result.result[0].value.ToString().Contains("ERROR"))
@@ -70,29 +106,7 @@ namespace Unicom.Register.Views
                     return;
                 }
                 emsDevice.code = result.result[0].key.ToString();
-                var dev = new EmsDevice
-                {
-                    SystemCode = TxtSystemCode.Text,
-                    OnTransfer = CbOnlineStatus.IsChecked == true,
-                    code = emsDevice.code,
-                    name = emsDevice.name,
-                    ipAddr = emsDevice.ipAddr,
-                    macAddr = emsDevice.macAddr,
-                    port = emsDevice.port,
-                    version = emsDevice.version,
-                    projectCode = emsDevice.projectCode,
-                    longitude = emsDevice.longitude,
-                    latitude = emsDevice.latitude,
-                    startDate = emsDevice.startDate,
-                    startDateSpecified = true,
-                    endDate = emsDevice.endDate,
-                    endDateSpecified = true,
-                    installDate = emsDevice.installDate,
-                    installDateSpecified = true,
-                    onlineStatus = true,
-                    onlineStatusSpecified = true,
-                    videoUrl = emsDevice.videoUrl
-                };
+                var dev = ConbineStoreDevice(emsDevice);
                 _context.AddOrUpdate(dev);
                 MessageBox.Show("添加成功。");
             }
@@ -102,10 +116,38 @@ namespace Unicom.Register.Views
             }
         }
 
+        private void UpdateDevice(object sender, RoutedEventArgs args)
+        {
+            try
+            {
+                var device = ConbineDevice();
+                device.code = _deviceCode;
+                var service = new UnicomService();
+                var result = service.PushDeviceStatus(new[] { device });
+                if (result.result.Length <= 0)
+                {
+                    MessageBox.Show("No Result");
+                    var dev = ConbineStoreDevice(device);
+                    dev.Id = _deviceId;
+                    _context.AddOrUpdate(dev);
+                    MessageBox.Show("更新成功。");
+                    return;
+                }
+                if (result.result[0].value.ToString().Contains("ERROR"))
+                {
+                    MessageBox.Show(result.result[0].value.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void LoadDevice(object sender, RoutedEventArgs args)
         {
-            var devId = long.Parse(CmbDeviceList.SelectedValue.ToString());
-            var device = _context.Devices.FirstOrDefault(dev => dev.Id == devId);
+            _deviceId = long.Parse(CmbDeviceList.SelectedValue.ToString());
+            var device = _context.Devices.FirstOrDefault(dev => dev.Id == _deviceId);
             if (device == null) return;
             _deviceCode = device.code;
             TxtDeviceName.Text = device.name;
@@ -121,6 +163,7 @@ namespace Unicom.Register.Views
             DpInstallDate.SelectedDate = device.endDate;
             CbOnlineStatus.IsChecked = true;
             TxtVideoUrl.Text = device.videoUrl;
+            TxtSystemCode.Text = device.SystemCode;
         }
     }
 }
