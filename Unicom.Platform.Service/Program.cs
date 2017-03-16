@@ -61,7 +61,7 @@ namespace Unicom.Platform.Service
                     var emsDatas = dataProvider.GetCurrentMinEmsDatas(taskState.ToString());
                     if (emsDatas.Count <= 0)
                     {
-                        LoadFormHistoryData(taskState.ToString(), emsDatas);
+                        LoadFromHistoryData(taskState.ToString(), emsDatas);
                         NotifyServer.Notify(taskState.ToString(), $"设备分钟值取值失败，请检查设备状态，异常设备系统编码为：{taskState}");
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
@@ -95,7 +95,7 @@ namespace Unicom.Platform.Service
                     var emsDatas = dataProvider.GetCurrentHourEmsDatas(taskState.ToString());
                     if (emsDatas.Count <= 0)
                     {
-                        LoadFormHistoryData(taskState.ToString(), emsDatas);
+                        LoadFromHistoryData(taskState.ToString(), emsDatas);
                         NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备系统编码为：{taskState}");
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
@@ -128,7 +128,7 @@ namespace Unicom.Platform.Service
                     var emsDatas = dataProvider.GetCurrentDayEmsDatas(taskState.ToString());
                     if (emsDatas.Count <= 0)
                     {
-                        LoadFormHistoryData(taskState.ToString(), emsDatas);
+                        LoadFromHistoryData(taskState.ToString(), emsDatas);
                         NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备系统编码为：{taskState}");
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
@@ -229,7 +229,7 @@ namespace Unicom.Platform.Service
             HistoryDatas[dev].AddRange(datas);
         }
 
-        private static void LoadFormHistoryData(string dev, ICollection<emsData> emsDatas)
+        private static void LoadFromHistoryData(string dev, ICollection<emsData> emsDatas)
         {
             if (!HistoryDatas.ContainsKey(dev)) return;
 

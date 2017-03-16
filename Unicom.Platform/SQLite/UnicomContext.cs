@@ -186,6 +186,10 @@ namespace Unicom.Platform.SQLite
                 {
                     value = Convert.ToInt32(value);
                 }
+                if (value is DateTime)
+                {
+                    value = ($"'{value:yyyy-MM-dd HH:mm:ss}'");
+                }
                 result.Add($"{objectProperty.Name} = {value}");
             }
             return $"{string.Join(",", result)} WHERE Id = {(long)model.GetType().GetProperty("Id").GetValue(model, null)}";

@@ -44,6 +44,7 @@ namespace Unicom.Register.Views
             var projectId = (long) CmbProjects.SelectedValue;
             var project = _context.FirstOrDefault<EmsProject>($"Id = {projectId}");
             project.onTransfer = !project.onTransfer;
+            _projectOnTransfer[projectId] = project.onTransfer;
             var result = _context.AddOrUpdate(project);
             if (result > 0)
             {
@@ -60,12 +61,13 @@ namespace Unicom.Register.Views
         private void SwitchDevicesTransfer(object sender, RoutedEventArgs e)
         {
             var deviceId = (long)CmbDevices.SelectedValue;
-            var project = _context.FirstOrDefault<EmsDevice>($"Id = {deviceId}");
-            project.OnTransfer = !project.OnTransfer;
-            var result = _context.AddOrUpdate(project);
+            var device = _context.FirstOrDefault<EmsDevice>($"Id = {deviceId}");
+            device.OnTransfer = !device.OnTransfer;
+            _deviceOnTransfer[deviceId] = device.OnTransfer;
+            var result = _context.AddOrUpdate(device);
             if (result > 0)
             {
-                LblDeviceOnTransfer.Content = project.OnTransfer;
+                LblDeviceOnTransfer.Content = device.OnTransfer;
             }
         }
 
