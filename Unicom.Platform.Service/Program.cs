@@ -14,7 +14,7 @@ using EmsProject = Unicom.Platform.Model.EmsProject;
 
 namespace Unicom.Platform.Service
 {
-    internal class Program
+    internal static class Program
     {
         private static readonly UnicomService Service = new UnicomService();
 
