@@ -14,9 +14,9 @@ namespace ESMonitor.DataProvider.Models
 
         public virtual DbSet<T_Country> T_Country { get; set; }
         public virtual DbSet<T_Devs> T_Devs { get; set; }
-        public virtual DbSet<EsDay> EsDay { get; set; }
-        public virtual DbSet<EsHour> EsHour { get; set; }
-        public virtual DbSet<EsMin> EsMin { get; set; }
+        public virtual DbSet<T_ESDay> EsDay { get; set; }
+        public virtual DbSet<T_ESHour> EsHour { get; set; }
+        public virtual DbSet<T_ESMin> EsMin { get; set; }
         public virtual DbSet<T_Stats> T_Stats { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -35,21 +35,21 @@ namespace ESMonitor.DataProvider.Models
                 .Property(e => e.VideoURL)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<EsDay>()
+            modelBuilder.Entity<T_ESDay>()
                 .Property(e => e.DataStatus)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<EsDay>()
+            modelBuilder.Entity<T_ESDay>()
                 .Property(e => e.Country)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<EsHour>()
+            modelBuilder.Entity<T_ESHour>()
                 .Property(e => e.DataStatus)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<EsHour>()
+            modelBuilder.Entity<T_ESHour>()
                 .Property(e => e.Country)
                 .IsUnicode(false);
 

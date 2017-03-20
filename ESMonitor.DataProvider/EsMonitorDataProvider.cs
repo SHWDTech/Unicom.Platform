@@ -87,7 +87,7 @@ namespace ESMonitor.DataProvider
             }
         }
 
-        private static List<emsData> EsMinToEmsDatas(IEnumerable<EsMin> esMins) => esMins.Select(esMin => new emsData
+        private static List<emsData> EsMinToEmsDatas(IEnumerable<T_ESMin> esMins) => esMins.Select(esMin => new emsData
         {
             dust = ((float)esMin.TP) / 1000,
             temperature = (float)esMin.Temperature,
@@ -101,7 +101,7 @@ namespace ESMonitor.DataProvider
             noiseFlag = "N"
         }).ToList();
 
-        private static List<emsData> EsHourToEmsDatas(IEnumerable<EsHour> esHours) => esHours.Select(esHour => new emsData
+        private static List<emsData> EsHourToEmsDatas(IEnumerable<T_ESHour> esHours) => esHours.Select(esHour => new emsData
         {
             dust = ((float)esHour.TP) / 1000,
             noise = (int)esHour.DB,
@@ -115,7 +115,7 @@ namespace ESMonitor.DataProvider
             noiseFlag = "N"
         }).ToList();
 
-        private static List<emsData> EsDayToEmsDatas(IEnumerable<EsDay> esDays) => esDays.Select(esDay => new emsData
+        private static List<emsData> EsDayToEmsDatas(IEnumerable<T_ESDay> esDays) => esDays.Select(esDay => new emsData
         {
             dust = ((float)esDay.TP) / 1000,
             noise = (int)esDay.DB,
