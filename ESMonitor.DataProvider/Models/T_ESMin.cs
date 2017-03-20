@@ -6,7 +6,7 @@ namespace ESMonitor.DataProvider.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class T_ESMin
+    public partial class EsMin
     {
         public long Id { get; set; }
 

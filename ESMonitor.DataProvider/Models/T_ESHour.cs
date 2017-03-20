@@ -6,7 +6,7 @@ namespace ESMonitor.DataProvider.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class T_ESHour
+    public partial class EsHour
     {
         public long Id { get; set; }
 
@@ -34,5 +34,13 @@ namespace ESMonitor.DataProvider.Models
 
         [StringLength(20)]
         public string Country { get; set; }
+
+        public double Temperature { get; set; }
+
+        public double Humidity { get; set; }
+
+        public double WindSpeed { get; set; }
+
+        public double WindDirection { get; set; }
     }
 }
