@@ -26,9 +26,12 @@ namespace Unicom.Platform.Service
 
         private static readonly Dictionary<string, List<emsData>> HistoryDatas = new Dictionary<string, List<emsData>>();
 
+        private static string _platform;
+
         private static void Main()
         {
             _sqliteConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
+            _platform = ConfigurationManager.AppSettings["vendorName"];
             _context = new UnicomContext(_sqliteConnectionString);
             InitUnicomUpload();
             while (true)
@@ -62,7 +65,7 @@ namespace Unicom.Platform.Service
                     if (emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        NotifyServer.Notify(taskState.ToString(), $"设备分钟值取值失败，请检查设备状态，异常设备系统编码为：{taskState}");
+                        NotifyServer.Notify(taskState.ToString(), $"设备分钟值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}");
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
@@ -96,7 +99,7 @@ namespace Unicom.Platform.Service
                     if (emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备系统编码为：{taskState}");
+                        NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}");
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
@@ -129,7 +132,7 @@ namespace Unicom.Platform.Service
                     if (emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备系统编码为：{taskState}");
+                        NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}");
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
@@ -153,7 +156,7 @@ namespace Unicom.Platform.Service
 
         private static void AddMinuteTask(object taskState)
         {
-            var runTime = DateTime.Now.GetCurrentMinute().AddMinutes(1);
+            var runTime = DateTime.Now.GetCurrentMinute().AddMinutes(1).AddSeconds(5);
             var task = new Task.Task(MinuteTimerCallBack, new ScheduleExecutionOnce(runTime));
             task.Start(taskState);
         }
