@@ -28,10 +28,13 @@ namespace Unicom.Platform.Service
 
         private static string _platform;
 
+        private static bool _forceSendData;
+
         private static void Main()
         {
             _sqliteConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
             _platform = ConfigurationManager.AppSettings["vendorName"];
+            _forceSendData = bool.Parse(ConfigurationManager.AppSettings["forceSendData"]);
             _context = new UnicomContext(_sqliteConnectionString);
             InitUnicomUpload();
             while (true)
@@ -62,7 +65,7 @@ namespace Unicom.Platform.Service
                 {
                     var dataProvider = new EsMonitorDataProvider();
                     var emsDatas = dataProvider.GetCurrentMinEmsDatas(taskState.ToString());
-                    if (emsDatas.Count <= 0)
+                    if (_forceSendData && emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
                         NotifyServer.Notify(taskState.ToString(), $"设备分钟值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}");
@@ -85,7 +88,6 @@ namespace Unicom.Platform.Service
             {
                 LogService.Instance.Error("发送数据失败！", ex);
             }
-            
         }
 
         private static void HourTimerCallBack(object taskState)
@@ -96,7 +98,7 @@ namespace Unicom.Platform.Service
                 {
                     var dataProvider = new EsMonitorDataProvider();
                     var emsDatas = dataProvider.GetCurrentHourEmsDatas(taskState.ToString());
-                    if (emsDatas.Count <= 0)
+                    if (_forceSendData && emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
                         NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}");
@@ -129,7 +131,7 @@ namespace Unicom.Platform.Service
                 {
                     var dataProvider = new EsMonitorDataProvider();
                     var emsDatas = dataProvider.GetCurrentDayEmsDatas(taskState.ToString());
-                    if (emsDatas.Count <= 0)
+                    if (_forceSendData && emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
                         NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}");
