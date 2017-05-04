@@ -70,7 +70,6 @@ namespace Unicom.Platform.Service
                     AddDeviceInfo(emsDatas, taskState.ToString());
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
                     OutputError(result, taskState, emsDatas);
-                    AddMinuteTask(taskState);
                 }
                 else
                 {
@@ -85,7 +84,7 @@ namespace Unicom.Platform.Service
             {
                 LogService.Instance.Error("发送数据失败！", ex);
             }
-            
+            AddMinuteTask(taskState);
         }
 
         private static void HourTimerCallBack(object taskState)
@@ -104,7 +103,6 @@ namespace Unicom.Platform.Service
                     AddDeviceInfo(emsDatas, taskState.ToString());
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
                     OutputError(result, taskState, emsDatas);
-                    AddHourTask(taskState);
                 }
                 else
                 {
@@ -119,6 +117,7 @@ namespace Unicom.Platform.Service
             {
                 LogService.Instance.Error("发送数据失败！", ex);
             }
+            AddHourTask(taskState);
         }
 
         private static void DayTimerCallBack(object taskState)
@@ -137,7 +136,6 @@ namespace Unicom.Platform.Service
                     AddDeviceInfo(emsDatas, taskState.ToString());
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
                     OutputError(result, taskState, emsDatas);
-                    AddDayTask(taskState);
                 }
                 else
                 {
@@ -152,6 +150,7 @@ namespace Unicom.Platform.Service
             {
                 LogService.Instance.Error("发送数据失败！", ex);
             }
+            AddDayTask(taskState);
         }
 
         private static void AddMinuteTask(object taskState)
