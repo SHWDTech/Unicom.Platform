@@ -72,7 +72,7 @@ namespace Unicom.Register.Views
                 MessageBox.Show("获取工程信息失败！");
                 return;
             }
-            TxtBjCode.Text = prj.code.Replace(AppConfig.ShortTitle, string.Empty);
+            TxtBjCode.Text = prj.code.Replace($"{AppConfig.ShortTitle}-", string.Empty).Replace(AppConfig.ShortTitle, string.Empty);
             TxtPrjName.Text = prj.name;
             CmbDistrict.Text = prj.district;
             CmbPrjType.SelectedValue = prj.prjType;
@@ -100,7 +100,7 @@ namespace Unicom.Register.Views
             {
                 var emsProject = new emsProject
                 {
-                    code = $"{TxtShortTitle.Text}{TxtBjCode.Text}",
+                    code = $"{TxtShortTitle.Text}-{TxtBjCode.Text}",
                     name = $"{TxtPrjName.Text}",
                     district = $"{CmbDistrict.Text}",
                     prjType = int.Parse(CmbPrjType.SelectedValue.ToString()),
