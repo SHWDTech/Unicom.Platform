@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Linq;
 using System.Windows;
 using Unicom.Platform;
 using Unicom.Platform.Model;
@@ -58,7 +60,38 @@ namespace Unicom.Register.Views
 
         private void LoadProject(object sender, RoutedEventArgs e)
         {
+            if (!long.TryParse(CmbProjectList.SelectedValue.ToString(), out long prjId))
+            {
+                MessageBox.Show("获取工程ID失败！");
+                return;
+            }
 
+            var prj = _context.Projects.FirstOrDefault(p => p.Id == prjId);
+            if (prj == null)
+            {
+                MessageBox.Show("获取工程信息失败！");
+                return;
+            }
+            TxtBjCode.Text = prj.code.Replace(AppConfig.ShortTitle, string.Empty);
+            TxtPrjName.Text = prj.name;
+            CmbDistrict.Text = prj.district;
+            CmbPrjType.SelectedValue = prj.prjType;
+            CmbPrjCategory.SelectedValue = prj.prjCategory;
+            CmbPrjPeriod.SelectedValue = prj.prjPeriod;
+            CmbRegion.SelectedValue = prj.region;
+            TxtStreet.Text = prj.street;
+            TxtLongitude.Text = prj.longitude;
+            TxtLatitude.Text = prj.latitude;
+            TxtContractors.Text = prj.contractors;
+            TxtSuperintendent.Text = prj.superintendent;
+            TxtTelephone.Text = prj.telephone;
+            TxtAddress.Text = prj.address;
+            TxtSiteArea.Text = prj.siteArea.ToString(CultureInfo.InvariantCulture);
+            TxtBuildingArea.Text = prj.buildingArea.ToString(CultureInfo.InvariantCulture);
+            DpStartDate.DisplayDate = prj.startDate;
+            DpEndDate.DisplayDate = prj.endDate;
+            TxtStage.Text = prj.stage;
+            CbCompleted.IsChecked = prj.isCompleted;
         }
 
         private void Submit(object sender, RoutedEventArgs e)
