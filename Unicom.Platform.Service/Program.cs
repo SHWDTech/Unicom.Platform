@@ -68,6 +68,13 @@ namespace Unicom.Platform.Service
                         NotifyServer.Notify(taskState.ToString(), $"设备分钟值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}");
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
+                    foreach (var emsData in emsDatas)
+                    {
+                        if (emsData.dust > 1)
+                        {
+                            emsData.dust = emsData.dust / 10;
+                        }
+                    }
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
                     OutputError(result, taskState, emsDatas);
                 }
@@ -99,6 +106,13 @@ namespace Unicom.Platform.Service
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
                         NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}");
+                    }
+                    foreach (var emsData in emsDatas)
+                    {
+                        if (emsData.dust > 1)
+                        {
+                            emsData.dust = emsData.dust / 10;
+                        }
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
@@ -132,6 +146,13 @@ namespace Unicom.Platform.Service
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
                         NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}");
+                    }
+                    foreach (var emsData in emsDatas)
+                    {
+                        if (emsData.dust > 1)
+                        {
+                            emsData.dust = emsData.dust / 10;
+                        }
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
