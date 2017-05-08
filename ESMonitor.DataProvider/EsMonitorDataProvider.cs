@@ -87,6 +87,10 @@ namespace ESMonitor.DataProvider
             }
         }
 
+        public T_Devs GetDevs(int devId) => new EsMonitorModels().T_Devs.First(s => s.Id == devId);
+
+        public T_Stats GetStatss(int statId) => new EsMonitorModels().T_Stats.First(s => s.Id == statId);
+
         private static List<emsData> EsMinToEmsDatas(IEnumerable<T_ESMin> esMins) => esMins.Select(esMin => new emsData
         {
             dust = ((float)esMin.TP) / 1000,

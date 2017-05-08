@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Threading;
 using ESMonitor.DataProvider;
+using ESMonitor.DataProvider.Models;
 using SHWDTech.Platform.Utility;
 using SHWDTech.Platform.Utility.ExtensionMethod;
 using Unicom.Platform.Model.Service_References.UnicomPlatform;
@@ -25,6 +26,10 @@ namespace Unicom.Platform.Service
         private static readonly List<string> OnTransferDevices = new List<string>();
 
         private static readonly Dictionary<string, List<emsData>> HistoryDatas = new Dictionary<string, List<emsData>>();
+
+        private static readonly Dictionary<int, T_Devs> SystemDevs = new Dictionary<int, T_Devs>();
+
+        private static readonly Dictionary<int, T_Stats> SystemStates = new Dictionary<int, T_Stats>();
 
         private static string _platform;
 
@@ -58,6 +63,7 @@ namespace Unicom.Platform.Service
         {
             try
             {
+                var dev = LoadDevInfo(taskState);
                 if (DeviceOnTransfer(taskState.ToString()))
                 {
                     var dataProvider = new EsMonitorDataProvider();
@@ -65,13 +71,14 @@ namespace Unicom.Platform.Service
                     if (emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        NotifyServer.Notify(taskState.ToString(), $"设备分钟值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}");
+                        NotifyServer.Notify(taskState.ToString(), $"设备分钟值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
                     foreach (var emsData in emsDatas)
                     {
                         if (emsData.dust > 1)
                         {
+                            NotifyServer.ExceedNotify(taskState.ToString(), $"设备分钟值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
                             emsData.dust = emsData.dust / 10;
                         }
                     }
@@ -98,6 +105,7 @@ namespace Unicom.Platform.Service
         {
             try
             {
+                var dev = LoadDevInfo(taskState);
                 if (DeviceOnTransfer(taskState.ToString()))
                 {
                     var dataProvider = new EsMonitorDataProvider();
@@ -105,12 +113,13 @@ namespace Unicom.Platform.Service
                     if (emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}");
+                        NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
                     }
                     foreach (var emsData in emsDatas)
                     {
                         if (emsData.dust > 1)
                         {
+                            NotifyServer.ExceedNotify(taskState.ToString(), $"设备小时值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
                             emsData.dust = emsData.dust / 10;
                         }
                     }
@@ -138,6 +147,7 @@ namespace Unicom.Platform.Service
         {
             try
             {
+                var dev = LoadDevInfo(taskState);
                 if (DeviceOnTransfer(taskState.ToString()))
                 {
                     var dataProvider = new EsMonitorDataProvider();
@@ -145,12 +155,13 @@ namespace Unicom.Platform.Service
                     if (emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}");
+                        NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
                     }
                     foreach (var emsData in emsDatas)
                     {
                         if (emsData.dust > 1)
                         {
+                            NotifyServer.ExceedNotify(taskState.ToString(), $"设备日均值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
                             emsData.dust = emsData.dust / 10;
                         }
                     }
@@ -268,6 +279,38 @@ namespace Unicom.Platform.Service
             var sTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
             return (long)(dateTime.ToUniversalTime() - sTime).TotalMilliseconds;
+        }
+
+        private static T_Devs LoadDevInfo(object taskState)
+        {
+            if (int.TryParse(taskState.ToString(), out int devId))
+            {
+                if (SystemDevs.ContainsKey(devId))
+                {
+                    return SystemDevs[devId];
+                }
+                var stat = new EsMonitorDataProvider().GetDevs(devId);
+                SystemDevs.Add(devId, stat);
+                return stat;
+            }
+
+            return null;
+        }
+
+        private static T_Stats LoadStatInfo(string statIdStr)
+        {
+            if (int.TryParse(statIdStr, out int statId))
+            {
+                if (SystemStates.ContainsKey(statId))
+                {
+                    return SystemStates[statId];
+                }
+                var stat = new EsMonitorDataProvider().GetStatss(statId);
+                SystemStates.Add(statId, stat);
+                return stat;
+            }
+
+            return null;
         }
     }
 }

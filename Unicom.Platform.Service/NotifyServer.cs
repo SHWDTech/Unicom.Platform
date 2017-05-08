@@ -39,6 +39,8 @@ namespace Unicom.Platform.Service
             ExecuteNotify(dev, message);
         }
 
+        public static void ExceedNotify(string dev, string message) => ExecuteNotify(dev, message);
+
         private static void ExecuteNotify(string dev, string message)
         {
             var mailMsg = new MailMessage { From = ServerMail };
