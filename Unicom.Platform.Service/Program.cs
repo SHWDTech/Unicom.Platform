@@ -289,9 +289,9 @@ namespace Unicom.Platform.Service
                 {
                     return SystemDevs[devId];
                 }
-                var stat = new EsMonitorDataProvider().GetDevs(devId);
-                SystemDevs.Add(devId, stat);
-                return stat;
+                var dev = new EsMonitorDataProvider().GetDevs(devId);
+                SystemDevs.Add(devId, dev);
+                return dev;
             }
 
             return null;
