@@ -78,7 +78,7 @@ namespace Unicom.Platform.Service
                     {
                         if (emsData.dust > 1)
                         {
-                            NotifyServer.ExceedNotify(taskState.ToString(), $"设备分钟值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
+                            NotifyServer.ExceedNotify(taskState.ToString(), $"设备分钟值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}，超标值：{emsData.dust}");
                             emsData.dust = emsData.dust / 10;
                         }
                     }

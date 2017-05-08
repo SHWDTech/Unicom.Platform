@@ -9,7 +9,8 @@ namespace Unicom.Platform.Service
 {
     internal class NotifyServer
     {
-        private static readonly Dictionary<string, NotifyCountArgs> DevNotifyUnit = new Dictionary<string, NotifyCountArgs>();
+        private static readonly Dictionary<string, NotifyCountArgs> DevNotifyUnit =
+            new Dictionary<string, NotifyCountArgs>();
 
         private static readonly SmtpClient Client;
 
@@ -36,12 +37,20 @@ namespace Unicom.Platform.Service
 
             var unit = DevNotifyUnit[dev];
             if (!unit.EvalSendContidion()) return;
-            ExecuteNotify(dev, message);
+            ExecuteNotify(new NotifyUserState
+            {
+                DevId = dev,
+                NotifyType = NotifyType.DataMiss
+            }, message);
         }
 
-        public static void ExceedNotify(string dev, string message) => ExecuteNotify(dev, message);
+        public static void ExceedNotify(string dev, string message) => ExecuteNotify(new NotifyUserState
+        {
+            DevId = dev,
+            NotifyType = NotifyType.DataExceed
+        }, message);
 
-        private static void ExecuteNotify(string dev, string message)
+        private static void ExecuteNotify(NotifyUserState state, string message)
         {
             var mailMsg = new MailMessage { From = ServerMail };
             mailMsg.To.Add("autyan@shweidong.com");
@@ -52,7 +61,7 @@ namespace Unicom.Platform.Service
             mailMsg.Priority = MailPriority.High;
             try
             {
-                Client.SendAsync(mailMsg, dev);
+                Client.SendAsync(mailMsg, state);
             }
             catch (Exception ex)
             {
@@ -66,9 +75,11 @@ namespace Unicom.Platform.Service
             {
                 Console.WriteLine(asyncCompletedEventArgs.Error.Message);
             }
-            var devid = asyncCompletedEventArgs.UserState.ToString();
-            if (!DevNotifyUnit.ContainsKey(devid)) return;
-            DevNotifyUnit[asyncCompletedEventArgs.UserState.ToString()].LastDateTime = DateTime.Now;
+            var userState = (NotifyUserState)asyncCompletedEventArgs.UserState;
+            if (userState.NotifyType == NotifyType.DataMiss && DevNotifyUnit.ContainsKey(userState.DevId))
+            {
+                DevNotifyUnit[userState.DevId].LastDateTime = DateTime.Now;
+            }
         }
     }
 
@@ -86,4 +97,26 @@ namespace Unicom.Platform.Service
             return (now - StartDateTime).TotalSeconds > 900;
         }
     }
+
+    internal class NotifyUserState
+    {
+        public string DevId { get; set; }
+
+        public NotifyType NotifyType { get; set; }
+    }
+
+    internal enum NotifyType
+    {
+        /// <summary>
+        /// 数据取值失败
+        /// </summary>
+        DataMiss = 0x00,
+
+        /// <summary>
+        /// 数据超标
+        /// </summary>
+        DataExceed = 0x01
+    }
+
+
 }
