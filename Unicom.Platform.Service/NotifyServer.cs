@@ -66,6 +66,8 @@ namespace Unicom.Platform.Service
             {
                 Console.WriteLine(asyncCompletedEventArgs.Error.Message);
             }
+            var devid = asyncCompletedEventArgs.UserState.ToString();
+            if (!DevNotifyUnit.ContainsKey(devid)) return;
             DevNotifyUnit[asyncCompletedEventArgs.UserState.ToString()].LastDateTime = DateTime.Now;
         }
     }
