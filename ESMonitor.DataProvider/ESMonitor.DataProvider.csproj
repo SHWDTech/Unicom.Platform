@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EsMonitorDataProvider.cs" />
-    <Compile Include="Models\ESMonitorModels.cs" />
+    <Compile Include="Models\EsMonitorModels.cs" />
     <Compile Include="Models\T_Country.cs" />
     <Compile Include="Models\T_Devs.cs" />
     <Compile Include="Models\T_ESDay.cs" />

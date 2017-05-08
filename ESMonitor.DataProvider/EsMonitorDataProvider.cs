@@ -89,24 +89,51 @@ namespace ESMonitor.DataProvider
 
         private static List<emsData> EsMinToEmsDatas(IEnumerable<T_ESMin> esMins) => esMins.Select(esMin => new emsData
         {
-            dust = ((float) esMin.TP)/1000, temperature = (float) esMin.Temperature, humidity = (float) esMin.Humidity, noise = (int) esMin.DB, windSpeed = (float) esMin.WindSpeed, windDirection = (int) esMin.WindDirection, dateTime = ConvertToUnixTime(esMin.UpdateTime.Value), dustFlag = "N", humiFlag = "N", noiseFlag = "N"
+            dust = ((float)esMin.TP) / 1000,
+            temperature = (float)esMin.Temperature,
+            humidity = (float)esMin.Humidity,
+            noise = (int)esMin.DB,
+            windSpeed = (float)esMin.WindSpeed,
+            windDirection = (int)esMin.WindDirection,
+            dateTime = ConvertToUnixTime(esMin.UpdateTime.Value),
+            dustFlag = "N",
+            humiFlag = "N",
+            noiseFlag = "N"
         }).ToList();
 
         private static List<emsData> EsHourToEmsDatas(IEnumerable<T_ESHour> esHours) => esHours.Select(esHour => new emsData
         {
-            dust = ((float) esHour.TP)/1000, noise = (int) esHour.DB, dateTime = ConvertToUnixTime(esHour.UpdateTime), dustFlag = "N", humiFlag = "N", noiseFlag = "N"
+            dust = ((float)esHour.TP) / 1000,
+            noise = (int)esHour.DB,
+            temperature = (float)esHour.Temperature,
+            humidity = (float)esHour.Humidity,
+            windSpeed = (float)esHour.WindSpeed,
+            windDirection = (int)esHour.WindDirection,
+            dateTime = ConvertToUnixTime(esHour.UpdateTime),
+            dustFlag = "N",
+            humiFlag = "N",
+            noiseFlag = "N"
         }).ToList();
 
         private static List<emsData> EsDayToEmsDatas(IEnumerable<T_ESDay> esDays) => esDays.Select(esDay => new emsData
         {
-            dust = ((float) esDay.TP)/1000, noise = (int) esDay.DB, dateTime = ConvertToUnixTime(esDay.UpdateTime), dustFlag = "N", humiFlag = "N", noiseFlag = "N"
+            dust = ((float)esDay.TP) / 1000,
+            noise = (int)esDay.DB,
+            temperature = (float)esDay.Temperature,
+            humidity = (float)esDay.Humidity,
+            windSpeed = (float)esDay.WindSpeed,
+            windDirection = (int)esDay.WindDirection,
+            dateTime = ConvertToUnixTime(esDay.UpdateTime),
+            dustFlag = "N",
+            humiFlag = "N",
+            noiseFlag = "N"
         }).ToList();
 
         private static long ConvertToUnixTime(DateTime dateTime)
         {
             var sTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
-            return (long) (dateTime.ToUniversalTime() - sTime).TotalMilliseconds;
+            return (long)(dateTime.ToUniversalTime() - sTime).TotalMilliseconds;
         }
     }
 }

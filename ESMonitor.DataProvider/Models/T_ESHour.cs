@@ -34,5 +34,13 @@ namespace ESMonitor.DataProvider.Models
 
         [StringLength(20)]
         public string Country { get; set; }
+
+        public double Temperature { get; set; }
+
+        public double Humidity { get; set; }
+
+        public double WindSpeed { get; set; }
+
+        public double WindDirection { get; set; }
     }
 }
