@@ -24,9 +24,15 @@ namespace Unicom.Platform.SQLite
 
         private readonly string _connectionString;
 
-        public List<EmsDevice> Devices 
+        /// <summary>
+        /// 设备信息
+        /// </summary>
+        public List<EmsDevice> Devices
             => GetDbSet<EmsDevice>();
 
+        /// <summary>
+        /// 工地信息
+        /// </summary>
         public List<EmsProject> Projects
             => GetDbSet<EmsProject>();
 
@@ -44,6 +50,9 @@ namespace Unicom.Platform.SQLite
 
         public List<EmsDistrict> Districts
             => GetDbSet<EmsDistrict>();
+
+        public List<EmsAutoDust> AutoDusts
+            => GetDbSet<EmsAutoDust>();
 
 
         private List<T> GetDbSet<T>() where T : class, new()
@@ -64,8 +73,8 @@ namespace Unicom.Platform.SQLite
             var tableName = typeof(T).Name;
             using (var conn = new SQLiteConnection(_connectionString))
             {
-                var cmd = string.IsNullOrWhiteSpace(where) 
-                    ? new SQLiteCommand($"SELECT * FROM {tableName}", conn) 
+                var cmd = string.IsNullOrWhiteSpace(where)
+                    ? new SQLiteCommand($"SELECT * FROM {tableName}", conn)
                     : new SQLiteCommand($"SELECT * FROM {tableName} WHERE {where}", conn);
                 var adapter = new SQLiteDataAdapter(cmd);
                 var table = new DataTable();
@@ -81,16 +90,22 @@ namespace Unicom.Platform.SQLite
 
         public bool IsExist<T>(T model) where T : class, new()
         {
-            var id = (long)model.GetType().GetProperty("Id").GetValue(model, null);
-
-            var tableName = typeof(T).Name;
-            using (var conn = new SQLiteConnection(_connectionString))
+            var propertyInfo = model.GetType().GetProperty("Id");
+            if (propertyInfo != null)
             {
-                conn.Open();
-                var cmd = new SQLiteCommand($"SELECT Count(*) FROM {tableName} where Id = {id}", conn);
+                var id = (long)propertyInfo.GetValue(model, null);
 
-                return (long) cmd.ExecuteScalar() != 0;
+                var tableName = typeof(T).Name;
+                using (var conn = new SQLiteConnection(_connectionString))
+                {
+                    conn.Open();
+                    var cmd = new SQLiteCommand($"SELECT Count(*) FROM {tableName} where Id = {id}", conn);
+
+                    return (long) cmd.ExecuteScalar() != 0;
+                }
             }
+
+            return false;
         }
 
         public object GetId<T>(string where) where T : class, new()
@@ -105,7 +120,7 @@ namespace Unicom.Platform.SQLite
                 return cmd.ExecuteScalar();
             }
         }
-    
+
 
         private int Add<T>(T model) where T : class, new()
         {
@@ -192,7 +207,8 @@ namespace Unicom.Platform.SQLite
                 }
                 result.Add($"{objectProperty.Name} = {value}");
             }
-            return $"{string.Join(",", result)} WHERE Id = {(long)model.GetType().GetProperty("Id").GetValue(model, null)}";
+            var propertyInfo = model.GetType().GetProperty("Id");
+            return propertyInfo != null ? $"{string.Join(",", result)} WHERE Id = {(long)propertyInfo.GetValue(model, null)}" : string.Empty;
         }
 
         public int Execute(string executeSql)

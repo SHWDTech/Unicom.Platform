@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\EmsAutoDust.cs" />
     <Compile Include="Model\EmsDevice.cs" />
     <Compile Include="Model\EmsDistrict.cs" />
     <Compile Include="Model\EmsPrjCategory.cs" />

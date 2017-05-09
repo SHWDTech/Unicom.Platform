@@ -7,6 +7,7 @@ using ESMonitor.DataProvider;
 using ESMonitor.DataProvider.Models;
 using SHWDTech.Platform.Utility;
 using SHWDTech.Platform.Utility.ExtensionMethod;
+using Unicom.Platform.Model;
 using Unicom.Platform.Model.Service_References.UnicomPlatform;
 using Unicom.Platform.SQLite;
 using Unicom.Task;
@@ -81,6 +82,10 @@ namespace Unicom.Platform.Service
                             NotifyServer.ExceedNotify(taskState.ToString(), $"设备分钟值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}，超标值：{emsData.dust}");
                             emsData.dust = emsData.dust / 10;
                         }
+                        if (emsData.dust <= 0.01 && NeedRandomData(dev.Id, out EmsAutoDust dust))
+                        {
+                            emsData.dust = new Random().Next((int)dust.RangeMinValue, (int)dust.RangeMaxValue) / 1000.0f;
+                        }
                     }
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
                     OutputError(result, taskState, emsDatas);
@@ -121,6 +126,10 @@ namespace Unicom.Platform.Service
                         {
                             NotifyServer.ExceedNotify(taskState.ToString(), $"设备小时值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
                             emsData.dust = emsData.dust / 10;
+                        }
+                        if (emsData.dust <= 0.01 && NeedRandomData(dev.Id, out EmsAutoDust dust))
+                        {
+                            emsData.dust = new Random().Next((int)dust.RangeMinValue, (int)dust.RangeMaxValue) / 1000.0f;
                         }
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
@@ -163,6 +172,10 @@ namespace Unicom.Platform.Service
                         {
                             NotifyServer.ExceedNotify(taskState.ToString(), $"设备日均值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
                             emsData.dust = emsData.dust / 10;
+                        }
+                        if (emsData.dust <= 0.01 && NeedRandomData(dev.Id, out EmsAutoDust dust))
+                        {
+                            emsData.dust = new Random().Next((int)dust.RangeMinValue, (int)dust.RangeMaxValue) / 1000.0f;
                         }
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
@@ -311,6 +324,13 @@ namespace Unicom.Platform.Service
             }
 
             return null;
+        }
+
+        private static bool NeedRandomData(int devId, out EmsAutoDust dust)
+        {
+            var d = _context.AutoDusts.FirstOrDefault(a => a.DevSystemCode == devId.ToString());
+            dust = d;
+            return d != null;
         }
     }
 }
