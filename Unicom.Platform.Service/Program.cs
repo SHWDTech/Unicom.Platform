@@ -34,6 +34,8 @@ namespace Unicom.Platform.Service
 
         private static string _platform;
 
+        private static readonly List<RandomDataGenerator> DataGenerators = new List<RandomDataGenerator>();
+
         private static void Main()
         {
             _sqliteConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
@@ -50,7 +52,7 @@ namespace Unicom.Platform.Service
 
         private static void InitUnicomUpload()
         {
-            foreach (var device  in _context.Devices)
+            foreach (var device in _context.Devices)
             {
                 if (!device.OnTransfer) continue;
                 AddMinuteTask(device.SystemCode);
@@ -84,7 +86,7 @@ namespace Unicom.Platform.Service
                         }
                         if (emsData.dust <= 0.01 && NeedRandomData(dev.Id, out EmsAutoDust dust))
                         {
-                            emsData.dust = new Random().Next((int)dust.RangeMinValue, (int)dust.RangeMaxValue) / 1000.0f;
+                            emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
                         }
                     }
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
@@ -129,7 +131,7 @@ namespace Unicom.Platform.Service
                         }
                         if (emsData.dust <= 0.01 && NeedRandomData(dev.Id, out EmsAutoDust dust))
                         {
-                            emsData.dust = new Random().Next((int)dust.RangeMinValue, (int)dust.RangeMaxValue) / 1000.0f;
+                            emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
                         }
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
@@ -175,7 +177,7 @@ namespace Unicom.Platform.Service
                         }
                         if (emsData.dust <= 0.01 && NeedRandomData(dev.Id, out EmsAutoDust dust))
                         {
-                            emsData.dust = new Random().Next((int)dust.RangeMinValue, (int)dust.RangeMaxValue) / 1000.0f;
+                            emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
                         }
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
@@ -331,6 +333,18 @@ namespace Unicom.Platform.Service
             var d = _context.AutoDusts.FirstOrDefault(a => a.DevSystemCode == devId.ToString());
             dust = d;
             return d != null;
+        }
+
+        private static RandomDataGenerator GetGenerator(string devId)
+        {
+            var generator = DataGenerators.FirstOrDefault(g => g.DevId == devId);
+            if (generator == null)
+            {
+                generator = new RandomDataGenerator(_context.AutoDusts.First(a => a.DevSystemCode == devId.ToString()));
+                DataGenerators.Add(generator);
+            }
+
+            return generator;
         }
     }
 }
