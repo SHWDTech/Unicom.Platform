@@ -26,7 +26,7 @@ namespace Unicom.Platform.Service
 
         private static readonly List<string> OnTransferDevices = new List<string>();
 
-        private static readonly Dictionary<string, List<emsData>> HistoryDatas = new Dictionary<string, List<emsData>>();
+        private static readonly List<emsData> HistoryDatas = new List<emsData>();
 
         private static readonly Dictionary<int, T_Devs> SystemDevs = new Dictionary<int, T_Devs>();
 
@@ -76,7 +76,6 @@ namespace Unicom.Platform.Service
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
                         NotifyServer.Notify(taskState.ToString(), $"设备分钟值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
                     }
-                    AddDeviceInfo(emsDatas, taskState.ToString());
                     foreach (var emsData in emsDatas)
                     {
                         if (emsData.dust > 1)
@@ -89,6 +88,7 @@ namespace Unicom.Platform.Service
                             emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
                         }
                     }
+                    AddDeviceInfo(emsDatas, taskState.ToString());
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
                     OutputError(result, taskState, emsDatas);
                 }
@@ -227,13 +227,13 @@ namespace Unicom.Platform.Service
             {
                 foreach (var dataEntry in result.result)
                 {
-                    Console.WriteLine($"Result Error=> key:{dataEntry.key},value:{dataEntry.value}");
+                    Console.WriteLine($"Result Error=> devId:{devId} key:{dataEntry.key},value:{dataEntry.value}");
                 }
             }
             else
             {
                 Console.WriteLine($"发送数据成功，时间：{DateTime.Now:yyyy-MM-dd hh:mm:ss}。");
-                AddToHistoryData(devId.ToString(), emsDatas);
+                AddToHistoryData(emsDatas);
             }
         }
 
@@ -269,24 +269,22 @@ namespace Unicom.Platform.Service
             }
         }
 
-        private static void AddToHistoryData(string dev, IEnumerable<emsData> datas)
+        private static void AddToHistoryData(IEnumerable<emsData> datas)
         {
-            if (!HistoryDatas.ContainsKey(dev))
+            HistoryDatas.AddRange(datas);
+            if (HistoryDatas.Count > 1024)
             {
-                HistoryDatas.Add(dev, new List<emsData>());
+                HistoryDatas.RemoveRange(1024, HistoryDatas.Count - 1024);
             }
-            HistoryDatas[dev].AddRange(datas);
         }
 
-        private static void LoadFromHistoryData(string dev, ICollection<emsData> emsDatas)
+        private static void LoadFromHistoryData(string dev, List<emsData> emsDatas)
         {
-            if (!HistoryDatas.ContainsKey(dev)) return;
-
-            var list = HistoryDatas[dev];
-            var rd = new Random();
-            var value = list[rd.Next(0, list.Count)];
+            var pickIndex = new Random().Next(0, HistoryDatas.Count);
+            var value = HistoryDatas[pickIndex];
             value.dateTime = ConvertToUnixTime(DateTime.Now);
             emsDatas.Add(value);
+            AddDeviceInfo(emsDatas, dev);
         }
 
         private static long ConvertToUnixTime(DateTime dateTime)
