@@ -19,7 +19,7 @@ namespace ESMonitor.DataProvider
                 var deviceId = int.Parse(devCode);
                 var minute = DateTime.Now.GetCurrentMinute().AddMinutes(-1);
                 var esMinDatas =
-                    context.EsMin.Where(obj => obj.DevId == deviceId && obj.UpdateTime >= minute).ToList();
+                    context.EsMin.Where(obj => obj.DevId == deviceId && obj.UpdateTime >= minute).Take(1).ToList();
 
                 return EsMinToEmsDatas(esMinDatas);
             }
@@ -87,9 +87,20 @@ namespace ESMonitor.DataProvider
             }
         }
 
-        public T_Devs GetDevs(int devId) => new EsMonitorModels().T_Devs.First(s => s.Id == devId);
+        public static List<emsData> GetValidHistoryData()
+        {
+            using (var context = new EsMonitorModels())
+            {
+                var esDatas = context.EsMin.Where(obj => obj.TP > 100 && obj.TP < 1000).OrderBy(item => item.UpdateTime)
+                    .Take(10).ToList();
 
-        public T_Stats GetStatss(int statId) => new EsMonitorModels().T_Stats.First(s => s.Id == statId);
+                return EsMinToEmsDatas(esDatas);
+            }
+        }
+
+        public static T_Devs GetDevs(int devId) => new EsMonitorModels().T_Devs.First(s => s.Id == devId);
+
+        public static T_Stats GetStatss(int statId) => new EsMonitorModels().T_Stats.First(s => s.Id == statId);
 
         private static List<emsData> EsMinToEmsDatas(IEnumerable<T_ESMin> esMins) => esMins.Select(esMin => new emsData
         {

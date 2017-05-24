@@ -52,6 +52,7 @@ namespace Unicom.Platform.Service
 
         private static void InitUnicomUpload()
         {
+            LoadHistoryData();
             foreach (var device in _context.Devices)
             {
                 if (!device.OnTransfer) continue;
@@ -60,6 +61,11 @@ namespace Unicom.Platform.Service
                 AddDayTask(device.SystemCode);
                 OnTransferDevices.Add(device.SystemCode);
             }
+        }
+
+        private static void LoadHistoryData()
+        {
+            HistoryDatas.AddRange(EsMonitorDataProvider.GetValidHistoryData());
         }
 
         private static void MinuteTimerCallBack(object taskState)
@@ -83,7 +89,7 @@ namespace Unicom.Platform.Service
                             NotifyServer.ExceedNotify(taskState.ToString(), $"设备分钟值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}，超标值：{emsData.dust}");
                             emsData.dust = emsData.dust / 10;
                         }
-                        if (emsData.dust <= 0.01 && NeedRandomData(dev.Id, out EmsAutoDust dust))
+                        else if ((int)emsData.dust == 0 && NeedRandomData(dev.Id, out EmsAutoDust dust))
                         {
                             emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
                         }
@@ -221,7 +227,7 @@ namespace Unicom.Platform.Service
             task.Start(taskState);
         }
 
-        private static void OutputError(resultData result, object devId, IEnumerable<emsData> emsDatas)
+        private static void OutputError(resultData result, object devId, List<emsData> emsDatas)
         {
             if (result.result.Length > 0)
             {
@@ -232,7 +238,7 @@ namespace Unicom.Platform.Service
             }
             else
             {
-                Console.WriteLine($"发送数据成功，时间：{DateTime.Now:yyyy-MM-dd hh:mm:ss}。");
+                Console.WriteLine($"发送数据成功，时间：{DateTime.Now:yyyy-MM-dd hh:mm:ss}，设备Id：{devId}，TP值：{emsDatas.FirstOrDefault()?.dust}");
                 AddToHistoryData(emsDatas);
             }
         }
@@ -280,6 +286,7 @@ namespace Unicom.Platform.Service
 
         private static void LoadFromHistoryData(string dev, List<emsData> emsDatas)
         {
+            if (HistoryDatas.Count <= 0) return;
             var pickIndex = new Random().Next(0, HistoryDatas.Count);
             var value = HistoryDatas[pickIndex];
             value.dateTime = ConvertToUnixTime(DateTime.Now);
@@ -302,7 +309,7 @@ namespace Unicom.Platform.Service
                 {
                     return SystemDevs[devId];
                 }
-                var dev = new EsMonitorDataProvider().GetDevs(devId);
+                var dev = EsMonitorDataProvider.GetDevs(devId);
                 SystemDevs.Add(devId, dev);
                 return dev;
             }
@@ -318,7 +325,7 @@ namespace Unicom.Platform.Service
                 {
                     return SystemStates[statId];
                 }
-                var stat = new EsMonitorDataProvider().GetStatss(statId);
+                var stat = EsMonitorDataProvider.GetStatss(statId);
                 SystemStates.Add(statId, stat);
                 return stat;
             }
