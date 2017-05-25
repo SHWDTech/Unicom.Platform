@@ -9,22 +9,28 @@ namespace Unicom.Platform.Service
 
         private int _lastGeneratedValue;
 
+        private readonly int _rangeMinValue;
+
+        private readonly int _rangeMaxValue;
+
         public RandomDataGenerator(EmsAutoDust autoDust)
         {
             DevId = autoDust.DevSystemCode;
-            _lastGeneratedValue = new Random().Next((int)autoDust.RangeMinValue, (int)autoDust.RangeMaxValue);
+            _rangeMaxValue = (int) autoDust.RangeMinValue;
+            _rangeMinValue = (int) autoDust.RangeMaxValue;
+            _lastGeneratedValue = new Random().Next(_rangeMaxValue, _rangeMaxValue);
         }
 
         public float NewValue()
         {
             _lastGeneratedValue += new Random().Next(-50, 50);
-            if (_lastGeneratedValue < 0)
+            if (_lastGeneratedValue < _rangeMinValue)
             {
-                _lastGeneratedValue += 200;
+                _lastGeneratedValue += 50;
             }
-            if (_lastGeneratedValue > 1000)
+            if (_lastGeneratedValue > _rangeMaxValue)
             {
-                _lastGeneratedValue -= 200;
+                _lastGeneratedValue -= 50;
             }
 
             return _lastGeneratedValue / 1000.0f;
