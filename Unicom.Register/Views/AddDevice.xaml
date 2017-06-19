@@ -16,6 +16,7 @@
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Row="0">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -74,6 +75,14 @@
             </StackPanel>
         </Grid>
         <Grid Row="7">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Label Content="数据最小值：" Margin="20, 0"></Label>
+                <TextBox x:Name="TxtRangeMinValue" Width="200"></TextBox>
+                <Label Content="数据最大值："></Label>
+                <TextBox x:Name="TxtRangeMaxValue" Width="140"></TextBox>
+            </StackPanel>
+        </Grid>
+        <Grid Row="8">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <ComboBox x:Name="CmbDeviceList" Width="200" Margin="0, 0, 30, 0" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="0"></ComboBox>
                 <Button Content="读取设备信息" Margin="0, 0, 30, 0" Width="120" Click="LoadDevice"></Button>

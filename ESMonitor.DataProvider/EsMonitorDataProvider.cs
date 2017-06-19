@@ -19,7 +19,8 @@ namespace ESMonitor.DataProvider
                 var deviceId = int.Parse(devCode);
                 var minute = DateTime.Now.GetCurrentMinute().AddMinutes(-1);
                 var esMinDatas =
-                    context.EsMin.Where(obj => obj.DevId == deviceId && obj.UpdateTime >= minute).Take(1).ToList();
+                    context.EsMin.Where(obj => obj.DevId == deviceId && obj.UpdateTime >= minute
+                    && obj.TP > 0 && obj.DB > 0 && obj.Temperature > 0 && obj.Humidity > 0).Take(1).ToList();
 
                 return EsMinToEmsDatas(esMinDatas);
             }
@@ -32,7 +33,8 @@ namespace ESMonitor.DataProvider
                 var hour = DateTime.Now.GetPreviousHour();
                 var deviceId = int.Parse(devCode);
                 var esHourDatas =
-                    context.EsHour.Where(obj => obj.DevId == deviceId && obj.UpdateTime >= hour).ToList();
+                    context.EsHour.Where(obj => obj.DevId == deviceId && obj.UpdateTime >= hour
+                                                && obj.TP > 0 && obj.DB > 0 && obj.Temperature > 0 && obj.Humidity > 0).ToList();
 
                 return EsHourToEmsDatas(esHourDatas);
             }
@@ -45,7 +47,8 @@ namespace ESMonitor.DataProvider
                 var day = DateTime.Now.GetPrevioudDay();
                 var deviceId = int.Parse(devCode);
                 var esDayDatas =
-                    context.EsDay.Where(obj => obj.DevId == deviceId && obj.UpdateTime >= day).ToList();
+                    context.EsDay.Where(obj => obj.DevId == deviceId && obj.UpdateTime >= day
+                                               && obj.TP > 0 && obj.DB > 0 && obj.Temperature > 0 && obj.Humidity > 0).ToList();
 
                 return EsDayToEmsDatas(esDayDatas);
             }

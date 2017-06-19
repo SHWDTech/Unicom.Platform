@@ -108,6 +108,13 @@ namespace Unicom.Register.Views
                 emsDevice.code = result.result[0].key.ToString();
                 var dev = ConbineStoreDevice(emsDevice);
                 _context.AddOrUpdate(dev);
+                var range = new EmsAutoDust
+                {
+                    DevSystemCode = dev.SystemCode,
+                    RangeMinValue = long.Parse(TxtRangeMinValue.Text),
+                    RangeMaxValue = long.Parse(TxtRangeMaxValue.Text)
+                };
+                _context.AddOrUpdate(range);
                 MessageBox.Show("添加成功。");
             }
             catch (Exception ex)
