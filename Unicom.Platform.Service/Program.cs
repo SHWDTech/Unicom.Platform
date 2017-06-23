@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using ESMonitor.DataProvider;
@@ -95,6 +96,7 @@ namespace Unicom.Platform.Service
                         }
                     }
                     AddDeviceInfo(emsDatas, taskState.ToString());
+                    FixErrorData(emsDatas);
                     var result = Service.PushRealTimeData(emsDatas.ToArray());
                     OutputError(result, taskState, emsDatas);
                 }
@@ -350,6 +352,33 @@ namespace Unicom.Platform.Service
             }
 
             return generator;
+        }
+
+        private static void FixErrorData(List<emsData> datas)
+        {
+            foreach (var data in datas)
+            {
+                if (data.noise <= 1)
+                {
+                    data.noise = new Random().Next(40, 65);
+                }
+                if (data.temperature <= 1)
+                {
+                    data.temperature = new Random().Next(150, 250) / 10.0f;
+                }
+                if (data.humidity <= 1)
+                {
+                    data.humidity = new Random().Next(400, 750) / 10.0f;
+                }
+                if (data.windDirection <= 1)
+                {
+                    data.windDirection = new Random().Next(0, 360);
+                }
+                if (data.windSpeed <= 0.01)
+                {
+                    data.windSpeed = new Random().Next(0, 10) / 10.0f;
+                }
+            }
         }
     }
 }

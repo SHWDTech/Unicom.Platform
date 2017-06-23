@@ -40,7 +40,7 @@ namespace Unicom.Register.Views
 
         private emsDevice ConbineDevice()
         {
-            var emsDevice = new emsDevice()
+            var emsDevice = new emsDevice
             {
                 name = TxtDeviceName.Text,
                 ipAddr = TxtIpAddress.Text,
