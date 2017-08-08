@@ -15,6 +15,7 @@ using Unicom.Task;
 using EmsDevice = Unicom.Platform.Model.EmsDevice;
 using EmsProject = Unicom.Platform.Model.EmsProject;
 using MTWESensorData.DataProvider;
+using Unicom.Platform.Entities;
 
 namespace Unicom.Platform.Service
 {
@@ -30,7 +31,7 @@ namespace Unicom.Platform.Service
 
         private static readonly List<emsData> HistoryDatas = new List<emsData>();
 
-        private static readonly Dictionary<int, T_Devs> SystemDevs = new Dictionary<int, T_Devs>();
+        private static readonly Dictionary<string, DeviceInfomation> SystemDevs = new Dictionary<string, DeviceInfomation>();
 
         private static readonly Dictionary<int, T_Stats> SystemStates = new Dictionary<int, T_Stats>();
 
@@ -40,11 +41,20 @@ namespace Unicom.Platform.Service
 
         private static IDataProvider _dataProvider;
 
+        private static string _dataSource;
+
         private static void Main()
         {
-            _sqliteConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
-            _platform = ConfigurationManager.AppSettings["vendorName"];
-            _context = new UnicomContext(_sqliteConnectionString);
+            _dataSource = ConfigurationManager.AppSettings["dataSource"];
+            if (_dataSource == null || _dataSource == "web")
+            {
+                InitWeb();
+            }
+            else
+            {
+                InitLocal();
+            }
+
             InitUnicomUpload();
             while (true)
             {
@@ -57,6 +67,9 @@ namespace Unicom.Platform.Service
         private static void InitLocal()
         {
             _dataProvider = new EsMonitorDataProvider();
+            _sqliteConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
+            _platform = ConfigurationManager.AppSettings["vendorName"];
+            _context = new UnicomContext(_sqliteConnectionString);
         }
 
         private static void InitWeb()
@@ -67,19 +80,33 @@ namespace Unicom.Platform.Service
         private static void InitUnicomUpload()
         {
             LoadHistoryData();
-            foreach (var device in _context.Devices)
+            if (_dataSource == "web")
             {
-                if (!device.OnTransfer) continue;
-                AddMinuteTask(device.SystemCode);
-                AddHourTask(device.SystemCode);
-                AddDayTask(device.SystemCode);
-                OnTransferDevices.Add(device.SystemCode);
+                foreach (var device in new UnicomDbContext().EmsDevices)
+                {
+                    if (!device.IsTransfer) continue;
+                    AddMinuteTask(device.Name);
+                    AddHourTask(device.Name);
+                    AddDayTask(device.Name);
+                    OnTransferDevices.Add(device.Name);
+                }
+            }
+            else
+            {
+                foreach (var device in _context.Devices)
+                {
+                    if (!device.OnTransfer) continue;
+                    AddMinuteTask(device.SystemCode);
+                    AddHourTask(device.SystemCode);
+                    AddDayTask(device.SystemCode);
+                    OnTransferDevices.Add(device.SystemCode);
+                }
             }
         }
 
         private static void LoadHistoryData()
         {
-            HistoryDatas.AddRange(new EsMonitorDataProvider().GetValidHistoryData());
+            HistoryDatas.AddRange(_dataProvider.GetValidHistoryData());
         }
 
         private static void MinuteTimerCallBack(object taskState)
@@ -89,21 +116,20 @@ namespace Unicom.Platform.Service
                 var dev = LoadDevInfo(taskState);
                 if (DeviceOnTransfer(taskState.ToString()))
                 {
-                    var dataProvider = new EsMonitorDataProvider();
-                    var emsDatas = dataProvider.GetCurrentMinEmsDatas(taskState.ToString());
+                    var emsDatas = _dataProvider.GetCurrentMinEmsDatas(taskState.ToString());
                     if (emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        NotifyServer.Notify(taskState.ToString(), $"设备分钟值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
+                        NotifyServer.Notify(taskState.ToString(), $"设备分钟值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
                     }
                     foreach (var emsData in emsDatas)
                     {
                         if (emsData.dust > 1)
                         {
-                            NotifyServer.ExceedNotify(taskState.ToString(), $"设备分钟值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}，超标值：{emsData.dust}");
+                            NotifyServer.ExceedNotify(taskState.ToString(), $"设备分钟值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}，超标值：{emsData.dust}");
                             emsData.dust = emsData.dust / 10;
                         }
-                        else if (emsData.dust < 0.01 && NeedRandomData(dev.Id, out EmsAutoDust dust))
+                        else if (emsData.dust < 0.01 && NeedRandomData(dev.DevCode, out EmsAutoDust dust))
                         {
                             emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
                         }
@@ -136,21 +162,20 @@ namespace Unicom.Platform.Service
                 var dev = LoadDevInfo(taskState);
                 if (DeviceOnTransfer(taskState.ToString()))
                 {
-                    var dataProvider = new EsMonitorDataProvider();
-                    var emsDatas = dataProvider.GetCurrentHourEmsDatas(taskState.ToString());
+                    var emsDatas = _dataProvider.GetCurrentHourEmsDatas(taskState.ToString());
                     if (emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
+                        NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
                     }
                     foreach (var emsData in emsDatas)
                     {
                         if (emsData.dust > 1)
                         {
-                            NotifyServer.ExceedNotify(taskState.ToString(), $"设备小时值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
+                            NotifyServer.ExceedNotify(taskState.ToString(), $"设备小时值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
                             emsData.dust = emsData.dust / 10;
                         }
-                        if (emsData.dust <= 0.01 && NeedRandomData(dev.Id, out EmsAutoDust dust))
+                        if (emsData.dust <= 0.01 && NeedRandomData(dev.DevCode, out EmsAutoDust dust))
                         {
                             emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
                         }
@@ -182,21 +207,20 @@ namespace Unicom.Platform.Service
                 var dev = LoadDevInfo(taskState);
                 if (DeviceOnTransfer(taskState.ToString()))
                 {
-                    var dataProvider = new EsMonitorDataProvider();
-                    var emsDatas = dataProvider.GetCurrentDayEmsDatas(taskState.ToString());
+                    var emsDatas = _dataProvider.GetCurrentDayEmsDatas(taskState.ToString());
                     if (emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
+                        NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
                     }
                     foreach (var emsData in emsDatas)
                     {
                         if (emsData.dust > 1)
                         {
-                            NotifyServer.ExceedNotify(taskState.ToString(), $"设备日均值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{LoadStatInfo(dev.StatId)?.StatName}");
+                            NotifyServer.ExceedNotify(taskState.ToString(), $"设备日均值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
                             emsData.dust = emsData.dust / 10;
                         }
-                        if (emsData.dust <= 0.01 && NeedRandomData(dev.Id, out EmsAutoDust dust))
+                        if (emsData.dust <= 0.01 && NeedRandomData(dev.DevCode, out EmsAutoDust dust))
                         {
                             emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
                         }
@@ -316,43 +340,68 @@ namespace Unicom.Platform.Service
             return (long)(dateTime.ToUniversalTime() - sTime).TotalMilliseconds;
         }
 
-        private static T_Devs LoadDevInfo(object taskState)
+        private static DeviceInfomation LoadDevInfo(object taskState)
         {
-            if (int.TryParse(taskState.ToString(), out int devId))
+            DeviceInfomation info = null;
+            var devCode = taskState.ToString();
+            if (SystemDevs.ContainsKey(devCode))
             {
-                if (SystemDevs.ContainsKey(devId))
+                info = SystemDevs[devCode];
+                return info;
+            }
+            if (_dataSource == "web")
+            {
+                var ctx = new UnicomDbContext();
+                var mtweDev = ctx.EmsDevices.FirstOrDefault(d => d.Name == devCode);
+                if (mtweDev != null)
+                    info = new DeviceInfomation
+                    {
+                        DevCode = taskState.ToString(),
+                        StatCode = ctx.EmsProjects.FirstOrDefault(p => p.Code == mtweDev.ProjectCode)?.Name
+                    };
+            }
+            else
+            {
+                if (int.TryParse(devCode, out int devId))
                 {
-                    return SystemDevs[devId];
+
+                    var dev = EsMonitorDataProvider.GetDevs(devId);
+                    var stat = EsMonitorDataProvider.GetStatss(int.Parse(dev.StatId));
+                    info = new DeviceInfomation
+                    {
+                        DevCode = taskState.ToString(),
+                        StatCode = stat.StatCode
+                    };
+                    SystemDevs.Add(devCode, info);
+                    return info;
                 }
-                var dev = EsMonitorDataProvider.GetDevs(devId);
-                SystemDevs.Add(devId, dev);
-                return dev;
             }
 
             return null;
         }
 
-        private static T_Stats LoadStatInfo(string statIdStr)
+        private static bool NeedRandomData(string devId, out EmsAutoDust dust)
         {
-            if (int.TryParse(statIdStr, out int statId))
+            var need = false;
+            if (_dataSource == "web")
             {
-                if (SystemStates.ContainsKey(statId))
+                var dev = new UnicomDbContext().EmsDevices.First(d => d.Name == devId);
+                dust = new EmsAutoDust
                 {
-                    return SystemStates[statId];
-                }
-                var stat = EsMonitorDataProvider.GetStatss(statId);
-                SystemStates.Add(statId, stat);
-                return stat;
+                    Id = 0,
+                    DevSystemCode = devId,
+                    RangeMaxValue = (long)dev.TpMax,
+                    RangeMinValue = (long)dev.TpMin
+                };
+                need = dev.IsHandlerValues;
             }
-
-            return null;
-        }
-
-        private static bool NeedRandomData(int devId, out EmsAutoDust dust)
-        {
-            var d = _context.AutoDusts.FirstOrDefault(a => a.DevSystemCode == devId.ToString());
-            dust = d;
-            return d != null;
+            else
+            {
+                var d = _context.AutoDusts.FirstOrDefault(a => a.DevSystemCode == devId);
+                dust = d;
+                need = d != null;
+            }
+            return need;
         }
 
         private static RandomDataGenerator GetGenerator(string devId)
