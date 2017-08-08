@@ -1,0 +1,124 @@
+﻿@model Unicom.Platform.Custom.RegisterWebSite.Models.DeviceModel
+@{
+    ViewBag.Title = "注册联通平台设备";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-md-12" style="margin-top: 15px;">
+    @using (Html.BeginForm("Register", "Device", FormMethod.Post, new { Id = "registerForm" }))
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>工程信息</h4>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-condensed table-hover">
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.Code)
+                        </td>
+                        <td colspan="3">
+                            @Html.DisplayFor(m => m.Code)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.Name)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Name)
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.Version)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Version)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.IpAddr)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.IpAddr)
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.MacAddr)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.MacAddr)
+                        </td>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.Longitude)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Longitude)
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.Latitude)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Latitude)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.StartDate)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.StartDate)
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.EndDate)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.EndDate)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.InstallDate)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.InstallDate)
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.VideoUrl)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.VideoUrl)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.ProjectCode)
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.ProjectCode, new SelectList(Model.Projects, "Code", "Code"), "选择所属工程")
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.OnlineStatus)
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(m => m.OnlineStatus)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            @Html.ValidationMessage("RegisterError")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td colspan="2">
+                            <input type="submit" class="btn btn-default" value="确认提交" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+

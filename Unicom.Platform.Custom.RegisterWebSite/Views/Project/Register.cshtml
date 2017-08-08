@@ -1,0 +1,181 @@
+﻿@model Unicom.Platform.Custom.RegisterWebSite.Models.ProjectModel
+@{
+    ViewBag.Title = "注册联通平台工地";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-md-12" style="margin-top: 15px;">
+    @using (Html.BeginForm("Register", "Project", FormMethod.Post, new {Id = "registerForm"}))
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>工程信息</h4>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-condensed table-hover">
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.Code)
+                        </td>
+                        <td colspan="3">
+                            @Html.DisplayFor(m => m.Code)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.RegisterCode)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.RegisterCode)
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.Name)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Name)
+                        </td>
+                    </tr>
+                    <tr>
+                    <td>
+                        @Html.LabelFor(m => m.District)
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.District, new SelectList(Model.Districts, "Name", "Name"), "选择区县")
+                    </td>
+                    <td>
+                        @Html.LabelFor(m => m.ProjectType)
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.ProjectType, new SelectList(Model.ProjectTypes, "Code", "Name"), "选择工程类型")
+                    </td>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.ProjectCategory)
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.ProjectCategory, new SelectList(Model.ProjectCategories, "Code", "Name"), "选择工程性质")
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.ProjectPeriod)
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.ProjectPeriod, new SelectList(Model.ProjectPeriods, "Code", "Name"), "选择工程工期")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.Region)
+                        </td>
+                        <td colspan="3">
+                            @Html.DropDownListFor(m => m.Region, new SelectList(Model.Regions, "Code", "Name"), "选择工程区域")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.Longitude)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Longitude)
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.Latitude)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Latitude)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.Street)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Street)
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.Address)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Address)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.Contractors)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Contractors)
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.Superintendent)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Superintendent)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.Telephone)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Telephone)
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.Stage)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Stage)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.SiteArea)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.SiteArea)
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.BuildingArea)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.BuildingArea)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.StartDate)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.StartDate)
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.EndDate)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.EndDate)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.IsCompleted)
+                        </td>
+                        <td colspan="3">
+                            @Html.CheckBoxFor(m => m.IsCompleted)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            @Html.ValidationMessage("RegisterError")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td colspan="2">
+                            <input type="submit" class="btn btn-default" value="确认提交"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    }
+</div>
