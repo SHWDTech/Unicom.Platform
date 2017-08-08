@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnicomTest", "UnicomTest\Un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unicom.Platform.Custom.RegisterWebSite", "Unicom.Platform.Custom.RegisterWebSite\Unicom.Platform.Custom.RegisterWebSite.csproj", "{DC76B622-543C-413A-BB26-5A8DDFC10343}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTWESensorData.DataProvider", "MTWESensorData.DataProvider\MTWESensorData.DataProvider.csproj", "{4CC2FF8A-FA46-478F-B2E5-6838761942BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{DC76B622-543C-413A-BB26-5A8DDFC10343}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC76B622-543C-413A-BB26-5A8DDFC10343}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC76B622-543C-413A-BB26-5A8DDFC10343}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CC2FF8A-FA46-478F-B2E5-6838761942BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CC2FF8A-FA46-478F-B2E5-6838761942BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CC2FF8A-FA46-478F-B2E5-6838761942BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CC2FF8A-FA46-478F-B2E5-6838761942BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,5 +90,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{163E824F-F76E-43A2-A033-6D2EFDBB67BE} = {C49F744B-1F11-478B-83E3-A1EEA42C8684}
 		{7ABACED3-FB0C-4031-AB00-42F192CFCB1A} = {C49F744B-1F11-478B-83E3-A1EEA42C8684}
+		{4CC2FF8A-FA46-478F-B2E5-6838761942BD} = {C49F744B-1F11-478B-83E3-A1EEA42C8684}
 	EndGlobalSection
 EndGlobal

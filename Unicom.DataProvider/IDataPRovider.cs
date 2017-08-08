@@ -56,5 +56,7 @@ namespace Unicom.DataProvider
         /// <param name="endDateTIme"></param>
         /// <returns></returns>
         List<emsData> GetHistoryDayEmsDatas(string devCode, DateTime startDateTime, DateTime endDateTIme);
+
+        List<emsData> GetValidHistoryData();
     }
 }

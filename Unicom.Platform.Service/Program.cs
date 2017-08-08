@@ -7,12 +7,14 @@ using ESMonitor.DataProvider;
 using ESMonitor.DataProvider.Models;
 using SHWDTech.Platform.Utility;
 using SHWDTech.Platform.Utility.ExtensionMethod;
+using Unicom.DataProvider;
 using Unicom.Platform.Model;
 using Unicom.Platform.Model.Service_References.UnicomPlatform;
 using Unicom.Platform.SQLite;
 using Unicom.Task;
 using EmsDevice = Unicom.Platform.Model.EmsDevice;
 using EmsProject = Unicom.Platform.Model.EmsProject;
+using MTWESensorData.DataProvider;
 
 namespace Unicom.Platform.Service
 {
@@ -36,6 +38,8 @@ namespace Unicom.Platform.Service
 
         private static readonly List<RandomDataGenerator> DataGenerators = new List<RandomDataGenerator>();
 
+        private static IDataProvider _dataProvider;
+
         private static void Main()
         {
             _sqliteConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
@@ -48,6 +52,16 @@ namespace Unicom.Platform.Service
                 Thread.Sleep(60000);
             }
             // ReSharper disable once FunctionNeverReturns
+        }
+
+        private static void InitLocal()
+        {
+            _dataProvider = new EsMonitorDataProvider();
+        }
+
+        private static void InitWeb()
+        {
+            _dataProvider = new MTWEDataProvider();
         }
 
         private static void InitUnicomUpload()
@@ -65,7 +79,7 @@ namespace Unicom.Platform.Service
 
         private static void LoadHistoryData()
         {
-            HistoryDatas.AddRange(EsMonitorDataProvider.GetValidHistoryData());
+            HistoryDatas.AddRange(new EsMonitorDataProvider().GetValidHistoryData());
         }
 
         private static void MinuteTimerCallBack(object taskState)

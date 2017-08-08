@@ -90,7 +90,7 @@ namespace ESMonitor.DataProvider
             }
         }
 
-        public static List<emsData> GetValidHistoryData()
+        public List<emsData> GetValidHistoryData()
         {
             using (var context = new EsMonitorModels())
             {

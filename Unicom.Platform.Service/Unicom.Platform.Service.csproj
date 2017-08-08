@@ -87,6 +87,10 @@
       <Project>{7abaced3-fb0c-4031-ab00-42f192cfcb1a}</Project>
       <Name>ESMonitor.DataProvider</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MTWESensorData.DataProvider\MTWESensorData.DataProvider.csproj">
+      <Project>{4cc2ff8a-fa46-478f-b2e5-6838761942bd}</Project>
+      <Name>MTWESensorData.DataProvider</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Unicom.Commander\Unicom.Commander.csproj">
       <Project>{63c61b49-7841-4019-a16a-78a7268569a6}</Project>
       <Name>Unicom.Commander</Name>
