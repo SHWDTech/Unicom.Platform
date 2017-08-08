@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using Unicom.Platform.Custom.RegisterWebSite.Entities;
+using Unicom.Platform.Entities;
 
 namespace Unicom.Platform.Custom.RegisterWebSite.Models
 {

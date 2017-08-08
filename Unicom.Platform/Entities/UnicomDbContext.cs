@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace Unicom.Platform.Custom.RegisterWebSite.Entities
+namespace Unicom.Platform.Entities
 {
     public class UnicomDbContext : DbContext
     {

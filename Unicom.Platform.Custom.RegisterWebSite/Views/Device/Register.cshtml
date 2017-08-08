@@ -24,6 +24,14 @@
                     </tr>
                     <tr>
                         <td>
+                            @Html.LabelFor(m => m.ProjectCode)
+                        </td>
+                        <td colspan="3">
+                            @Html.DropDownListFor(m => m.ProjectCode, new SelectList(Model.Projects, "Code", "Code"), "选择所属工程")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             @Html.LabelFor(m => m.Name)
                         </td>
                         <td>
@@ -93,16 +101,16 @@
                     </tr>
                     <tr>
                         <td>
-                            @Html.LabelFor(m => m.ProjectCode)
-                        </td>
-                        <td>
-                            @Html.DropDownListFor(m => m.ProjectCode, new SelectList(Model.Projects, "Code", "Code"), "选择所属工程")
-                        </td>
-                        <td>
                             @Html.LabelFor(m => m.OnlineStatus)
                         </td>
                         <td>
                             @Html.CheckBoxFor(m => m.OnlineStatus)
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.IsTransfer)
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(m => m.IsTransfer)
                         </td>
                     </tr>
                     <tr>

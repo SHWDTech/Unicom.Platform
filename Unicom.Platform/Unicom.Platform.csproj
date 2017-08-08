@@ -63,6 +63,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\EmsDevice.cs" />
+    <Compile Include="Entities\EmsDistrict.cs" />
+    <Compile Include="Entities\EmsProject.cs" />
+    <Compile Include="Entities\EmsProjectCategory.cs" />
+    <Compile Include="Entities\EmsProjectPeriod.cs" />
+    <Compile Include="Entities\EmsProjectType.cs" />
+    <Compile Include="Entities\EmsRegion.cs" />
+    <Compile Include="Entities\UnicomDbContext.cs" />
     <Compile Include="Model\EmsAutoDust.cs" />
     <Compile Include="Model\EmsDevice.cs" />
     <Compile Include="Model\EmsDistrict.cs" />

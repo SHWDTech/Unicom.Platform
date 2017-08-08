@@ -169,14 +169,6 @@
     <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
-    <Compile Include="Entities\EmsDevice.cs" />
-    <Compile Include="Entities\EmsProject.cs" />
-    <Compile Include="Entities\EmsProjectCategory.cs" />
-    <Compile Include="Entities\EmsDistrict.cs" />
-    <Compile Include="Entities\EmsProjectPeriod.cs" />
-    <Compile Include="Entities\EmsProjectType.cs" />
-    <Compile Include="Entities\EmsRegion.cs" />
-    <Compile Include="Entities\UnicomDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

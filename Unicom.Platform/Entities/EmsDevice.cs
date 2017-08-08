@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Unicom.Platform.Custom.RegisterWebSite.Entities
+namespace Unicom.Platform.Entities
 {
     public class EmsDevice
     {
@@ -47,5 +47,14 @@ namespace Unicom.Platform.Custom.RegisterWebSite.Entities
 
         [Display(Name = "视频地址")]
         public string VideoUrl { get; set; }
+
+        [Display(Name = "是否开启上传")]
+        public bool IsTransfer { get; set; }
+
+        public bool IsHandlerValues { get; set; }
+
+        public double TpMax { get; set; }
+
+        public double TpMin { get; set; }
     }
 }

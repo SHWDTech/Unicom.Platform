@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Unicom.Platform.Custom.RegisterWebSite.Entities
+namespace Unicom.Platform.Entities
 {
     public class EmsProject
     {

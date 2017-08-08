@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Unicom.Platform.Custom.RegisterWebSite.Entities
+namespace Unicom.Platform.Entities
 {
-    public class EmsProjectType
+    public class EmsProjectPeriod
     {
         [Key]
         public int Code { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using Unicom.Platform.Custom.RegisterWebSite.Entities;
 using Unicom.Platform.Custom.RegisterWebSite.Models.Bootstraptable;
+using Unicom.Platform.Entities;
 
 namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
 {

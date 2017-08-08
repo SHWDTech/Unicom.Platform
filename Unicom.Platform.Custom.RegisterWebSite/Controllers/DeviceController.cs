@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using Unicom.Platform.Custom.RegisterWebSite.Entities;
 using Unicom.Platform.Custom.RegisterWebSite.Models;
+using Unicom.Platform.Entities;
 using Unicom.Platform.Model.Service_References.UnicomPlatform;
 
 namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
