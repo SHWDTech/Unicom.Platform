@@ -49,7 +49,27 @@ namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
                     model.Code = result.result[0].key.ToString();
                     using (var ctx = new UnicomDbContext())
                     {
-                        ctx.EmsDevices.Add(model);
+                        ctx.EmsDevices.Add(new EmsDevice
+                        {
+                            Code = model.Code,
+                            Name = model.Name,
+                            IpAddr = model.IpAddr,
+                            MacAddr = model.MacAddr,
+                            Port = model.Port,
+                            Version = model.Version,
+                            ProjectCode = model.ProjectCode,
+                            Longitude = model.Longitude,
+                            Latitude = model.Latitude,
+                            StartDate = model.StartDate,
+                            EndDate = model.EndDate,
+                            InstallDate = model.InstallDate,
+                            OnlineStatus = model.OnlineStatus,
+                            VideoUrl = model.VideoUrl,
+                            IsTransfer = model.IsTransfer,
+                            IsHandlerValues = model.IsHandlerValues,
+                            TpMax = model.TpMax,
+                            TpMin = model.TpMin
+                        });
                         ctx.SaveChanges();
                     }
                 }

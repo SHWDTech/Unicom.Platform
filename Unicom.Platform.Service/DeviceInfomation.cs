@@ -4,6 +4,10 @@
     {
         public string DevCode { get; set; }
 
+        public string UnicomDevCode { get; set; }
+
         public string StatCode { get; set; }
+
+        public int ProjectType { get; set; }
     }
 }

@@ -67,7 +67,7 @@ namespace MTWESensorData.DataProvider
         private static List<emsData> MtweMinToEmsDatas(IEnumerable<sensor_data_min> mtweMins) => mtweMins.Select(
             min => new emsData
             {
-                dust = min.TP / 1000,
+                dust = min.TP,
                 temperature = min.Temperature,
                 humidity = min.Humidity,
                 noise = (int)min.DB,

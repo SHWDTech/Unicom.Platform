@@ -63,12 +63,37 @@ namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
                     model.Code = result.result[0].key.ToString();
                     using (var ctx = new UnicomDbContext())
                     {
-                        ctx.EmsProjects.Add(model);
+                        ctx.EmsProjects.Add(new EmsProject
+                        {
+                            Code = model.Code,
+                            Name = model.Name,
+                            RegisterCode = model.RegisterCode,
+                            District = model.District,
+                            ProjectType = model.ProjectType,
+                            ProjectCategory = model.ProjectCategory,
+                            ProjectPeriod = model.ProjectPeriod,
+                            Region = model.Region,
+                            Street = model.Street,
+                            Longitude = model.Longitude,
+                            Latitude = model.Latitude,
+                            Contractors = model.Contractors,
+                            Superintendent = model.Superintendent,
+                            Telephone = model.Telephone,
+                            Address = model.Address,
+                            SiteArea = model.SiteArea,
+                            BuildingArea = model.BuildingArea,
+                            StartDate = model.StartDate,
+                            EndDate = model.EndDate,
+                            Stage = model.Stage,
+                            IsCompleted = model.IsCompleted,
+                            Status = model.Status
+                        });
                         ctx.SaveChanges();
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
                     ModelState.AddModelError("RegisterError", "注册工程信息成功，但保存至服务器时遇到异常，请记录工程信息并提供给管理员手动添加。");
                     LoadInfomation(model);
                     return View(model);

@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Linq;
 using System.Threading;
 using ESMonitor.DataProvider;
-using ESMonitor.DataProvider.Models;
 using SHWDTech.Platform.Utility;
 using SHWDTech.Platform.Utility.ExtensionMethod;
 using Unicom.DataProvider;
@@ -33,8 +32,6 @@ namespace Unicom.Platform.Service
 
         private static readonly Dictionary<string, DeviceInfomation> SystemDevs = new Dictionary<string, DeviceInfomation>();
 
-        private static readonly Dictionary<int, T_Stats> SystemStates = new Dictionary<int, T_Stats>();
-
         private static string _platform;
 
         private static readonly List<RandomDataGenerator> DataGenerators = new List<RandomDataGenerator>();
@@ -54,7 +51,7 @@ namespace Unicom.Platform.Service
             {
                 InitLocal();
             }
-
+            _platform = ConfigurationManager.AppSettings["vendorName"];
             InitUnicomUpload();
             while (true)
             {
@@ -68,7 +65,6 @@ namespace Unicom.Platform.Service
         {
             _dataProvider = new EsMonitorDataProvider();
             _sqliteConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
-            _platform = ConfigurationManager.AppSettings["vendorName"];
             _context = new UnicomContext(_sqliteConnectionString);
         }
 
@@ -82,13 +78,16 @@ namespace Unicom.Platform.Service
             LoadHistoryData();
             if (_dataSource == "web")
             {
-                foreach (var device in new UnicomDbContext().EmsDevices)
+                using(var ctx = new UnicomDbContext())
                 {
-                    if (!device.IsTransfer) continue;
-                    AddMinuteTask(device.Name);
-                    AddHourTask(device.Name);
-                    AddDayTask(device.Name);
-                    OnTransferDevices.Add(device.Name);
+                    foreach (var device in ctx.EmsDevices.ToList())
+                    {
+                        if (!device.IsTransfer) continue;
+                        AddMinuteTask(device.Name);
+                        AddHourTask(device.Name);
+                        AddDayTask(device.Name);
+                        OnTransferDevices.Add(device.Name);
+                    }
                 }
             }
             else
@@ -284,6 +283,17 @@ namespace Unicom.Platform.Service
 
         private static void AddDeviceInfo(List<emsData> emsDatas, string systemDeviceCode)
         {
+            if (_dataSource == "web")
+            {
+                var info = SystemDevs[systemDeviceCode];
+                foreach (var emsData in emsDatas)
+                {
+                    emsData.devCode = info.UnicomDevCode;
+                    emsData.prjCode = info.StatCode;
+                    emsData.prjType = info.ProjectType;
+                }
+                return;
+            }
             var device = _context.FirstOrDefault<EmsDevice>($"SystemCode = {systemDeviceCode}");
 
             var project = _context.FirstOrDefault<EmsProject>($"code == '{device.projectCode}'");
@@ -298,19 +308,44 @@ namespace Unicom.Platform.Service
 
         private static bool DeviceOnTransfer(string systemDeviceCode)
         {
+            if (_dataSource == "web")
+            {
+                using (var ctx = new UnicomDbContext())
+                {
+                    var webDevice = ctx.EmsDevices.FirstOrDefault(d => d.Name == systemDeviceCode);
+                    return webDevice == null || webDevice.IsTransfer;
+                }
+            }
             var device = _context.FirstOrDefault<EmsDevice>($"SystemCode = {systemDeviceCode}");
             return device == null || device.OnTransfer;
         }
 
         private static void RefreashTransfer()
         {
-            foreach (var device in _context.Devices)
+            if (_dataSource == "web")
             {
-                if (OnTransferDevices.Contains(device.SystemCode) || !device.OnTransfer) continue;
-                AddMinuteTask(device.SystemCode);
-                AddHourTask(device.SystemCode);
-                AddDayTask(device.SystemCode);
-                OnTransferDevices.Add(device.SystemCode);
+                using (var ctx = new UnicomDbContext())
+                {
+                    foreach (var device in ctx.EmsDevices.ToList())
+                    {
+                        if (!device.IsTransfer || OnTransferDevices.Any(d => d == device.Name)) continue;
+                        AddMinuteTask(device.Name);
+                        AddHourTask(device.Name);
+                        AddDayTask(device.Name);
+                        OnTransferDevices.Add(device.Name);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var device in _context.Devices)
+                {
+                    if (!device.OnTransfer || OnTransferDevices.Any(d => d == device.SystemCode)) continue;
+                    AddMinuteTask(device.SystemCode);
+                    AddHourTask(device.SystemCode);
+                    AddDayTask(device.SystemCode);
+                    OnTransferDevices.Add(device.SystemCode);
+                }
             }
         }
 
@@ -342,7 +377,7 @@ namespace Unicom.Platform.Service
 
         private static DeviceInfomation LoadDevInfo(object taskState)
         {
-            DeviceInfomation info = null;
+            DeviceInfomation info;
             var devCode = taskState.ToString();
             if (SystemDevs.ContainsKey(devCode))
             {
@@ -351,14 +386,23 @@ namespace Unicom.Platform.Service
             }
             if (_dataSource == "web")
             {
-                var ctx = new UnicomDbContext();
-                var mtweDev = ctx.EmsDevices.FirstOrDefault(d => d.Name == devCode);
-                if (mtweDev != null)
-                    info = new DeviceInfomation
+                using (var ctx = new UnicomDbContext())
+                {
+                    var mtweDev = ctx.EmsDevices.FirstOrDefault(d => d.Name == devCode);
+                    if (mtweDev != null)
                     {
-                        DevCode = taskState.ToString(),
-                        StatCode = ctx.EmsProjects.FirstOrDefault(p => p.Code == mtweDev.ProjectCode)?.Name
-                    };
+                        var prj = ctx.EmsProjects.First(p => p.Code == mtweDev.ProjectCode);
+                        info = new DeviceInfomation
+                        {
+                            DevCode = taskState.ToString(),
+                            UnicomDevCode = mtweDev.Code,
+                            StatCode = prj.Name,
+                            ProjectType = prj.ProjectType
+                        };
+                        SystemDevs.Add(devCode, info);
+                        return info;
+                    }
+                }
             }
             else
             {
@@ -382,18 +426,21 @@ namespace Unicom.Platform.Service
 
         private static bool NeedRandomData(string devId, out EmsAutoDust dust)
         {
-            var need = false;
+            bool need;
             if (_dataSource == "web")
             {
-                var dev = new UnicomDbContext().EmsDevices.First(d => d.Name == devId);
-                dust = new EmsAutoDust
+                using (var ctx = new UnicomDbContext())
                 {
-                    Id = 0,
-                    DevSystemCode = devId,
-                    RangeMaxValue = (long)dev.TpMax,
-                    RangeMinValue = (long)dev.TpMin
-                };
-                need = dev.IsHandlerValues;
+                    var dev = ctx.EmsDevices.First(d => d.Name == devId);
+                    dust = new EmsAutoDust
+                    {
+                        Id = 0,
+                        DevSystemCode = devId,
+                        RangeMaxValue = (long)dev.TpMax,
+                        RangeMinValue = (long)dev.TpMin
+                    };
+                    need = dev.IsHandlerValues;
+                }
             }
             else
             {
