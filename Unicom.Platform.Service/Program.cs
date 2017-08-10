@@ -8,7 +8,7 @@ using SHWDTech.Platform.Utility;
 using SHWDTech.Platform.Utility.ExtensionMethod;
 using Unicom.DataProvider;
 using Unicom.Platform.Model;
-using Unicom.Platform.Model.Service_References.UnicomPlatform;
+using Unicom.Platform.Model.UnicomPlatform;
 using Unicom.Platform.SQLite;
 using Unicom.Task;
 using EmsDevice = Unicom.Platform.Model.EmsDevice;

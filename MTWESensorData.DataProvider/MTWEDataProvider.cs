@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MTWESensorData.DataProvider.Models;
 using Unicom.DataProvider;
-using Unicom.Platform.Model.Service_References.UnicomPlatform;
+using Unicom.Platform.Model.UnicomPlatform;
 using SHWDTech.Platform.Utility.ExtensionMethod;
 
 // ReSharper disable InconsistentNaming
@@ -67,7 +67,7 @@ namespace MTWESensorData.DataProvider
         private static List<emsData> MtweMinToEmsDatas(IEnumerable<sensor_data_min> mtweMins) => mtweMins.Select(
             min => new emsData
             {
-                dust = min.TP,
+                dust = min.TP / 100,
                 temperature = min.Temperature,
                 humidity = min.Humidity,
                 noise = (int)min.DB,
