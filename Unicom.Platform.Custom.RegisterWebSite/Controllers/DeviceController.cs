@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using Unicom.Platform.Custom.RegisterWebSite.Models;
 using Unicom.Platform.Custom.RegisterWebSite.Models.Bootstraptable;
 using Unicom.Platform.Entities;
-using Unicom.Platform.Model.Service_References.UnicomPlatform;
+using Unicom.Platform.Model.UnicomPlatform;
 
 namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
 {
@@ -27,6 +27,7 @@ namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
                     {
                         Code = dev.Code,
                         Name = dev.Name,
+                        UnicomName = dev.UnicomName,
                         IpAddr = dev.IpAddr,
                         MacAddr = dev.MacAddr,
                         Port = dev.Port,
@@ -53,7 +54,7 @@ namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
             var device = new emsDevice
             {
                 code = model.Code,
-                name = model.Name,
+                name = model.UnicomName,
                 ipAddr = model.IpAddr,
                 macAddr = model.MacAddr,
                 port = model.Port,
@@ -82,13 +83,14 @@ namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
             {
                 try
                 {
-                    model.Code = result.result[0].key.ToString();
+                    model.Code = result.result[0].value.ToString();
                     using (var ctx = new UnicomDbContext())
                     {
                         ctx.EmsDevices.Add(new EmsDevice
                         {
                             Code = model.Code,
                             Name = model.Name,
+                            UnicomName = model.UnicomName,
                             IpAddr = model.IpAddr,
                             MacAddr = model.MacAddr,
                             Port = model.Port,

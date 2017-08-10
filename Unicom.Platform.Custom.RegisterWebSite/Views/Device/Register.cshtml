@@ -18,9 +18,15 @@
                         <td>
                             @Html.LabelFor(m => m.Code)
                         </td>
-                        <td colspan="3">
+                        <td>
                             @Html.DisplayFor(m => m.Code)
                             @Html.HiddenFor(m => m.Code)
+                        </td>
+                        <td>
+                            @Html.LabelFor(m => m.Name)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Name)
                         </td>
                     </tr>
                     <tr>
@@ -33,10 +39,10 @@
                     </tr>
                     <tr>
                         <td>
-                            @Html.LabelFor(m => m.Name)
+                            @Html.LabelFor(m => m.UnicomName)
                         </td>
                         <td>
-                            @Html.TextBoxFor(m => m.Name)
+                            @Html.TextBoxFor(m => m.UnicomName)
                         </td>
                         <td>
                             @Html.LabelFor(m => m.Version)

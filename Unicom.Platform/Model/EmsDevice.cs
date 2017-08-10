@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Unicom.Platform.Model.Service_References.UnicomPlatform;
+using Unicom.Platform.Model.UnicomPlatform;
 
 namespace Unicom.Platform.Model
 {

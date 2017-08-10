@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
+namespace Unicom.Platform.Model.UnicomPlatform {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -40,10 +40,10 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="pullProjectCategoryFlag")]
-        pullProjectCategoryResponse pullProjectCategory(pullProjectCategory1 request);
+        Unicom.Platform.Model.UnicomPlatform.pullProjectCategoryResponse pullProjectCategory(Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1 request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<pullProjectCategoryResponse> pullProjectCategoryAsync(pullProjectCategory1 request);
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectCategoryResponse> pullProjectCategoryAsync(Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1 request);
         
         // CODEGEN: Parameter 'pullProjectTypeFlag' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
@@ -70,10 +70,10 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="pullProjectTypeFlag")]
-        pullProjectTypeResponse pullProjectType(pullProjectType1 request);
+        Unicom.Platform.Model.UnicomPlatform.pullProjectTypeResponse pullProjectType(Unicom.Platform.Model.UnicomPlatform.pullProjectType1 request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<pullProjectTypeResponse> pullProjectTypeAsync(pullProjectType1 request);
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectTypeResponse> pullProjectTypeAsync(Unicom.Platform.Model.UnicomPlatform.pullProjectType1 request);
         
         // CODEGEN: Parameter 'pullProjectPeriodFlag' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
@@ -100,10 +100,10 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="pullProjectPeriodFlag")]
-        pullProjectPeriodResponse pullProjectPeriod(pullProjectPeriod1 request);
+        Unicom.Platform.Model.UnicomPlatform.pullProjectPeriodResponse pullProjectPeriod(Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1 request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<pullProjectPeriodResponse> pullProjectPeriodAsync(pullProjectPeriod1 request);
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectPeriodResponse> pullProjectPeriodAsync(Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1 request);
         
         // CODEGEN: Parameter 'deviceCodes' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
@@ -130,10 +130,10 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="deviceCodes")]
-        pushDevicesResponse1 pushDevices(pushDevices1 request);
+        Unicom.Platform.Model.UnicomPlatform.pushDevicesResponse1 pushDevices(Unicom.Platform.Model.UnicomPlatform.pushDevices1 request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<pushDevicesResponse1> pushDevicesAsync(pushDevices1 request);
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDevicesResponse1> pushDevicesAsync(Unicom.Platform.Model.UnicomPlatform.pushDevices1 request);
         
         // CODEGEN: Parameter 'pushHourlyDataFlag' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
@@ -160,10 +160,10 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="pushHourlyDataFlag")]
-        pushHourlyDataResponse1 pushHourlyData(pushHourlyData1 request);
+        Unicom.Platform.Model.UnicomPlatform.pushHourlyDataResponse1 pushHourlyData(Unicom.Platform.Model.UnicomPlatform.pushHourlyData1 request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<pushHourlyDataResponse1> pushHourlyDataAsync(pushHourlyData1 request);
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushHourlyDataResponse1> pushHourlyDataAsync(Unicom.Platform.Model.UnicomPlatform.pushHourlyData1 request);
         
         // CODEGEN: Parameter 'pushDailyDataFlag' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
@@ -190,10 +190,10 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="pushDailyDataFlag")]
-        pushDailyDataResponse1 pushDailyData(pushDailyData1 request);
+        Unicom.Platform.Model.UnicomPlatform.pushDailyDataResponse1 pushDailyData(Unicom.Platform.Model.UnicomPlatform.pushDailyData1 request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<pushDailyDataResponse1> pushDailyDataAsync(pushDailyData1 request);
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDailyDataResponse1> pushDailyDataAsync(Unicom.Platform.Model.UnicomPlatform.pushDailyData1 request);
         
         // CODEGEN: Parameter 'pushRealTimeDataFlag' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
@@ -220,10 +220,10 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="pushRealTimeDataFlag")]
-        pushRealTimeDataResponse1 pushRealTimeData(pushRealTimeData1 request);
+        Unicom.Platform.Model.UnicomPlatform.pushRealTimeDataResponse1 pushRealTimeData(Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1 request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<pushRealTimeDataResponse1> pushRealTimeDataAsync(pushRealTimeData1 request);
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushRealTimeDataResponse1> pushRealTimeDataAsync(Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1 request);
         
         // CODEGEN: Parameter 'deviceStatusCodes' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
@@ -250,10 +250,10 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="deviceStatusCodes")]
-        pushDeviceStatusResponse1 pushDeviceStatus(pushDeviceStatus1 request);
+        Unicom.Platform.Model.UnicomPlatform.pushDeviceStatusResponse1 pushDeviceStatus(Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1 request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<pushDeviceStatusResponse1> pushDeviceStatusAsync(pushDeviceStatus1 request);
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDeviceStatusResponse1> pushDeviceStatusAsync(Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1 request);
         
         // CODEGEN: Parameter 'pullRegionFlag' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
@@ -280,10 +280,10 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="pullRegionFlag")]
-        pullRegionResponse pullRegion(pullRegion1 request);
+        Unicom.Platform.Model.UnicomPlatform.pullRegionResponse pullRegion(Unicom.Platform.Model.UnicomPlatform.pullRegion1 request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<pullRegionResponse> pullRegionAsync(pullRegion1 request);
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullRegionResponse> pullRegionAsync(Unicom.Platform.Model.UnicomPlatform.pullRegion1 request);
         
         // CODEGEN: Parameter 'projectCodes' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
@@ -310,10 +310,10 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="projectCodes")]
-        pushProjectsResponse1 pushProjects(pushProjects1 request);
+        Unicom.Platform.Model.UnicomPlatform.pushProjectsResponse1 pushProjects(Unicom.Platform.Model.UnicomPlatform.pushProjects1 request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<pushProjectsResponse1> pushProjectsAsync(pushProjects1 request);
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushProjectsResponse1> pushProjectsAsync(Unicom.Platform.Model.UnicomPlatform.pushProjects1 request);
         
         // CODEGEN: Parameter 'projectStatusCodes' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
@@ -340,10 +340,10 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="projectStatusCodes")]
-        pushProjectStatusResponse1 pushProjectStatus(pushProjectStatus1 request);
+        Unicom.Platform.Model.UnicomPlatform.pushProjectStatusResponse1 pushProjectStatus(Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1 request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<pushProjectStatusResponse1> pushProjectStatusAsync(pushProjectStatus1 request);
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushProjectStatusResponse1> pushProjectStatusAsync(Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1 request);
         
         // CODEGEN: Parameter 'vendorCode' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
@@ -370,10 +370,10 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="vendorCode")]
-        registerVendorResponse1 registerVendor(registerVendor1 request);
+        Unicom.Platform.Model.UnicomPlatform.registerVendorResponse1 registerVendor(Unicom.Platform.Model.UnicomPlatform.registerVendor1 request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<registerVendorResponse1> registerVendorAsync(registerVendor1 request);
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.registerVendorResponse1> registerVendorAsync(Unicom.Platform.Model.UnicomPlatform.registerVendor1 request);
         
         // CODEGEN: Parameter 'districts' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
@@ -400,14 +400,14 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(pullProjectCategory))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="districts")]
-        pullDistrictResponse pullDistrict(pullDistrict1 request);
+        Unicom.Platform.Model.UnicomPlatform.pullDistrictResponse pullDistrict(Unicom.Platform.Model.UnicomPlatform.pullDistrict1 request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<pullDistrictResponse> pullDistrictAsync(pullDistrict1 request);
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullDistrictResponse> pullDistrictAsync(Unicom.Platform.Model.UnicomPlatform.pullDistrict1 request);
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -467,7 +467,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -513,7 +513,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -559,7 +559,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -591,7 +591,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -623,7 +623,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -655,7 +655,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -688,7 +688,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -734,7 +734,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -780,7 +780,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1232,7 +1232,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1264,7 +1264,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1310,7 +1310,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1370,7 +1370,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1402,7 +1402,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1434,7 +1434,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1480,7 +1480,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1750,7 +1750,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1782,7 +1782,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1828,7 +1828,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2224,7 +2224,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2256,7 +2256,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2302,7 +2302,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2334,7 +2334,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2380,7 +2380,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2412,7 +2412,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2458,7 +2458,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2490,7 +2490,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2522,7 +2522,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2554,7 +2554,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2614,7 +2614,7 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2531.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2699,12 +2699,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("pullProjectCategoryFlag", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public emsPrjCategory[] pullProjectCategoryFlag;
+        public Unicom.Platform.Model.UnicomPlatform.emsPrjCategory[] pullProjectCategoryFlag;
         
         public pullProjectCategoryResponse() {
         }
         
-        public pullProjectCategoryResponse(emsPrjCategory[] pullProjectCategoryFlag) {
+        public pullProjectCategoryResponse(Unicom.Platform.Model.UnicomPlatform.emsPrjCategory[] pullProjectCategoryFlag) {
             this.pullProjectCategoryFlag = pullProjectCategoryFlag;
         }
     }
@@ -2735,12 +2735,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("pullProjectTypeFlag", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public emsPrjType[] pullProjectTypeFlag;
+        public Unicom.Platform.Model.UnicomPlatform.emsPrjType[] pullProjectTypeFlag;
         
         public pullProjectTypeResponse() {
         }
         
-        public pullProjectTypeResponse(emsPrjType[] pullProjectTypeFlag) {
+        public pullProjectTypeResponse(Unicom.Platform.Model.UnicomPlatform.emsPrjType[] pullProjectTypeFlag) {
             this.pullProjectTypeFlag = pullProjectTypeFlag;
         }
     }
@@ -2771,12 +2771,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("pullProjectPeriodFlag", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public emsPrjPeriod[] pullProjectPeriodFlag;
+        public Unicom.Platform.Model.UnicomPlatform.emsPrjPeriod[] pullProjectPeriodFlag;
         
         public pullProjectPeriodResponse() {
         }
         
-        public pullProjectPeriodResponse(emsPrjPeriod[] pullProjectPeriodFlag) {
+        public pullProjectPeriodResponse(Unicom.Platform.Model.UnicomPlatform.emsPrjPeriod[] pullProjectPeriodFlag) {
             this.pullProjectPeriodFlag = pullProjectPeriodFlag;
         }
     }
@@ -2793,12 +2793,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute("emsDeviceList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public emsDevice[] emsDeviceList;
+        public Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList;
         
         public pushDevices1() {
         }
         
-        public pushDevices1(string vendorCode, emsDevice[] emsDeviceList) {
+        public pushDevices1(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList) {
             this.vendorCode = vendorCode;
             this.emsDeviceList = emsDeviceList;
         }
@@ -2812,12 +2812,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public resultData deviceCodes;
+        public Unicom.Platform.Model.UnicomPlatform.resultData deviceCodes;
         
         public pushDevicesResponse1() {
         }
         
-        public pushDevicesResponse1(resultData deviceCodes) {
+        public pushDevicesResponse1(Unicom.Platform.Model.UnicomPlatform.resultData deviceCodes) {
             this.deviceCodes = deviceCodes;
         }
     }
@@ -2834,12 +2834,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute("emsDataList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public emsData[] emsDataList;
+        public Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList;
         
         public pushHourlyData1() {
         }
         
-        public pushHourlyData1(string vendorCode, emsData[] emsDataList) {
+        public pushHourlyData1(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
             this.vendorCode = vendorCode;
             this.emsDataList = emsDataList;
         }
@@ -2853,12 +2853,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public resultData pushHourlyDataFlag;
+        public Unicom.Platform.Model.UnicomPlatform.resultData pushHourlyDataFlag;
         
         public pushHourlyDataResponse1() {
         }
         
-        public pushHourlyDataResponse1(resultData pushHourlyDataFlag) {
+        public pushHourlyDataResponse1(Unicom.Platform.Model.UnicomPlatform.resultData pushHourlyDataFlag) {
             this.pushHourlyDataFlag = pushHourlyDataFlag;
         }
     }
@@ -2875,12 +2875,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute("emsDataList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public emsData[] emsDataList;
+        public Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList;
         
         public pushDailyData1() {
         }
         
-        public pushDailyData1(string vendorCode, emsData[] emsDataList) {
+        public pushDailyData1(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
             this.vendorCode = vendorCode;
             this.emsDataList = emsDataList;
         }
@@ -2894,12 +2894,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public resultData pushDailyDataFlag;
+        public Unicom.Platform.Model.UnicomPlatform.resultData pushDailyDataFlag;
         
         public pushDailyDataResponse1() {
         }
         
-        public pushDailyDataResponse1(resultData pushDailyDataFlag) {
+        public pushDailyDataResponse1(Unicom.Platform.Model.UnicomPlatform.resultData pushDailyDataFlag) {
             this.pushDailyDataFlag = pushDailyDataFlag;
         }
     }
@@ -2916,12 +2916,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute("emsDataList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public emsData[] emsDataList;
+        public Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList;
         
         public pushRealTimeData1() {
         }
         
-        public pushRealTimeData1(string vendorCode, emsData[] emsDataList) {
+        public pushRealTimeData1(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
             this.vendorCode = vendorCode;
             this.emsDataList = emsDataList;
         }
@@ -2935,12 +2935,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public resultData pushRealTimeDataFlag;
+        public Unicom.Platform.Model.UnicomPlatform.resultData pushRealTimeDataFlag;
         
         public pushRealTimeDataResponse1() {
         }
         
-        public pushRealTimeDataResponse1(resultData pushRealTimeDataFlag) {
+        public pushRealTimeDataResponse1(Unicom.Platform.Model.UnicomPlatform.resultData pushRealTimeDataFlag) {
             this.pushRealTimeDataFlag = pushRealTimeDataFlag;
         }
     }
@@ -2957,12 +2957,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute("emsDeviceList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public emsDevice[] emsDeviceList;
+        public Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList;
         
         public pushDeviceStatus1() {
         }
         
-        public pushDeviceStatus1(string vendorCode, emsDevice[] emsDeviceList) {
+        public pushDeviceStatus1(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList) {
             this.vendorCode = vendorCode;
             this.emsDeviceList = emsDeviceList;
         }
@@ -2976,12 +2976,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public resultData deviceStatusCodes;
+        public Unicom.Platform.Model.UnicomPlatform.resultData deviceStatusCodes;
         
         public pushDeviceStatusResponse1() {
         }
         
-        public pushDeviceStatusResponse1(resultData deviceStatusCodes) {
+        public pushDeviceStatusResponse1(Unicom.Platform.Model.UnicomPlatform.resultData deviceStatusCodes) {
             this.deviceStatusCodes = deviceStatusCodes;
         }
     }
@@ -3012,12 +3012,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("pullRegionFlag", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public emsRegion[] pullRegionFlag;
+        public Unicom.Platform.Model.UnicomPlatform.emsRegion[] pullRegionFlag;
         
         public pullRegionResponse() {
         }
         
-        public pullRegionResponse(emsRegion[] pullRegionFlag) {
+        public pullRegionResponse(Unicom.Platform.Model.UnicomPlatform.emsRegion[] pullRegionFlag) {
             this.pullRegionFlag = pullRegionFlag;
         }
     }
@@ -3034,12 +3034,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute("emsProjectList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public emsProject[] emsProjectList;
+        public Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList;
         
         public pushProjects1() {
         }
         
-        public pushProjects1(string vendorCode, emsProject[] emsProjectList) {
+        public pushProjects1(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList) {
             this.vendorCode = vendorCode;
             this.emsProjectList = emsProjectList;
         }
@@ -3053,12 +3053,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public resultData projectCodes;
+        public Unicom.Platform.Model.UnicomPlatform.resultData projectCodes;
         
         public pushProjectsResponse1() {
         }
         
-        public pushProjectsResponse1(resultData projectCodes) {
+        public pushProjectsResponse1(Unicom.Platform.Model.UnicomPlatform.resultData projectCodes) {
             this.projectCodes = projectCodes;
         }
     }
@@ -3075,12 +3075,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute("emsProjectList", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public emsProject[] emsProjectList;
+        public Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList;
         
         public pushProjectStatus1() {
         }
         
-        public pushProjectStatus1(string vendorCode, emsProject[] emsProjectList) {
+        public pushProjectStatus1(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList) {
             this.vendorCode = vendorCode;
             this.emsProjectList = emsProjectList;
         }
@@ -3094,12 +3094,12 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public resultData projectStatusCodes;
+        public Unicom.Platform.Model.UnicomPlatform.resultData projectStatusCodes;
         
         public pushProjectStatusResponse1() {
         }
         
-        public pushProjectStatusResponse1(resultData projectStatusCodes) {
+        public pushProjectStatusResponse1(Unicom.Platform.Model.UnicomPlatform.resultData projectStatusCodes) {
             this.projectStatusCodes = projectStatusCodes;
         }
     }
@@ -3171,23 +3171,23 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.ems.ks/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("districts", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public emsDistrict[] districts;
+        public Unicom.Platform.Model.UnicomPlatform.emsDistrict[] districts;
         
         public pullDistrictResponse() {
         }
         
-        public pullDistrictResponse(emsDistrict[] districts) {
+        public pullDistrictResponse(Unicom.Platform.Model.UnicomPlatform.emsDistrict[] districts) {
             this.districts = districts;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface PushResourceServiceChannel : PushResourceService, System.ServiceModel.IClientChannel {
+    public interface PushResourceServiceChannel : Unicom.Platform.Model.UnicomPlatform.PushResourceService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class PushResourceServiceClient : System.ServiceModel.ClientBase<PushResourceService>, PushResourceService {
+    public partial class PushResourceServiceClient : System.ServiceModel.ClientBase<Unicom.Platform.Model.UnicomPlatform.PushResourceService>, Unicom.Platform.Model.UnicomPlatform.PushResourceService {
         
         public PushResourceServiceClient() {
         }
@@ -3209,318 +3209,318 @@ namespace Unicom.Platform.Model.Service_References.UnicomPlatform {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        pullProjectCategoryResponse PushResourceService.pullProjectCategory(pullProjectCategory1 request) {
+        Unicom.Platform.Model.UnicomPlatform.pullProjectCategoryResponse Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullProjectCategory(Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1 request) {
             return base.Channel.pullProjectCategory(request);
         }
         
-        public emsPrjCategory[] pullProjectCategory(string vendorCode) {
-            pullProjectCategory1 inValue = new pullProjectCategory1();
+        public Unicom.Platform.Model.UnicomPlatform.emsPrjCategory[] pullProjectCategory(string vendorCode) {
+            Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1();
             inValue.vendorCode = vendorCode;
-            pullProjectCategoryResponse retVal = ((PushResourceService)(this)).pullProjectCategory(inValue);
+            Unicom.Platform.Model.UnicomPlatform.pullProjectCategoryResponse retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullProjectCategory(inValue);
             return retVal.pullProjectCategoryFlag;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<pullProjectCategoryResponse> PushResourceService.pullProjectCategoryAsync(pullProjectCategory1 request) {
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectCategoryResponse> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullProjectCategoryAsync(Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1 request) {
             return base.Channel.pullProjectCategoryAsync(request);
         }
         
-        public System.Threading.Tasks.Task<pullProjectCategoryResponse> pullProjectCategoryAsync(string vendorCode) {
-            pullProjectCategory1 inValue = new pullProjectCategory1();
+        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectCategoryResponse> pullProjectCategoryAsync(string vendorCode) {
+            Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullProjectCategory1();
             inValue.vendorCode = vendorCode;
-            return ((PushResourceService)(this)).pullProjectCategoryAsync(inValue);
+            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullProjectCategoryAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        pullProjectTypeResponse PushResourceService.pullProjectType(pullProjectType1 request) {
+        Unicom.Platform.Model.UnicomPlatform.pullProjectTypeResponse Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullProjectType(Unicom.Platform.Model.UnicomPlatform.pullProjectType1 request) {
             return base.Channel.pullProjectType(request);
         }
         
-        public emsPrjType[] pullProjectType(string vendorCode) {
-            pullProjectType1 inValue = new pullProjectType1();
+        public Unicom.Platform.Model.UnicomPlatform.emsPrjType[] pullProjectType(string vendorCode) {
+            Unicom.Platform.Model.UnicomPlatform.pullProjectType1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullProjectType1();
             inValue.vendorCode = vendorCode;
-            pullProjectTypeResponse retVal = ((PushResourceService)(this)).pullProjectType(inValue);
+            Unicom.Platform.Model.UnicomPlatform.pullProjectTypeResponse retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullProjectType(inValue);
             return retVal.pullProjectTypeFlag;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<pullProjectTypeResponse> PushResourceService.pullProjectTypeAsync(pullProjectType1 request) {
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectTypeResponse> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullProjectTypeAsync(Unicom.Platform.Model.UnicomPlatform.pullProjectType1 request) {
             return base.Channel.pullProjectTypeAsync(request);
         }
         
-        public System.Threading.Tasks.Task<pullProjectTypeResponse> pullProjectTypeAsync(string vendorCode) {
-            pullProjectType1 inValue = new pullProjectType1();
+        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectTypeResponse> pullProjectTypeAsync(string vendorCode) {
+            Unicom.Platform.Model.UnicomPlatform.pullProjectType1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullProjectType1();
             inValue.vendorCode = vendorCode;
-            return ((PushResourceService)(this)).pullProjectTypeAsync(inValue);
+            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullProjectTypeAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        pullProjectPeriodResponse PushResourceService.pullProjectPeriod(pullProjectPeriod1 request) {
+        Unicom.Platform.Model.UnicomPlatform.pullProjectPeriodResponse Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullProjectPeriod(Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1 request) {
             return base.Channel.pullProjectPeriod(request);
         }
         
-        public emsPrjPeriod[] pullProjectPeriod(string vendorCode) {
-            pullProjectPeriod1 inValue = new pullProjectPeriod1();
+        public Unicom.Platform.Model.UnicomPlatform.emsPrjPeriod[] pullProjectPeriod(string vendorCode) {
+            Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1();
             inValue.vendorCode = vendorCode;
-            pullProjectPeriodResponse retVal = ((PushResourceService)(this)).pullProjectPeriod(inValue);
+            Unicom.Platform.Model.UnicomPlatform.pullProjectPeriodResponse retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullProjectPeriod(inValue);
             return retVal.pullProjectPeriodFlag;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<pullProjectPeriodResponse> PushResourceService.pullProjectPeriodAsync(pullProjectPeriod1 request) {
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectPeriodResponse> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullProjectPeriodAsync(Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1 request) {
             return base.Channel.pullProjectPeriodAsync(request);
         }
         
-        public System.Threading.Tasks.Task<pullProjectPeriodResponse> pullProjectPeriodAsync(string vendorCode) {
-            pullProjectPeriod1 inValue = new pullProjectPeriod1();
+        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullProjectPeriodResponse> pullProjectPeriodAsync(string vendorCode) {
+            Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullProjectPeriod1();
             inValue.vendorCode = vendorCode;
-            return ((PushResourceService)(this)).pullProjectPeriodAsync(inValue);
+            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullProjectPeriodAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        pushDevicesResponse1 PushResourceService.pushDevices(pushDevices1 request) {
+        Unicom.Platform.Model.UnicomPlatform.pushDevicesResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushDevices(Unicom.Platform.Model.UnicomPlatform.pushDevices1 request) {
             return base.Channel.pushDevices(request);
         }
         
-        public resultData pushDevices(string vendorCode, emsDevice[] emsDeviceList) {
-            pushDevices1 inValue = new pushDevices1();
+        public Unicom.Platform.Model.UnicomPlatform.resultData pushDevices(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList) {
+            Unicom.Platform.Model.UnicomPlatform.pushDevices1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushDevices1();
             inValue.vendorCode = vendorCode;
             inValue.emsDeviceList = emsDeviceList;
-            pushDevicesResponse1 retVal = ((PushResourceService)(this)).pushDevices(inValue);
+            Unicom.Platform.Model.UnicomPlatform.pushDevicesResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushDevices(inValue);
             return retVal.deviceCodes;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<pushDevicesResponse1> PushResourceService.pushDevicesAsync(pushDevices1 request) {
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDevicesResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushDevicesAsync(Unicom.Platform.Model.UnicomPlatform.pushDevices1 request) {
             return base.Channel.pushDevicesAsync(request);
         }
         
-        public System.Threading.Tasks.Task<pushDevicesResponse1> pushDevicesAsync(string vendorCode, emsDevice[] emsDeviceList) {
-            pushDevices1 inValue = new pushDevices1();
+        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDevicesResponse1> pushDevicesAsync(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList) {
+            Unicom.Platform.Model.UnicomPlatform.pushDevices1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushDevices1();
             inValue.vendorCode = vendorCode;
             inValue.emsDeviceList = emsDeviceList;
-            return ((PushResourceService)(this)).pushDevicesAsync(inValue);
+            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushDevicesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        pushHourlyDataResponse1 PushResourceService.pushHourlyData(pushHourlyData1 request) {
+        Unicom.Platform.Model.UnicomPlatform.pushHourlyDataResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushHourlyData(Unicom.Platform.Model.UnicomPlatform.pushHourlyData1 request) {
             return base.Channel.pushHourlyData(request);
         }
         
-        public resultData pushHourlyData(string vendorCode, emsData[] emsDataList) {
-            pushHourlyData1 inValue = new pushHourlyData1();
+        public Unicom.Platform.Model.UnicomPlatform.resultData pushHourlyData(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
+            Unicom.Platform.Model.UnicomPlatform.pushHourlyData1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushHourlyData1();
             inValue.vendorCode = vendorCode;
             inValue.emsDataList = emsDataList;
-            pushHourlyDataResponse1 retVal = ((PushResourceService)(this)).pushHourlyData(inValue);
+            Unicom.Platform.Model.UnicomPlatform.pushHourlyDataResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushHourlyData(inValue);
             return retVal.pushHourlyDataFlag;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<pushHourlyDataResponse1> PushResourceService.pushHourlyDataAsync(pushHourlyData1 request) {
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushHourlyDataResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushHourlyDataAsync(Unicom.Platform.Model.UnicomPlatform.pushHourlyData1 request) {
             return base.Channel.pushHourlyDataAsync(request);
         }
         
-        public System.Threading.Tasks.Task<pushHourlyDataResponse1> pushHourlyDataAsync(string vendorCode, emsData[] emsDataList) {
-            pushHourlyData1 inValue = new pushHourlyData1();
+        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushHourlyDataResponse1> pushHourlyDataAsync(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
+            Unicom.Platform.Model.UnicomPlatform.pushHourlyData1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushHourlyData1();
             inValue.vendorCode = vendorCode;
             inValue.emsDataList = emsDataList;
-            return ((PushResourceService)(this)).pushHourlyDataAsync(inValue);
+            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushHourlyDataAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        pushDailyDataResponse1 PushResourceService.pushDailyData(pushDailyData1 request) {
+        Unicom.Platform.Model.UnicomPlatform.pushDailyDataResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushDailyData(Unicom.Platform.Model.UnicomPlatform.pushDailyData1 request) {
             return base.Channel.pushDailyData(request);
         }
         
-        public resultData pushDailyData(string vendorCode, emsData[] emsDataList) {
-            pushDailyData1 inValue = new pushDailyData1();
+        public Unicom.Platform.Model.UnicomPlatform.resultData pushDailyData(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
+            Unicom.Platform.Model.UnicomPlatform.pushDailyData1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushDailyData1();
             inValue.vendorCode = vendorCode;
             inValue.emsDataList = emsDataList;
-            pushDailyDataResponse1 retVal = ((PushResourceService)(this)).pushDailyData(inValue);
+            Unicom.Platform.Model.UnicomPlatform.pushDailyDataResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushDailyData(inValue);
             return retVal.pushDailyDataFlag;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<pushDailyDataResponse1> PushResourceService.pushDailyDataAsync(pushDailyData1 request) {
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDailyDataResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushDailyDataAsync(Unicom.Platform.Model.UnicomPlatform.pushDailyData1 request) {
             return base.Channel.pushDailyDataAsync(request);
         }
         
-        public System.Threading.Tasks.Task<pushDailyDataResponse1> pushDailyDataAsync(string vendorCode, emsData[] emsDataList) {
-            pushDailyData1 inValue = new pushDailyData1();
+        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDailyDataResponse1> pushDailyDataAsync(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
+            Unicom.Platform.Model.UnicomPlatform.pushDailyData1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushDailyData1();
             inValue.vendorCode = vendorCode;
             inValue.emsDataList = emsDataList;
-            return ((PushResourceService)(this)).pushDailyDataAsync(inValue);
+            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushDailyDataAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        pushRealTimeDataResponse1 PushResourceService.pushRealTimeData(pushRealTimeData1 request) {
+        Unicom.Platform.Model.UnicomPlatform.pushRealTimeDataResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushRealTimeData(Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1 request) {
             return base.Channel.pushRealTimeData(request);
         }
         
-        public resultData pushRealTimeData(string vendorCode, emsData[] emsDataList) {
-            pushRealTimeData1 inValue = new pushRealTimeData1();
+        public Unicom.Platform.Model.UnicomPlatform.resultData pushRealTimeData(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
+            Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1();
             inValue.vendorCode = vendorCode;
             inValue.emsDataList = emsDataList;
-            pushRealTimeDataResponse1 retVal = ((PushResourceService)(this)).pushRealTimeData(inValue);
+            Unicom.Platform.Model.UnicomPlatform.pushRealTimeDataResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushRealTimeData(inValue);
             return retVal.pushRealTimeDataFlag;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<pushRealTimeDataResponse1> PushResourceService.pushRealTimeDataAsync(pushRealTimeData1 request) {
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushRealTimeDataResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushRealTimeDataAsync(Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1 request) {
             return base.Channel.pushRealTimeDataAsync(request);
         }
         
-        public System.Threading.Tasks.Task<pushRealTimeDataResponse1> pushRealTimeDataAsync(string vendorCode, emsData[] emsDataList) {
-            pushRealTimeData1 inValue = new pushRealTimeData1();
+        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushRealTimeDataResponse1> pushRealTimeDataAsync(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsData[] emsDataList) {
+            Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushRealTimeData1();
             inValue.vendorCode = vendorCode;
             inValue.emsDataList = emsDataList;
-            return ((PushResourceService)(this)).pushRealTimeDataAsync(inValue);
+            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushRealTimeDataAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        pushDeviceStatusResponse1 PushResourceService.pushDeviceStatus(pushDeviceStatus1 request) {
+        Unicom.Platform.Model.UnicomPlatform.pushDeviceStatusResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushDeviceStatus(Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1 request) {
             return base.Channel.pushDeviceStatus(request);
         }
         
-        public resultData pushDeviceStatus(string vendorCode, emsDevice[] emsDeviceList) {
-            pushDeviceStatus1 inValue = new pushDeviceStatus1();
+        public Unicom.Platform.Model.UnicomPlatform.resultData pushDeviceStatus(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList) {
+            Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1();
             inValue.vendorCode = vendorCode;
             inValue.emsDeviceList = emsDeviceList;
-            pushDeviceStatusResponse1 retVal = ((PushResourceService)(this)).pushDeviceStatus(inValue);
+            Unicom.Platform.Model.UnicomPlatform.pushDeviceStatusResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushDeviceStatus(inValue);
             return retVal.deviceStatusCodes;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<pushDeviceStatusResponse1> PushResourceService.pushDeviceStatusAsync(pushDeviceStatus1 request) {
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDeviceStatusResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushDeviceStatusAsync(Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1 request) {
             return base.Channel.pushDeviceStatusAsync(request);
         }
         
-        public System.Threading.Tasks.Task<pushDeviceStatusResponse1> pushDeviceStatusAsync(string vendorCode, emsDevice[] emsDeviceList) {
-            pushDeviceStatus1 inValue = new pushDeviceStatus1();
+        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushDeviceStatusResponse1> pushDeviceStatusAsync(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsDevice[] emsDeviceList) {
+            Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushDeviceStatus1();
             inValue.vendorCode = vendorCode;
             inValue.emsDeviceList = emsDeviceList;
-            return ((PushResourceService)(this)).pushDeviceStatusAsync(inValue);
+            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushDeviceStatusAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        pullRegionResponse PushResourceService.pullRegion(pullRegion1 request) {
+        Unicom.Platform.Model.UnicomPlatform.pullRegionResponse Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullRegion(Unicom.Platform.Model.UnicomPlatform.pullRegion1 request) {
             return base.Channel.pullRegion(request);
         }
         
-        public emsRegion[] pullRegion(string vendorCode) {
-            pullRegion1 inValue = new pullRegion1();
+        public Unicom.Platform.Model.UnicomPlatform.emsRegion[] pullRegion(string vendorCode) {
+            Unicom.Platform.Model.UnicomPlatform.pullRegion1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullRegion1();
             inValue.vendorCode = vendorCode;
-            pullRegionResponse retVal = ((PushResourceService)(this)).pullRegion(inValue);
+            Unicom.Platform.Model.UnicomPlatform.pullRegionResponse retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullRegion(inValue);
             return retVal.pullRegionFlag;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<pullRegionResponse> PushResourceService.pullRegionAsync(pullRegion1 request) {
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullRegionResponse> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullRegionAsync(Unicom.Platform.Model.UnicomPlatform.pullRegion1 request) {
             return base.Channel.pullRegionAsync(request);
         }
         
-        public System.Threading.Tasks.Task<pullRegionResponse> pullRegionAsync(string vendorCode) {
-            pullRegion1 inValue = new pullRegion1();
+        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullRegionResponse> pullRegionAsync(string vendorCode) {
+            Unicom.Platform.Model.UnicomPlatform.pullRegion1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullRegion1();
             inValue.vendorCode = vendorCode;
-            return ((PushResourceService)(this)).pullRegionAsync(inValue);
+            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullRegionAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        pushProjectsResponse1 PushResourceService.pushProjects(pushProjects1 request) {
+        Unicom.Platform.Model.UnicomPlatform.pushProjectsResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushProjects(Unicom.Platform.Model.UnicomPlatform.pushProjects1 request) {
             return base.Channel.pushProjects(request);
         }
         
-        public resultData pushProjects(string vendorCode, emsProject[] emsProjectList) {
-            pushProjects1 inValue = new pushProjects1();
+        public Unicom.Platform.Model.UnicomPlatform.resultData pushProjects(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList) {
+            Unicom.Platform.Model.UnicomPlatform.pushProjects1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushProjects1();
             inValue.vendorCode = vendorCode;
             inValue.emsProjectList = emsProjectList;
-            pushProjectsResponse1 retVal = ((PushResourceService)(this)).pushProjects(inValue);
+            Unicom.Platform.Model.UnicomPlatform.pushProjectsResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushProjects(inValue);
             return retVal.projectCodes;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<pushProjectsResponse1> PushResourceService.pushProjectsAsync(pushProjects1 request) {
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushProjectsResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushProjectsAsync(Unicom.Platform.Model.UnicomPlatform.pushProjects1 request) {
             return base.Channel.pushProjectsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<pushProjectsResponse1> pushProjectsAsync(string vendorCode, emsProject[] emsProjectList) {
-            pushProjects1 inValue = new pushProjects1();
+        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushProjectsResponse1> pushProjectsAsync(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList) {
+            Unicom.Platform.Model.UnicomPlatform.pushProjects1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushProjects1();
             inValue.vendorCode = vendorCode;
             inValue.emsProjectList = emsProjectList;
-            return ((PushResourceService)(this)).pushProjectsAsync(inValue);
+            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushProjectsAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        pushProjectStatusResponse1 PushResourceService.pushProjectStatus(pushProjectStatus1 request) {
+        Unicom.Platform.Model.UnicomPlatform.pushProjectStatusResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushProjectStatus(Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1 request) {
             return base.Channel.pushProjectStatus(request);
         }
         
-        public resultData pushProjectStatus(string vendorCode, emsProject[] emsProjectList) {
-            pushProjectStatus1 inValue = new pushProjectStatus1();
+        public Unicom.Platform.Model.UnicomPlatform.resultData pushProjectStatus(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList) {
+            Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1();
             inValue.vendorCode = vendorCode;
             inValue.emsProjectList = emsProjectList;
-            pushProjectStatusResponse1 retVal = ((PushResourceService)(this)).pushProjectStatus(inValue);
+            Unicom.Platform.Model.UnicomPlatform.pushProjectStatusResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushProjectStatus(inValue);
             return retVal.projectStatusCodes;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<pushProjectStatusResponse1> PushResourceService.pushProjectStatusAsync(pushProjectStatus1 request) {
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushProjectStatusResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pushProjectStatusAsync(Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1 request) {
             return base.Channel.pushProjectStatusAsync(request);
         }
         
-        public System.Threading.Tasks.Task<pushProjectStatusResponse1> pushProjectStatusAsync(string vendorCode, emsProject[] emsProjectList) {
-            pushProjectStatus1 inValue = new pushProjectStatus1();
+        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pushProjectStatusResponse1> pushProjectStatusAsync(string vendorCode, Unicom.Platform.Model.UnicomPlatform.emsProject[] emsProjectList) {
+            Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1 inValue = new Unicom.Platform.Model.UnicomPlatform.pushProjectStatus1();
             inValue.vendorCode = vendorCode;
             inValue.emsProjectList = emsProjectList;
-            return ((PushResourceService)(this)).pushProjectStatusAsync(inValue);
+            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pushProjectStatusAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        registerVendorResponse1 PushResourceService.registerVendor(registerVendor1 request) {
+        Unicom.Platform.Model.UnicomPlatform.registerVendorResponse1 Unicom.Platform.Model.UnicomPlatform.PushResourceService.registerVendor(Unicom.Platform.Model.UnicomPlatform.registerVendor1 request) {
             return base.Channel.registerVendor(request);
         }
         
         public string registerVendor(string vendorName) {
-            registerVendor1 inValue = new registerVendor1();
+            Unicom.Platform.Model.UnicomPlatform.registerVendor1 inValue = new Unicom.Platform.Model.UnicomPlatform.registerVendor1();
             inValue.vendorName = vendorName;
-            registerVendorResponse1 retVal = ((PushResourceService)(this)).registerVendor(inValue);
+            Unicom.Platform.Model.UnicomPlatform.registerVendorResponse1 retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).registerVendor(inValue);
             return retVal.vendorCode;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<registerVendorResponse1> PushResourceService.registerVendorAsync(registerVendor1 request) {
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.registerVendorResponse1> Unicom.Platform.Model.UnicomPlatform.PushResourceService.registerVendorAsync(Unicom.Platform.Model.UnicomPlatform.registerVendor1 request) {
             return base.Channel.registerVendorAsync(request);
         }
         
-        public System.Threading.Tasks.Task<registerVendorResponse1> registerVendorAsync(string vendorName) {
-            registerVendor1 inValue = new registerVendor1();
+        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.registerVendorResponse1> registerVendorAsync(string vendorName) {
+            Unicom.Platform.Model.UnicomPlatform.registerVendor1 inValue = new Unicom.Platform.Model.UnicomPlatform.registerVendor1();
             inValue.vendorName = vendorName;
-            return ((PushResourceService)(this)).registerVendorAsync(inValue);
+            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).registerVendorAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        pullDistrictResponse PushResourceService.pullDistrict(pullDistrict1 request) {
+        Unicom.Platform.Model.UnicomPlatform.pullDistrictResponse Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullDistrict(Unicom.Platform.Model.UnicomPlatform.pullDistrict1 request) {
             return base.Channel.pullDistrict(request);
         }
         
-        public emsDistrict[] pullDistrict(string vendorCode, string parentDistrict) {
-            pullDistrict1 inValue = new pullDistrict1();
+        public Unicom.Platform.Model.UnicomPlatform.emsDistrict[] pullDistrict(string vendorCode, string parentDistrict) {
+            Unicom.Platform.Model.UnicomPlatform.pullDistrict1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullDistrict1();
             inValue.vendorCode = vendorCode;
             inValue.parentDistrict = parentDistrict;
-            pullDistrictResponse retVal = ((PushResourceService)(this)).pullDistrict(inValue);
+            Unicom.Platform.Model.UnicomPlatform.pullDistrictResponse retVal = ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullDistrict(inValue);
             return retVal.districts;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<pullDistrictResponse> PushResourceService.pullDistrictAsync(pullDistrict1 request) {
+        System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullDistrictResponse> Unicom.Platform.Model.UnicomPlatform.PushResourceService.pullDistrictAsync(Unicom.Platform.Model.UnicomPlatform.pullDistrict1 request) {
             return base.Channel.pullDistrictAsync(request);
         }
         
-        public System.Threading.Tasks.Task<pullDistrictResponse> pullDistrictAsync(string vendorCode, string parentDistrict) {
-            pullDistrict1 inValue = new pullDistrict1();
+        public System.Threading.Tasks.Task<Unicom.Platform.Model.UnicomPlatform.pullDistrictResponse> pullDistrictAsync(string vendorCode, string parentDistrict) {
+            Unicom.Platform.Model.UnicomPlatform.pullDistrict1 inValue = new Unicom.Platform.Model.UnicomPlatform.pullDistrict1();
             inValue.vendorCode = vendorCode;
             inValue.parentDistrict = parentDistrict;
-            return ((PushResourceService)(this)).pullDistrictAsync(inValue);
+            return ((Unicom.Platform.Model.UnicomPlatform.PushResourceService)(this)).pullDistrictAsync(inValue);
         }
     }
 }

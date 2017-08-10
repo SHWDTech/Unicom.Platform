@@ -3,7 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Unicom.Platform.Custom.RegisterWebSite.Models;
 using Unicom.Platform.Entities;
-using Unicom.Platform.Model.Service_References.UnicomPlatform;
+using Unicom.Platform.Model.UnicomPlatform;
 
 namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
 {
@@ -103,7 +103,7 @@ namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
             {
                 try
                 {
-                    model.Code = result.result[0].key.ToString();
+                    model.Code = result.result[0].value.ToString();
                     using (var ctx = new UnicomDbContext())
                     {
                         ctx.EmsProjects.Add(new EmsProject

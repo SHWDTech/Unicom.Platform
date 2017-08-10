@@ -13,6 +13,9 @@ namespace Unicom.Platform.Custom.RegisterWebSite.Models
         [Display(Name = "设备名称")]
         public string Name { get; set; }
 
+        [Display(Name = "上传名称")]
+        public string UnicomName { get; set; }
+
         [Display(Name = "设备IP地址")]
         public string IpAddr { get; set; }
 
