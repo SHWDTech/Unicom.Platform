@@ -139,7 +139,7 @@ namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
                     Console.WriteLine(ex.Message);
                     ModelState.AddModelError("RegisterError", "注册工程信息成功，但保存至服务器时遇到异常，请记录工程信息并提供给管理员手动添加。");
                     LoadInfomation(model);
-                    return View(model);
+                    return View(nameof(Register), model);
                 }
                 return View("Success");
             }
@@ -149,7 +149,7 @@ namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
                 ModelState.AddModelError("RegisterError", entry.value.ToString());
             }
             LoadInfomation(model);
-            return View(model);
+            return View(nameof(Register), model);
         }
 
         public ActionResult UpdateProject(emsProject project, ProjectModel model)
@@ -193,7 +193,7 @@ namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
                     Console.WriteLine(ex.Message);
                     ModelState.AddModelError("RegisterError", "更新工程信息成功，但保存至服务器时遇到异常，请记录工程信息并提供给管理员手动添加。");
                     LoadInfomation(model);
-                    return View(model);
+                    return View(nameof(Register), model);
                 }
                 return Redirect("/Project/ProjectManager");
             }
@@ -203,7 +203,7 @@ namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
                 ModelState.AddModelError("RegisterError", entry.value.ToString());
             }
             LoadInfomation(model);
-            return View(model);
+            return View(nameof(Register), model);
         }
 
         private void LoadInfomation(ProjectModel model)

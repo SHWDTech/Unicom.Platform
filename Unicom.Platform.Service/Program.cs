@@ -40,6 +40,8 @@ namespace Unicom.Platform.Service
 
         private static string _dataSource;
 
+        private static bool _notify;
+
         private static void Main()
         {
             _dataSource = ConfigurationManager.AppSettings["dataSource"];
@@ -76,9 +78,10 @@ namespace Unicom.Platform.Service
         private static void InitUnicomUpload()
         {
             LoadHistoryData();
+            _notify = bool.Parse(ConfigurationManager.AppSettings["notify"]);
             if (_dataSource == "web")
             {
-                using(var ctx = new UnicomDbContext())
+                using (var ctx = new UnicomDbContext())
                 {
                     foreach (var device in ctx.EmsDevices.ToList())
                     {
@@ -119,13 +122,19 @@ namespace Unicom.Platform.Service
                     if (emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        NotifyServer.Notify(taskState.ToString(), $"设备分钟值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+                        if (_notify)
+                        {
+                            NotifyServer.Notify(taskState.ToString(), $"设备分钟值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+                        }
                     }
                     foreach (var emsData in emsDatas)
                     {
                         if (emsData.dust > 1)
                         {
-                            NotifyServer.ExceedNotify(taskState.ToString(), $"设备分钟值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}，超标值：{emsData.dust}");
+                            if (_notify)
+                            {
+                                NotifyServer.ExceedNotify(taskState.ToString(), $"设备分钟值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}，超标值：{emsData.dust}");
+                            }
                             emsData.dust = emsData.dust / 10;
                         }
                         else if (emsData.dust < 0.01 && NeedRandomData(dev.DevCode, out EmsAutoDust dust))
@@ -165,13 +174,19 @@ namespace Unicom.Platform.Service
                     if (emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+                        if (_notify)
+                        {
+                            NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+                        }
                     }
                     foreach (var emsData in emsDatas)
                     {
                         if (emsData.dust > 1)
                         {
-                            NotifyServer.ExceedNotify(taskState.ToString(), $"设备小时值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+                            if (_notify)
+                            {
+                                NotifyServer.ExceedNotify(taskState.ToString(), $"设备小时值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+                            }
                             emsData.dust = emsData.dust / 10;
                         }
                         if (emsData.dust <= 0.01 && NeedRandomData(dev.DevCode, out EmsAutoDust dust))
@@ -210,13 +225,19 @@ namespace Unicom.Platform.Service
                     if (emsDatas.Count <= 0)
                     {
                         LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+                        if (_notify)
+                        {
+                            NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+                        }
                     }
                     foreach (var emsData in emsDatas)
                     {
                         if (emsData.dust > 1)
                         {
-                            NotifyServer.ExceedNotify(taskState.ToString(), $"设备日均值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+                            if (_notify)
+                            {
+                                NotifyServer.ExceedNotify(taskState.ToString(), $"设备日均值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+                            }
                             emsData.dust = emsData.dust / 10;
                         }
                         if (emsData.dust <= 0.01 && NeedRandomData(dev.DevCode, out EmsAutoDust dust))
