@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows;
 using Unicom.Platform;
 using Unicom.Platform.Model;
-using Unicom.Platform.Model.Service_References.UnicomPlatform;
+using Unicom.Platform.Model.UnicomPlatform;
 using Unicom.Platform.SQLite;
 using Unicom.Register.Common;
 

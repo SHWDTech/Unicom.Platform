@@ -4,7 +4,7 @@ using System.Linq;
 using ESMonitor.DataProvider.Models;
 using SHWDTech.Platform.Utility.ExtensionMethod;
 using Unicom.DataProvider;
-using Unicom.Platform.Model.Service_References.UnicomPlatform;
+using Unicom.Platform.Model.UnicomPlatform;
 
 // ReSharper disable PossibleInvalidOperationException
 

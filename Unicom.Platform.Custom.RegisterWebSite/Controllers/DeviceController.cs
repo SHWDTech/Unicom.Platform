@@ -83,7 +83,7 @@ namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
             {
                 try
                 {
-                    model.Code = result.result[0].value.ToString();
+                    model.Code = result.result[0].key.ToString();
                     using (var ctx = new UnicomDbContext())
                     {
                         ctx.EmsDevices.Add(new EmsDevice
