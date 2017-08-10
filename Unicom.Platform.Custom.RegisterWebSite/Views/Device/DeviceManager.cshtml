@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "设备列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/bootstrap-table.min.css" rel="stylesheet" />
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/Scripts/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<div class="col-md-12" style="margin-top: 15px">
+    @(Html.BootstrapTable(Url.Action("UnicomDeviceTable"), TablePaginationOption.server)
+          .Column("注册编号", "Code")
+          .Column("设备名称", "Name")
+          .Column("设备版本", "Version")
+          .Column("工程编号", "ProjectCode")
+          .Column("是否开启上传", "IsTransfer")
+          .Apply(ColumnOption.formatter, "devMgrTransferFormatter")
+          .Column("操作")
+          .Apply(ColumnOption.formatter, "devMgrOperateFormatter")
+          .Apply(ColumnOption.events, "operateEvents")
+          .Apply(TableOption.striped))
+</div>
+<script type="text/javascript">
+    window.devMgrOperateFormatter = function (value, row, index) {
+        return [
+            '<a class="update" href="/Device/Register?code=' + row.Code + '" title="更新设备信息">更新</a>'
+        ].join('');
+    }
+
+    window.devMgrTransferFormatter = function (value, row, index) {
+        if (value) {
+            return "开启";
+        }
+        return "未开启";
+    }
+</script>

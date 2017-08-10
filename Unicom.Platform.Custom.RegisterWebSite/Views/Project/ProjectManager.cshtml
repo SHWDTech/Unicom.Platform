@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "工程列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/bootstrap-table.min.css" rel="stylesheet" />
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/Scripts/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<div class="col-md-12" style="margin-top: 15px">
+    @(Html.BootstrapTable(Url.Action("UnicomProjectTable", "Home"), TablePaginationOption.server)
+          .Column("注册编号", "Code")
+          .Column("报建编号", "RegisterCode")
+          .Column("工程名称", "Name")
+          .Column("联系电话", "Telephone")
+          .Column("负责人", "Superintendent")
+          .Column("操作")
+          .Apply(ColumnOption.formatter, "prjMgrOperateFormatter")
+          .Apply(TableOption.striped))
+</div>
+<script type="text/javascript">
+    window.prjMgrOperateFormatter = function (value, row, index) {
+        return [
+            '<a class="update" href="/Project/Register?code=' + row.Code + '" title="更新工程信息">更新</a>'
+        ].join('');
+    }
+</script>
