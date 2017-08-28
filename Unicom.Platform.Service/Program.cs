@@ -44,17 +44,27 @@ namespace Unicom.Platform.Service
 
         private static void Main()
         {
-            _dataSource = ConfigurationManager.AppSettings["dataSource"];
-            if (_dataSource == null || _dataSource == "web")
+            try
             {
-                InitWeb();
+                _dataSource = ConfigurationManager.AppSettings["dataSource"];
+                if (_dataSource != null && _dataSource == "web")
+                {
+                    InitWeb();
+                }
+                else
+                {
+                    InitLocal();
+                }
+                _platform = ConfigurationManager.AppSettings["vendorName"];
+                InitUnicomUpload();
             }
-            else
+            catch (Exception ex)
             {
-                InitLocal();
+                Console.WriteLine(ex);
+                Console.WriteLine(@"wait press any key to leave");
+                Console.ReadKey();
+                return;
             }
-            _platform = ConfigurationManager.AppSettings["vendorName"];
-            InitUnicomUpload();
             while (true)
             {
                 RefreashTransfer();
@@ -189,7 +199,7 @@ namespace Unicom.Platform.Service
                             }
                             emsData.dust = emsData.dust / 10;
                         }
-                        if (emsData.dust <= 0.01 && NeedRandomData(dev.DevCode, out EmsAutoDust dust))
+                        if (NeedRandomData(dev.DevCode, out EmsAutoDust dust))
                         {
                             emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
                         }
