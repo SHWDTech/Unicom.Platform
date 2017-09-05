@@ -147,7 +147,7 @@ namespace Unicom.Platform.Service
                             }
                             emsData.dust = emsData.dust / 10;
                         }
-                        else if (emsData.dust < 0.01 && NeedRandomData(dev.DevCode, out EmsAutoDust dust))
+                        else if (NeedRandomData(dev.DevCode, out var dust))
                         {
                             emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
                         }
