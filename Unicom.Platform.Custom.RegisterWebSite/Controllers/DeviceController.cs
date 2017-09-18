@@ -200,6 +200,24 @@ namespace Unicom.Platform.Custom.RegisterWebSite.Controllers
             }
         }
 
+        public ActionResult Stop(string code)
+        {
+            using (var ctx = new UnicomDbContext())
+            {
+                var dev = ctx.EmsDevices.First(d => d.Code == code);
+                try
+                {
+                    dev.IsTransfer = false;
+                    ctx.SaveChanges();
+                    return Json("停止上传成功！", JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception)
+                {
+                    return Json("停止上传操作失败！", JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+
         private void LoadInfomation(DeviceModel model)
         {
             using (var ctx = new UnicomDbContext())

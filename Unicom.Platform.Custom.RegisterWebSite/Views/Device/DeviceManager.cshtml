@@ -10,7 +10,7 @@
 <script src="/Scripts/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
 
 <div class="col-md-12" style="margin-top: 15px">
-    @(Html.BootstrapTable(Url.Action("UnicomDeviceTable"), TablePaginationOption.server)
+    @(Html.BootstrapTable("UnicomDevice", Url.Action("UnicomDeviceTable"), TablePaginationOption.server)
           .Column("注册编号", "Code")
           .Column("设备名称", "Name")
           .Column("设备版本", "Version")
@@ -19,13 +19,14 @@
           .Apply(ColumnOption.formatter, "devMgrTransferFormatter")
           .Column("操作")
           .Apply(ColumnOption.formatter, "devMgrOperateFormatter")
-          .Apply(ColumnOption.events, "operateEvents")
+          .Apply(ColumnOption.events, "deviceOperateEvents")
           .Apply(TableOption.striped))
 </div>
 <script type="text/javascript">
     window.devMgrOperateFormatter = function (value, row, index) {
         return [
-            '<a class="update" href="/Device/Register?code=' + row.Code + '" title="更新设备信息">更新</a>'
+            '<a class="update" href="/Device/Register?code=' + row.Code + '" title="更新设备信息">更新</a>',
+            '<a class="stop" href="javascript:void(0)" style="margin-left: 5px;" title="停止上传">停止上传</a>'
         ].join('');
     }
 
@@ -35,4 +36,12 @@
         }
         return "未开启";
     }
+
+    window.deviceOperateEvents = {
+        'click .stop': function (e, value, row) {
+            $.get('/Device/Stop?code=' + row.Code, null, function (ret) {
+                alert(ret);
+            });
+        }
+    };
 </script>

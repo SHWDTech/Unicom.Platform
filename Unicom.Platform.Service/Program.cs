@@ -126,6 +126,7 @@ namespace Unicom.Platform.Service
             try
             {
                 var dev = LoadDevInfo(taskState);
+                if (!OnTransferDevices.Contains(dev.DevCode)) return;
                 if (DeviceOnTransfer(taskState.ToString()))
                 {
                     var emsDatas = _dataProvider.GetCurrentMinEmsDatas(taskState.ToString());
@@ -277,7 +278,7 @@ namespace Unicom.Platform.Service
 
         private static void AddMinuteTask(object taskState)
         {
-            var runTime = DateTime.Now.GetCurrentMinute().AddMinutes(1).AddSeconds(5);
+            var runTime = DateTime.Now.GetCurrentMinute().AddMinutes(1);
             var task = new Task.Task(MinuteTimerCallBack, new ScheduleExecutionOnce(runTime));
             task.Start(taskState);
         }
@@ -359,7 +360,14 @@ namespace Unicom.Platform.Service
                 {
                     foreach (var device in ctx.EmsDevices.ToList())
                     {
-                        if (!device.IsTransfer || OnTransferDevices.Any(d => d == device.Name)) continue;
+                        if (!device.IsTransfer)
+                        {
+                            if (OnTransferDevices.Any(d => d == device.Name))
+                            {
+                                OnTransferDevices.Remove(device.Name);
+                            }
+                            continue;
+                        }
                         AddMinuteTask(device.Name);
                         AddHourTask(device.Name);
                         AddDayTask(device.Name);
@@ -371,7 +379,14 @@ namespace Unicom.Platform.Service
             {
                 foreach (var device in _context.Devices)
                 {
-                    if (!device.OnTransfer || OnTransferDevices.Any(d => d == device.SystemCode)) continue;
+                    if (!device.OnTransfer)
+                    {
+                        if (OnTransferDevices.Any(d => d == device.SystemCode))
+                        {
+                            OnTransferDevices.Remove(device.SystemCode);
+                        }
+                        continue;
+                    }
                     AddMinuteTask(device.SystemCode);
                     AddHourTask(device.SystemCode);
                     AddDayTask(device.SystemCode);
