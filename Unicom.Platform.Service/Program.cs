@@ -96,10 +96,13 @@ namespace Unicom.Platform.Service
                     foreach (var device in ctx.EmsDevices.ToList())
                     {
                         if (!device.IsTransfer) continue;
-                        AddMinuteTask(device.Name);
-                        AddHourTask(device.Name);
-                        AddDayTask(device.Name);
-                        OnTransferDevices.Add(device.Name);
+                        if (OnTransferDevices.All(d => d != device.Name))
+                        {
+                            AddMinuteTask(device.Name);
+                            AddHourTask(device.Name);
+                            AddDayTask(device.Name);
+                            OnTransferDevices.Add(device.Name);
+                        }
                     }
                 }
             }
@@ -108,10 +111,13 @@ namespace Unicom.Platform.Service
                 foreach (var device in _context.Devices)
                 {
                     if (!device.OnTransfer) continue;
-                    AddMinuteTask(device.SystemCode);
-                    AddHourTask(device.SystemCode);
-                    AddDayTask(device.SystemCode);
-                    OnTransferDevices.Add(device.SystemCode);
+                    if (OnTransferDevices.All(d => d != device.SystemCode))
+                    {
+                        AddMinuteTask(device.SystemCode);
+                        AddHourTask(device.SystemCode);
+                        AddDayTask(device.SystemCode);
+                        OnTransferDevices.Add(device.SystemCode);
+                    }
                 }
             }
         }
