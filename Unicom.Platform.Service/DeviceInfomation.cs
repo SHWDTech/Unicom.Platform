@@ -8,6 +8,8 @@
 
         public string StatCode { get; set; }
 
+        public string StatId { get; set; }
+
         public int ProjectType { get; set; }
     }
 }

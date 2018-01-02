@@ -15,6 +15,8 @@ using EmsDevice = Unicom.Platform.Model.EmsDevice;
 using EmsProject = Unicom.Platform.Model.EmsProject;
 using MTWESensorData.DataProvider;
 using Unicom.Platform.Entities;
+using Newtonsoft.Json;
+using ESMonitor.Model;
 
 namespace Unicom.Platform.Service
 {
@@ -99,8 +101,6 @@ namespace Unicom.Platform.Service
                         if (OnTransferDevices.All(d => d != device.Name))
                         {
                             AddMinuteTask(device.Name);
-                            AddHourTask(device.Name);
-                            AddDayTask(device.Name);
                             OnTransferDevices.Add(device.Name);
                         }
                     }
@@ -108,17 +108,7 @@ namespace Unicom.Platform.Service
             }
             else
             {
-                foreach (var device in _context.Devices)
-                {
-                    if (!device.OnTransfer) continue;
-                    if (OnTransferDevices.All(d => d != device.SystemCode))
-                    {
-                        AddMinuteTask(device.SystemCode);
-                        AddHourTask(device.SystemCode);
-                        AddDayTask(device.SystemCode);
-                        OnTransferDevices.Add(device.SystemCode);
-                    }
-                }
+                AddMinuteTask(null);
             }
         }
 
@@ -127,160 +117,171 @@ namespace Unicom.Platform.Service
             HistoryDatas.AddRange(_dataProvider.GetValidHistoryData());
         }
 
-        private static void MinuteTimerCallBack(object taskState)
+        private static void MinuteTimerCallBack(object state)
         {
-            try
+            foreach (var device in _context.Devices)
             {
-                var dev = LoadDevInfo(taskState);
-                if (!OnTransferDevices.Contains(dev.DevCode)) return;
-                if (DeviceOnTransfer(taskState.ToString()))
+                try
                 {
-                    var emsDatas = _dataProvider.GetCurrentMinEmsDatas(taskState.ToString());
-                    if (emsDatas.Count <= 0)
+                    var devSystemCode = device.SystemCode.ToString();
+                    var dev = LoadDevInfo(devSystemCode);
+                    if (!OnTransferDevices.Contains(dev.DevCode)) continue;
+                    if (DeviceOnTransfer(devSystemCode))
                     {
-                        LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        if (_notify)
+                        var emsData = LoadLastData(dev.StatId, dev.DevCode);
+                        if (emsData == null)
                         {
-                            NotifyServer.Notify(taskState.ToString(), $"设备分钟值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+                            LoadFromHistoryData(devSystemCode, emsData);
+                            if (_notify)
+                            {
+                                NotifyServer.Notify(devSystemCode, $"设备分钟值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{devSystemCode}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+                            }
                         }
-                    }
-                    foreach (var emsData in emsDatas)
-                    {
+                        if (emsData == null)
+                        {
+                            emsData = new emsData {
+                                dateTime = ConvertToUnixTime(DateTime.Now),
+                                dustFlag = "N",
+                                humiFlag = "N",
+                                noiseFlag = "N"
+                            };
+                        }
                         if (emsData.dust > 1)
                         {
                             if (_notify)
                             {
-                                NotifyServer.ExceedNotify(taskState.ToString(), $"设备分钟值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}，超标值：{emsData.dust}");
+                                NotifyServer.ExceedNotify(devSystemCode, $"设备分钟值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{devSystemCode}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}，超标值：{emsData.dust}");
                             }
                             emsData.dust = emsData.dust / 10;
                         }
-                        else if (NeedRandomData(dev.DevCode, out var dust))
+                        else if (emsData.dust < 0.01 && NeedRandomData(dev.DevCode, out var dust))
                         {
                             emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
                         }
+                        AddDeviceInfo(emsData, devSystemCode);
+                        FixErrorData(emsData);
+                        var result = Service.PushRealTimeData(new emsData[] { emsData});
+                        OutputError(result, devSystemCode, emsData);
                     }
-                    AddDeviceInfo(emsDatas, taskState.ToString());
-                    FixErrorData(emsDatas);
-                    var result = Service.PushRealTimeData(emsDatas.ToArray());
-                    OutputError(result, taskState, emsDatas);
-                }
-                else
-                {
-                    var deviceCode = OnTransferDevices.FirstOrDefault(obj => obj.Equals(taskState.ToString()));
-                    if (deviceCode != null)
+                    else
                     {
-                        OnTransferDevices.Remove(deviceCode);
+                        var deviceCode = OnTransferDevices.FirstOrDefault(obj => obj.Equals(devSystemCode));
+                        if (deviceCode != null)
+                        {
+                            OnTransferDevices.Remove(deviceCode);
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    LogService.Instance.Error("发送数据失败！", ex);
+                }
             }
-            catch (Exception ex)
-            {
-                LogService.Instance.Error("发送数据失败！", ex);
-            }
-            AddMinuteTask(taskState);
+            
+            AddMinuteTask(null);
         }
 
-        private static void HourTimerCallBack(object taskState)
-        {
-            try
-            {
-                var dev = LoadDevInfo(taskState);
-                if (DeviceOnTransfer(taskState.ToString()))
-                {
-                    var emsDatas = _dataProvider.GetCurrentHourEmsDatas(taskState.ToString());
-                    if (emsDatas.Count <= 0)
-                    {
-                        LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        if (_notify)
-                        {
-                            NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
-                        }
-                    }
-                    foreach (var emsData in emsDatas)
-                    {
-                        if (emsData.dust > 1)
-                        {
-                            if (_notify)
-                            {
-                                NotifyServer.ExceedNotify(taskState.ToString(), $"设备小时值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
-                            }
-                            emsData.dust = emsData.dust / 10;
-                        }
-                        if (NeedRandomData(dev.DevCode, out EmsAutoDust dust))
-                        {
-                            emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
-                        }
-                    }
-                    AddDeviceInfo(emsDatas, taskState.ToString());
-                    var result = Service.PushRealTimeData(emsDatas.ToArray());
-                    OutputError(result, taskState, emsDatas);
-                }
-                else
-                {
-                    var deviceCode = OnTransferDevices.FirstOrDefault(obj => obj.Equals(taskState.ToString()));
-                    if (deviceCode != null)
-                    {
-                        OnTransferDevices.Remove(deviceCode);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LogService.Instance.Error("发送数据失败！", ex);
-            }
-            AddHourTask(taskState);
-        }
+        //private static void HourTimerCallBack(object taskState)
+        //{
+        //    try
+        //    {
+        //        var dev = LoadDevInfo(taskState);
+        //        if (DeviceOnTransfer(taskState.ToString()))
+        //        {
+        //            var emsDatas = _dataProvider.GetCurrentHourEmsDatas(taskState.ToString());
+        //            if (emsDatas.Count <= 0)
+        //            {
+        //                LoadFromHistoryData(taskState.ToString(), emsDatas);
+        //                if (_notify)
+        //                {
+        //                    NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+        //                }
+        //            }
+        //            foreach (var emsData in emsDatas)
+        //            {
+        //                if (emsData.dust > 1)
+        //                {
+        //                    if (_notify)
+        //                    {
+        //                        NotifyServer.ExceedNotify(taskState.ToString(), $"设备小时值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+        //                    }
+        //                    emsData.dust = emsData.dust / 10;
+        //                }
+        //                if (NeedRandomData(dev.DevCode, out EmsAutoDust dust))
+        //                {
+        //                    emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
+        //                }
+        //            }
+        //            AddDeviceInfo(emsDatas, taskState.ToString());
+        //            var result = Service.PushRealTimeData(emsDatas.ToArray());
+        //            OutputError(result, taskState, emsDatas);
+        //        }
+        //        else
+        //        {
+        //            var deviceCode = OnTransferDevices.FirstOrDefault(obj => obj.Equals(taskState.ToString()));
+        //            if (deviceCode != null)
+        //            {
+        //                OnTransferDevices.Remove(deviceCode);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogService.Instance.Error("发送数据失败！", ex);
+        //    }
+        //    AddHourTask(taskState);
+        //}
 
-        private static void DayTimerCallBack(object taskState)
-        {
-            try
-            {
-                var dev = LoadDevInfo(taskState);
-                if (DeviceOnTransfer(taskState.ToString()))
-                {
-                    var emsDatas = _dataProvider.GetCurrentDayEmsDatas(taskState.ToString());
-                    if (emsDatas.Count <= 0)
-                    {
-                        LoadFromHistoryData(taskState.ToString(), emsDatas);
-                        if (_notify)
-                        {
-                            NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
-                        }
-                    }
-                    foreach (var emsData in emsDatas)
-                    {
-                        if (emsData.dust > 1)
-                        {
-                            if (_notify)
-                            {
-                                NotifyServer.ExceedNotify(taskState.ToString(), $"设备日均值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
-                            }
-                            emsData.dust = emsData.dust / 10;
-                        }
-                        if (emsData.dust <= 0.01 && NeedRandomData(dev.DevCode, out EmsAutoDust dust))
-                        {
-                            emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
-                        }
-                    }
-                    AddDeviceInfo(emsDatas, taskState.ToString());
-                    var result = Service.PushRealTimeData(emsDatas.ToArray());
-                    OutputError(result, taskState, emsDatas);
-                }
-                else
-                {
-                    var deviceCode = OnTransferDevices.FirstOrDefault(obj => obj.Equals(taskState.ToString()));
-                    if (deviceCode != null)
-                    {
-                        OnTransferDevices.Remove(deviceCode);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LogService.Instance.Error("发送数据失败！", ex);
-            }
-            AddDayTask(taskState);
-        }
+        //private static void DayTimerCallBack(object taskState)
+        //{
+        //    try
+        //    {
+        //        var dev = LoadDevInfo(taskState);
+        //        if (DeviceOnTransfer(taskState.ToString()))
+        //        {
+        //            var emsDatas = _dataProvider.GetCurrentDayEmsDatas(taskState.ToString());
+        //            if (emsDatas.Count <= 0)
+        //            {
+        //                LoadFromHistoryData(taskState.ToString(), emsDatas);
+        //                if (_notify)
+        //                {
+        //                    NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+        //                }
+        //            }
+        //            foreach (var emsData in emsDatas)
+        //            {
+        //                if (emsData.dust > 1)
+        //                {
+        //                    if (_notify)
+        //                    {
+        //                        NotifyServer.ExceedNotify(taskState.ToString(), $"设备日均值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
+        //                    }
+        //                    emsData.dust = emsData.dust / 10;
+        //                }
+        //                if (emsData.dust <= 0.01 && NeedRandomData(dev.DevCode, out EmsAutoDust dust))
+        //                {
+        //                    emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
+        //                }
+        //            }
+        //            AddDeviceInfo(emsDatas, taskState.ToString());
+        //            var result = Service.PushRealTimeData(emsDatas.ToArray());
+        //            OutputError(result, taskState, emsDatas);
+        //        }
+        //        else
+        //        {
+        //            var deviceCode = OnTransferDevices.FirstOrDefault(obj => obj.Equals(taskState.ToString()));
+        //            if (deviceCode != null)
+        //            {
+        //                OnTransferDevices.Remove(deviceCode);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogService.Instance.Error("发送数据失败！", ex);
+        //    }
+        //    AddDayTask(taskState);
+        //}
 
         private static void AddMinuteTask(object taskState)
         {
@@ -289,21 +290,21 @@ namespace Unicom.Platform.Service
             task.Start(taskState);
         }
 
-        private static void AddHourTask(object taskState)
-        {
-            var runTime = DateTime.Now.GetCurrentHour().AddHours(1).AddMinutes(5);
-            var task = new Task.Task(HourTimerCallBack, new ScheduleExecutionOnce(runTime));
-            task.Start(taskState);
-        }
+        //private static void AddHourTask(object taskState)
+        //{
+        //    var runTime = DateTime.Now.GetCurrentHour().AddHours(1).AddMinutes(5);
+        //    var task = new Task.Task(HourTimerCallBack, new ScheduleExecutionOnce(runTime));
+        //    task.Start(taskState);
+        //}
 
-        private static void AddDayTask(object taskState)
-        {
-            var runTime = DateTime.Now.GetToday().AddDays(1).AddMinutes(5);
-            var task = new Task.Task(DayTimerCallBack, new ScheduleExecutionOnce(runTime));
-            task.Start(taskState);
-        }
+        //private static void AddDayTask(object taskState)
+        //{
+        //    var runTime = DateTime.Now.GetToday().AddDays(1).AddMinutes(5);
+        //    var task = new Task.Task(DayTimerCallBack, new ScheduleExecutionOnce(runTime));
+        //    task.Start(taskState);
+        //}
 
-        private static void OutputError(resultData result, object devId, List<emsData> emsDatas)
+        private static void OutputError(resultData result, object devId, emsData emsData)
         {
             if (result.result.Length > 0)
             {
@@ -314,34 +315,28 @@ namespace Unicom.Platform.Service
             }
             else
             {
-                Console.WriteLine($"发送数据成功，时间：{DateTime.Now:yyyy-MM-dd hh:mm:ss}，设备Id：{devId}，TP值：{emsDatas.FirstOrDefault()?.dust}");
-                AddToHistoryData(emsDatas);
+                Console.WriteLine($"发送数据成功，时间：{DateTime.Now:yyyy-MM-dd hh:mm:ss}，设备Id：{devId}，TP值：{emsData.dust}");
+                AddToHistoryData(emsData);
             }
         }
 
-        private static void AddDeviceInfo(List<emsData> emsDatas, string systemDeviceCode)
+        private static void AddDeviceInfo(emsData emsData, string systemDeviceCode)
         {
             if (_dataSource == "web")
             {
                 var info = SystemDevs[systemDeviceCode];
-                foreach (var emsData in emsDatas)
-                {
-                    emsData.devCode = info.UnicomDevCode;
-                    emsData.prjCode = info.StatCode;
-                    emsData.prjType = info.ProjectType;
-                }
+                emsData.devCode = info.UnicomDevCode;
+                emsData.prjCode = info.StatCode;
+                emsData.prjType = info.ProjectType;
                 return;
             }
             var device = _context.FirstOrDefault<EmsDevice>($"SystemCode = {systemDeviceCode}");
 
             var project = _context.FirstOrDefault<EmsProject>($"code == '{device.projectCode}'");
 
-            foreach (var emsData in emsDatas)
-            {
-                emsData.devCode = device.code;
-                emsData.prjCode = project.code;
-                emsData.prjType = project.prjType;
-            }
+            emsData.devCode = device.code;
+            emsData.prjCode = project.code;
+            emsData.prjType = project.prjType;
         }
 
         private static bool DeviceOnTransfer(string systemDeviceCode)
@@ -374,9 +369,6 @@ namespace Unicom.Platform.Service
                             }
                             continue;
                         }
-                        AddMinuteTask(device.Name);
-                        AddHourTask(device.Name);
-                        AddDayTask(device.Name);
                         OnTransferDevices.Add(device.Name);
                     }
                 }
@@ -393,9 +385,6 @@ namespace Unicom.Platform.Service
                         }
                         continue;
                     }
-                    AddMinuteTask(device.SystemCode);
-                    AddHourTask(device.SystemCode);
-                    AddDayTask(device.SystemCode);
                     OnTransferDevices.Add(device.SystemCode);
                 }
             }
@@ -410,14 +399,22 @@ namespace Unicom.Platform.Service
             }
         }
 
-        private static void LoadFromHistoryData(string dev, List<emsData> emsDatas)
+        private static void AddToHistoryData(emsData data)
+        {
+            HistoryDatas.Add(data);
+            if (HistoryDatas.Count > 1024)
+            {
+                HistoryDatas.RemoveRange(1024, HistoryDatas.Count - 1024);
+            }
+        }
+
+        private static void LoadFromHistoryData(string dev, emsData emsData)
         {
             if (HistoryDatas.Count <= 0) return;
             var pickIndex = new Random().Next(0, HistoryDatas.Count);
-            var value = HistoryDatas[pickIndex];
-            value.dateTime = ConvertToUnixTime(DateTime.Now);
-            emsDatas.Add(value);
-            AddDeviceInfo(emsDatas, dev);
+            emsData = HistoryDatas[pickIndex];
+            emsData.dateTime = ConvertToUnixTime(DateTime.Now);
+            return;
         }
 
         private static long ConvertToUnixTime(DateTime dateTime)
@@ -466,7 +463,8 @@ namespace Unicom.Platform.Service
                     info = new DeviceInfomation
                     {
                         DevCode = taskState.ToString(),
-                        StatCode = stat.StatCode
+                        StatCode = stat.StatCode,
+                        StatId = dev.StatId
                     };
                     SystemDevs.Add(devCode, info);
                     return info;
@@ -515,31 +513,49 @@ namespace Unicom.Platform.Service
             return generator;
         }
 
-        private static void FixErrorData(List<emsData> datas)
+        private static void FixErrorData(emsData data)
         {
-            foreach (var data in datas)
+            if (data.noise <= 1)
             {
-                if (data.noise <= 1)
-                {
-                    data.noise = new Random().Next(40, 65);
-                }
-                if (data.temperature <= 1)
-                {
-                    data.temperature = new Random().Next(150, 250) / 10.0f;
-                }
-                if (data.humidity <= 1)
-                {
-                    data.humidity = new Random().Next(400, 750) / 10.0f;
-                }
-                if (data.windDirection <= 1)
-                {
-                    data.windDirection = new Random().Next(0, 360);
-                }
-                if (data.windSpeed <= 0.01)
-                {
-                    data.windSpeed = new Random().Next(0, 10) / 10.0f;
-                }
+                data.noise = new Random().Next(40, 65);
             }
+            if (data.temperature <= 1)
+            {
+                data.temperature = new Random().Next(150, 250) / 10.0f;
+            }
+            if (data.humidity <= 1)
+            {
+                data.humidity = new Random().Next(400, 750) / 10.0f;
+            }
+            if (data.windDirection <= 1)
+            {
+                data.windDirection = new Random().Next(0, 360);
+            }
+            if (data.windSpeed <= 0.01)
+            {
+                data.windSpeed = new Random().Next(0, 10) / 10.0f;
+            }
+        }
+
+        private static emsData LoadLastData(string statId, string devId)
+        {
+            var redisResult = RedisService.GetRedisDatabase().StringGet($"DustLastValue:{statId}-{devId}");
+            if (!redisResult.HasValue) return null;
+            var model = JsonConvert.DeserializeObject<EsMin>(redisResult.ToString());
+
+            return new emsData
+            {
+                dust = ((float)model.Tp) / 1000,
+                temperature = (float)model.Temperature,
+                humidity = (float)model.Humidity,
+                noise = (int)model.Db,
+                windSpeed = (float)model.WindSpeed,
+                windDirection = (int)model.WindDirection,
+                dateTime = ConvertToUnixTime(model.UpdateTime),
+                dustFlag = "N",
+                humiFlag = "N",
+                noiseFlag = "N"
+            };
         }
     }
 }
