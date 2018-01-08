@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using ESMonitor.DataProvider.Models;
 using SHWDTech.Platform.Utility.ExtensionMethod;
@@ -98,6 +99,46 @@ namespace ESMonitor.DataProvider
                     .Take(10).ToList();
 
                 return EsMinToEmsDatas(esDatas);
+            }
+        }
+
+        public void AddNewData(emsData data, int statId, int devId, string country, int? statCodeUp)
+        {
+            using (var context = new EsMonitorModels())
+            {
+                var newData = new T_ESMin
+                {
+                    TP = data.dust,
+                    DB = data.noise,
+                    Temperature = data.temperature,
+                    Humidity = data.humidity,
+                    WindDirection = data.windDirection,
+                    WindSpeed = data.windSpeed,
+                    Airpressure = 0,
+                    DevId = devId,
+                    StatId = statId,
+                    Country = country,
+                    StatCode = statCodeUp
+                };
+                context.EsMin.Add(newData);
+                context.SaveChanges();
+            }
+        }
+
+        public void UpdateNewData(emsData data, int statId, int devId, string country, int? statCodeUp)
+        {
+            using (var context = new EsMonitorModels())
+            {
+                var last = context.EsMin.FirstOrDefault(d => d.DevId == devId);
+                if (last == null) return;
+                last.TP = data.dust;
+                last.DB = data.noise;
+                last.Temperature = data.temperature;
+                last.Humidity = data.humidity;
+                last.WindDirection = data.windDirection;
+                last.WindSpeed = data.windSpeed;
+                context.EsMin.AddOrUpdate(last);
+                context.SaveChanges();
             }
         }
 

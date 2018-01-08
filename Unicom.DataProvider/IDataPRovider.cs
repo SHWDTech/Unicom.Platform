@@ -58,5 +58,9 @@ namespace Unicom.DataProvider
         List<emsData> GetHistoryDayEmsDatas(string devCode, DateTime startDateTime, DateTime endDateTIme);
 
         List<emsData> GetValidHistoryData();
+
+        void AddNewData(emsData data, int statId, int devId, string country, int? statCodeUp);
+
+        void UpdateNewData(emsData data, int statId, int devId, string country, int? statCodeUp);
     }
 }

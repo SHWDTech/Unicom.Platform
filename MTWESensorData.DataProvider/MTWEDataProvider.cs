@@ -64,6 +64,16 @@ namespace MTWESensorData.DataProvider
             }
         }
 
+        public void AddNewData(emsData data, int statId, int devId, string country, int? statCodeUp)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateNewData(emsData data, int statId, int devId, string country, int? statCodeUp)
+        {
+            throw new NotImplementedException();
+        }
+
         private static List<emsData> MtweMinToEmsDatas(IEnumerable<sensor_data_min> mtweMins) => mtweMins.Select(
             min => new emsData
             {

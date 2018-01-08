@@ -11,5 +11,9 @@
         public string StatId { get; set; }
 
         public int ProjectType { get; set; }
+
+        public string Country { get; set; }
+
+        public int? StatUpCode { get; set; }
     }
 }

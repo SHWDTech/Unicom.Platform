@@ -17,6 +17,7 @@ using MTWESensorData.DataProvider;
 using Unicom.Platform.Entities;
 using Newtonsoft.Json;
 using ESMonitor.Model;
+// ReSharper disable LocalizableElement
 
 namespace Unicom.Platform.Service
 {
@@ -123,15 +124,16 @@ namespace Unicom.Platform.Service
             {
                 try
                 {
-                    var devSystemCode = device.SystemCode.ToString();
+                    var devSystemCode = device.SystemCode;
                     var dev = LoadDevInfo(devSystemCode);
                     if (!OnTransferDevices.Contains(dev.DevCode)) continue;
                     if (DeviceOnTransfer(devSystemCode))
                     {
+                        var dataStatus = EmsdataStatus.Normal;
                         var emsData = LoadLastData(dev.StatId, dev.DevCode);
                         if (emsData == null)
                         {
-                            LoadFromHistoryData(devSystemCode, emsData);
+                            LoadFromHistoryData(emsData);
                             if (_notify)
                             {
                                 NotifyServer.Notify(devSystemCode, $"设备分钟值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{devSystemCode}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
@@ -139,12 +141,14 @@ namespace Unicom.Platform.Service
                         }
                         if (emsData == null)
                         {
-                            emsData = new emsData {
+                            emsData = new emsData
+                            {
                                 dateTime = ConvertToUnixTime(DateTime.Now),
                                 dustFlag = "N",
                                 humiFlag = "N",
                                 noiseFlag = "N"
                             };
+                            dataStatus = EmsdataStatus.NotFound;
                         }
                         if (emsData.dust > 1)
                         {
@@ -153,6 +157,7 @@ namespace Unicom.Platform.Service
                                 NotifyServer.ExceedNotify(devSystemCode, $"设备分钟值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{devSystemCode}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}，超标值：{emsData.dust}");
                             }
                             emsData.dust = emsData.dust / 10;
+                            dataStatus = EmsdataStatus.Exceeded;
                         }
                         else if (emsData.dust < 0.01 && NeedRandomData(dev.DevCode, out var dust))
                         {
@@ -160,8 +165,8 @@ namespace Unicom.Platform.Service
                         }
                         AddDeviceInfo(emsData, devSystemCode);
                         FixErrorData(emsData);
-                        var result = Service.PushRealTimeData(new emsData[] { emsData});
-                        OutputError(result, devSystemCode, emsData);
+                        var result = Service.PushRealTimeData(new[] { emsData });
+                        OutputError(result, devSystemCode, emsData, dataStatus, dev);
                     }
                     else
                     {
@@ -177,111 +182,9 @@ namespace Unicom.Platform.Service
                     LogService.Instance.Error("发送数据失败！", ex);
                 }
             }
-            
+
             AddMinuteTask(null);
         }
-
-        //private static void HourTimerCallBack(object taskState)
-        //{
-        //    try
-        //    {
-        //        var dev = LoadDevInfo(taskState);
-        //        if (DeviceOnTransfer(taskState.ToString()))
-        //        {
-        //            var emsDatas = _dataProvider.GetCurrentHourEmsDatas(taskState.ToString());
-        //            if (emsDatas.Count <= 0)
-        //            {
-        //                LoadFromHistoryData(taskState.ToString(), emsDatas);
-        //                if (_notify)
-        //                {
-        //                    NotifyServer.Notify(taskState.ToString(), $"设备小时值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
-        //                }
-        //            }
-        //            foreach (var emsData in emsDatas)
-        //            {
-        //                if (emsData.dust > 1)
-        //                {
-        //                    if (_notify)
-        //                    {
-        //                        NotifyServer.ExceedNotify(taskState.ToString(), $"设备小时值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
-        //                    }
-        //                    emsData.dust = emsData.dust / 10;
-        //                }
-        //                if (NeedRandomData(dev.DevCode, out EmsAutoDust dust))
-        //                {
-        //                    emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
-        //                }
-        //            }
-        //            AddDeviceInfo(emsDatas, taskState.ToString());
-        //            var result = Service.PushRealTimeData(emsDatas.ToArray());
-        //            OutputError(result, taskState, emsDatas);
-        //        }
-        //        else
-        //        {
-        //            var deviceCode = OnTransferDevices.FirstOrDefault(obj => obj.Equals(taskState.ToString()));
-        //            if (deviceCode != null)
-        //            {
-        //                OnTransferDevices.Remove(deviceCode);
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        LogService.Instance.Error("发送数据失败！", ex);
-        //    }
-        //    AddHourTask(taskState);
-        //}
-
-        //private static void DayTimerCallBack(object taskState)
-        //{
-        //    try
-        //    {
-        //        var dev = LoadDevInfo(taskState);
-        //        if (DeviceOnTransfer(taskState.ToString()))
-        //        {
-        //            var emsDatas = _dataProvider.GetCurrentDayEmsDatas(taskState.ToString());
-        //            if (emsDatas.Count <= 0)
-        //            {
-        //                LoadFromHistoryData(taskState.ToString(), emsDatas);
-        //                if (_notify)
-        //                {
-        //                    NotifyServer.Notify(taskState.ToString(), $"设备日均值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
-        //                }
-        //            }
-        //            foreach (var emsData in emsDatas)
-        //            {
-        //                if (emsData.dust > 1)
-        //                {
-        //                    if (_notify)
-        //                    {
-        //                        NotifyServer.ExceedNotify(taskState.ToString(), $"设备日均值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{taskState}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
-        //                    }
-        //                    emsData.dust = emsData.dust / 10;
-        //                }
-        //                if (emsData.dust <= 0.01 && NeedRandomData(dev.DevCode, out EmsAutoDust dust))
-        //                {
-        //                    emsData.dust = GetGenerator(dust.DevSystemCode).NewValue();
-        //                }
-        //            }
-        //            AddDeviceInfo(emsDatas, taskState.ToString());
-        //            var result = Service.PushRealTimeData(emsDatas.ToArray());
-        //            OutputError(result, taskState, emsDatas);
-        //        }
-        //        else
-        //        {
-        //            var deviceCode = OnTransferDevices.FirstOrDefault(obj => obj.Equals(taskState.ToString()));
-        //            if (deviceCode != null)
-        //            {
-        //                OnTransferDevices.Remove(deviceCode);
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        LogService.Instance.Error("发送数据失败！", ex);
-        //    }
-        //    AddDayTask(taskState);
-        //}
 
         private static void AddMinuteTask(object taskState)
         {
@@ -290,22 +193,17 @@ namespace Unicom.Platform.Service
             task.Start(taskState);
         }
 
-        //private static void AddHourTask(object taskState)
-        //{
-        //    var runTime = DateTime.Now.GetCurrentHour().AddHours(1).AddMinutes(5);
-        //    var task = new Task.Task(HourTimerCallBack, new ScheduleExecutionOnce(runTime));
-        //    task.Start(taskState);
-        //}
-
-        //private static void AddDayTask(object taskState)
-        //{
-        //    var runTime = DateTime.Now.GetToday().AddDays(1).AddMinutes(5);
-        //    var task = new Task.Task(DayTimerCallBack, new ScheduleExecutionOnce(runTime));
-        //    task.Start(taskState);
-        //}
-
-        private static void OutputError(resultData result, object devId, emsData emsData)
+        private static void OutputError(resultData result, object devId, emsData emsData, EmsdataStatus status, DeviceInfomation device)
         {
+            if (status == EmsdataStatus.NotFound)
+            {
+                _dataProvider.AddNewData(emsData, int.Parse(device.StatId), int.Parse(device.StatId), device.Country, device.StatUpCode);
+            }
+            else if (status == EmsdataStatus.Exceeded)
+            {
+                _dataProvider.UpdateNewData(emsData, int.Parse(device.StatId), int.Parse(device.StatId),
+                    device.Country, device.StatUpCode);
+            }
             if (result.result.Length > 0)
             {
                 foreach (var dataEntry in result.result)
@@ -408,13 +306,12 @@ namespace Unicom.Platform.Service
             }
         }
 
-        private static void LoadFromHistoryData(string dev, emsData emsData)
+        private static void LoadFromHistoryData(emsData emsData)
         {
             if (HistoryDatas.Count <= 0) return;
             var pickIndex = new Random().Next(0, HistoryDatas.Count);
             emsData = HistoryDatas[pickIndex];
             emsData.dateTime = ConvertToUnixTime(DateTime.Now);
-            return;
         }
 
         private static long ConvertToUnixTime(DateTime dateTime)
@@ -464,7 +361,9 @@ namespace Unicom.Platform.Service
                     {
                         DevCode = taskState.ToString(),
                         StatCode = stat.StatCode,
-                        StatId = dev.StatId
+                        StatId = dev.StatId,
+                        Country = stat.Country.ToString(),
+                        StatUpCode = stat.StatCodeUp
                     };
                     SystemDevs.Add(devCode, info);
                     return info;
