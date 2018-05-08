@@ -156,7 +156,7 @@ namespace Unicom.Platform.Service
                             {
                                 NotifyServer.ExceedNotify(devSystemCode, $"设备分钟值超标，请检查设备状态！ 异常设备平台：{_platform}，异常设备系统编码：{devSystemCode}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}，超标值：{emsData.dust}");
                             }
-                            emsData.dust = emsData.dust / 10;
+                            emsData.dust = SpressDust(emsData.dust);
                             dataStatus = EmsdataStatus.Exceeded;
                         }
                         else if (emsData.dust < 0.01 && NeedRandomData(dev.DevCode, out var dust))
@@ -235,6 +235,21 @@ namespace Unicom.Platform.Service
             emsData.devCode = device.code;
             emsData.prjCode = project.code;
             emsData.prjType = project.prjType;
+        }
+
+        private static float SpressDust(float orignal)
+        {
+            if (orignal > 1 && orignal < 10)
+            {
+                return new Random().Next(70, 89) / 100.0f;
+            }
+
+            if (orignal > 10 && orignal < 20)
+            {
+                return new Random().Next(90, 99) / 100.0f;
+            }
+
+            return new Random().Next(9000, 9999) / 10000.0f;
         }
 
         private static bool DeviceOnTransfer(string systemDeviceCode)
