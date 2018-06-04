@@ -95,7 +95,7 @@ namespace ESMonitor.DataProvider
         {
             using (var context = new EsMonitorModels())
             {
-                var esDatas = context.EsMin.Where(obj => obj.TP > 100 && obj.TP < 1000).OrderBy(item => item.UpdateTime)
+                var esDatas = context.EsMin.Where(obj => obj.TP > 100 && obj.TP < 1000)
                     .Take(10).ToList();
 
                 return EsMinToEmsDatas(esDatas);
