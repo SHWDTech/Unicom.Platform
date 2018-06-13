@@ -133,11 +133,12 @@ namespace Unicom.Platform.Service
                         var emsData = LoadLastData(dev.StatId, dev.DevCode);
                         if (emsData == null)
                         {
-                            LoadFromHistoryData(emsData);
+                            emsData = LoadFromHistoryData();
                             if (_notify)
                             {
                                 NotifyServer.Notify(devSystemCode, $"设备分钟值取值失败，请检查设备状态，异常设备平台：{_platform}，异常设备系统编码：{devSystemCode}，设备名称：{dev.DevCode}，设备所属工地名称：{dev.StatCode}");
                             }
+                            dataStatus = EmsdataStatus.NotFound;
                         }
                         if (emsData == null)
                         {
@@ -321,12 +322,13 @@ namespace Unicom.Platform.Service
             }
         }
 
-        private static void LoadFromHistoryData(emsData emsData)
+        private static emsData LoadFromHistoryData()
         {
-            if (HistoryDatas.Count <= 0) return;
+            if (HistoryDatas.Count <= 0) return null;
             var pickIndex = new Random().Next(0, HistoryDatas.Count);
-            emsData = HistoryDatas[pickIndex];
+            var emsData = HistoryDatas[pickIndex];
             emsData.dateTime = ConvertToUnixTime(DateTime.Now);
+            return emsData;
         }
 
         private static long ConvertToUnixTime(DateTime dateTime)

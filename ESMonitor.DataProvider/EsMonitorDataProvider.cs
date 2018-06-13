@@ -118,7 +118,8 @@ namespace ESMonitor.DataProvider
                     DevId = devId,
                     StatId = statId,
                     Country = country,
-                    StatCode = statCodeUp
+                    StatCode = statCodeUp,
+                    DataStatus = "N"
                 };
                 context.EsMin.Add(newData);
                 context.SaveChanges();
